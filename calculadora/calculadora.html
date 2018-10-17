@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>::Calculadora::</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="calculadora.css">
+</head>
+	<body>
+
+		<div class="container">
+			<form class="row calculator">
+				<div class="module">
+					<div class="form-group col-xs-12 col-sm-4">
+						<label>Tipo de servicio:</label>
+						<select class="form-control outline">
+							<option value="Actualización de datos">Actualización de datos</option>
+						</select>
+					</div>
+
+					<div class="form-group col-xs-12 col-sm-4">
+						<label>Numero de personas a Llamar:</label>
+						<input type="text" class="form-control outline" id="" placeholder="#1.000"/>
+					</div>
+
+					<div class="form-group col-xs-12 col-sm-4">
+						<label>Duración de llamada:</label>
+						<input type="text" class="form-control outline" id="" placeholder="15.min"/>
+					</div>
+
+					<div class="form-group col-xs-12 col-sm-6">
+						<label>Inicio del servicio:</label>
+						<input type="date" class="form-control outline" id="start-date"/>
+					</div>
+
+					<div class="form-group col-xs-12 col-sm-6">
+						<label>Final del servicio:</label>
+						<input type="date" class="form-control outline" id="end-date"/>
+					</div>
+
+					<div class="col-xs-12 col-sm-6 summary summary-hours">
+						<div class="item-circle"> 30 </div>
+							<h5><b>Días</b> dentro del Rango. </h5>
+					</div>
+
+					<div class="col-xs-12 col-sm-6 summary summary-hours">
+						<div class="item-circle"> 4,3 </div>
+							<h5><b>Semanas</b> Dentro Del Rango. </h5>
+					</div>
+
+					<div class="clear"></div>
+				</div>
+
+		<div class="module">
+			<!--<div class="col-xs-12" style="margin-top:10px;margin-left:15px;display:flex;justify-content: flex-end;">
+					<label class="checkbox-inline" style="border:1px solid red;margin-right:15px;">
+						
+						  <input type="checkbox" data-toggle="toggle" data-style="android" data-onstyle="servon"> 
+						  Jornada personalizada
+					</label>
+			</div>
+-->
+			
+			<div class="form-group col-xs-12 col-sm-6">
+				<label>Zona Horaria:</label>
+					<select class="form-control outline">
+						 <option value="GMT-5:00 - America/Bogota - COT - Hora de Colombia" selected>
+						 	GMT-5:00 - America/Bogota - COT - Hora de Colombia
+						 </option>
+					</select>
+			</div>
+
+			<div class="form-group col-xs-12 col-sm-6">
+				<label>Jornada laboral:</label>
+					<select class="form-control outline">
+					 	<option value="" selected>
+					 		6:00am a 2:00pm
+					 	</option>
+					</select>
+			</div>
+
+			<div class="checkbox col-xs-12">
+			    <label style="font-weight:200;font-size:12px;"><input type="checkbox"> 
+			    	<span style="margin-top:1px;display:inline-block;">Crear una jornada personalizada. </span>
+			    </label>
+			  </div>
+
+			<div class="clear"></div>
+			
+
+			<!--jornadas Personalizadas--> 
+				<div class="form-group customs-chedule col-xs-12 col-sm-6">
+					<label>Inicio de Jornada:</label>
+					<div class="inline-form">
+						<div class="box-icon">
+							<i class="far fa-clock"></i>
+						</div>
+						<input type="tel" class="form-control" placeholder="Horas" class="col-xs-5"/>
+						<input type="tel" class="form-control" placeholder="Minutos" class="col-xs-5"/>
+						<div class="time-cycles night">
+							<i class="fas fa-moon"></i>
+							<span>PM</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group customs-chedule col-xs-12 col-sm-6">
+					<label>Fin de Jornada:</label>
+					<div class="inline-form">
+						<div class="box-icon">
+							<i class="far fa-clock"></i>
+						</div>
+						<input type="tel" class="form-control" placeholder="Horas" class="col-xs-5"/>
+						<input type="tel" class="form-control" placeholder="Minutos" class="col-xs-5"/>
+						<div class="time-cycles day">
+							<i class="fas fa-cloud"></i>
+							<span>AM</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xs-12 summary summary-hours">
+					<div class="item-circle"> 8 </div>
+						<h5><b>Horas</b> de Gestión Diarias. </h5>
+				</div>
+
+<!--FIN jornadas Personalizadas-->
+			<div class="clear"></div>
+		</div>
+
+	<div class="module">
+		<div class="form-group col-xs-12">
+			<label> Días de actividad: </label>
+				<ul class="listDays">
+					<li class="day active">
+						<span class="icon">
+							<i class="fas fa-check"></i>
+						</span>
+						<span class="title">Lunes</span>
+					</li>
+
+					<li class="day">
+						<span class="icon">
+							<i class="fas fa-times"></i>
+						</span>
+						<span class="title">Martes</span>
+					</li>
+
+					<li class="day active">
+						<span class="icon">
+							<i class="fas fa-check"></i>
+						</span>
+						<span class="title">Miercoles</span>
+					</li>
+
+					 <li class="day">
+						<span class="icon">
+							<i class="fas fa-times"></i>
+						</span>
+						<span class="title">Jueves</span>
+					</li>
+
+					 <li class="day active">
+						<span class="icon">
+							<i class="fas fa-check"></i>
+						</span>
+						<span class="title">Viernes</span>
+					</li>
+
+					<li class="day">
+						<span class="icon">
+							<i class="fas fa-times"></i>
+						</span>
+						<span class="title">Sábado</span>
+					</li>
+
+					<li class="day">
+						<span class="icon">
+							<i class="fas fa-times"></i>
+						</span>
+						<span class="title">Domingo</span>
+					 </li>
+				</ul>
+			</div>
+
+			<div class="col-xs-12 col-sm-4 summary">
+				<div class="item-circle"> 3 </div>
+					<h5><b>Días</b> de gestión por semana. </h5>
+			</div>
+			
+			<div class="col-xs-12 col-sm-4 summary">
+				<div class="item-circle"> 8 </div>
+				<h5><b>Días Totales</b> para la Gestión. </h5>
+			</div>
+
+			<div class="col-xs-12 col-sm-4 summary">
+				<div class="item-circle small-font"> 244 </div>
+					<h5><b>Horas</b> para realizar la gestión. </h5>
+			</div>
+					<div class="clear"></div>
+		</div>
+
+			</form>
+		</div>
+
+	</body>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+	<script type="text/javascript" src="calculadora.js"></script>
+</html>
