@@ -1,5 +1,4 @@
 a.nav-link i ~ strong{
-    border:1px solid red !important;
     margin-left: -8px;
 }
 
