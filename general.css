@@ -1,9 +1,3 @@
-.miBanner{
-  color:red !important; 
-  background-color:magenta !important;
-  border-color:yellow;
-}
-
 a.nav-link i ~ strong{
     border:1px solid red !important;
     margin-left: -8px;
