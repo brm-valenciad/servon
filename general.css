@@ -1,4 +1,5 @@
 .miBanner{
   color:red !important; 
   background-color:magenta !important;
+  border-color:yellow;
 }
