@@ -1,6 +1,4 @@
-console.error("Nos encargamos de hacer la logica");
-
-    /*Formatear las fechas actuale*/
+       /*Formatear las fechas actuale*/
         Date.prototype.toDateInputValue = (function() {
             var local = new Date(this);
             local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
@@ -8,8 +6,6 @@ console.error("Nos encargamos de hacer la logica");
         });
         
      $('#start-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
-
-console.warn("Formateamos las fechas");
 
 //Cargando Puestos de trabajo
         loadInfo("21/PUESTO/grupo/false/", "jobPlace");
@@ -64,6 +60,13 @@ console.warn("Formateamos las fechas");
  $("body").on("change", "select#time-periods, input#amout-periods, #amount-jobs, select", function(){
                 globalCalculate();
 });
+//Agregar puesto de trabajo
+$("body").on("click", "#add-new-placeJob", function(){
+    var elemIds = $("#formOm.calculator").lenght;
+        console.error("Numero actual de puestos", elemIds);
+    var clone_el = $("#formOm").clone();
+        clone_el.attr("id", "#formOm-"+elemIds);
+})
 
 function globalCalculate(){
             var periodo     = ( $('#time-periods').val() == undefined || $('#time-periods').val() == "") ? "dia" : $('#time-periods').val();
