@@ -56,26 +56,26 @@
 
 //Desencadenar el eveto principal
  $("body").on("change", "select#time-periods, input#amout-periods, #amount-jobs, select", function(){
-        console.error("Trabajando en multimples tareas");
+        console.error("Trabajando en multimples tareas", $(this).attr("data-padre") );
         var padre = $("#formOm-"+$(this).attr("data-padre"));
            globalCalculate(padre);
 });
 
 //Agregar puesto de trabajo
 $("body").on("click", "#add-new-placeJob", function(){
-    var elemIds = $("#all-place-jobs.calculator").length;
-       
+    var elemIds = $("#all-place-jobs .calculator").length;
+        elemIds = elemIds+1;           
     var clone_el = $("#formOm-1").clone();
-        clone_el.attr("id", "formOm-"+elemIds+1);
+        clone_el.attr("id", "formOm-"+elemIds);
        
             clone_el.find("select").each(function(){
-                   $(this).attr("data-padre", elemIds+1);
+                   $(this).attr("data-padre", elemIds);
             });
 
             clone_el.find("input").each(function(){
                 var typeDate = $(this).attr("type", "date");
                 var typeText = $(this).attr("type", "text");
-                     $(this).attr("data-padre", elemIds+1);
+                     $(this).attr("data-padre", elemIds);
                 if ( typeDate.length >= 0 ){
                        console.warn("formatear fecha");
                     //$(this).val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
