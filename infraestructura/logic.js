@@ -56,8 +56,9 @@
 
 //Desencadenar el eveto principal
  $("body").on("change", "select#time-periods, input#amout-periods, #amount-jobs, select", function(){
-        console.info($(this).attr("data-padre"));
-                globalCalculate();
+        var padre = $("#formOm-"+$(this).attr("data-padre"));
+        console.info("padre", padre);
+                globalCalculate(padre);
 });
 
 //Agregar puesto de trabajo
@@ -84,21 +85,21 @@ $("body").on("click", "#add-new-placeJob", function(){
 });
 
 
-function globalCalculate(){
-            var periodo     = ( $('#time-periods').val() == undefined || $('#time-periods').val() == "") ? "dia" : $('#time-periods').val();
+function globalCalculate(padre){
+            var periodo     = ( padre.find('#time-periods').val() == undefined || padre.find('#time-periods').val() == "") ? "dia" : padre.find('#time-periods').val();
             var periodoText = ( periodo == "horas" ) ? "12_horas" : "tarifa_"+periodo;
-            var periodos = ( $('#amout-periods').val() == undefined || $('#amout-periods').val() == "") ? 0 : $('#amout-periods').val();
-            var cantidad = ( $('#amount-jobs').val() == undefined || $('#amount-jobs').val() == "" ) ? 0 : $('#amount-jobs').val(); 
+            var periodos    = ( padre.find('#amout-periods').val() == undefined || padre.find('#amout-periods').val() == "") ? 0 : padre.find('#amout-periods').val();
+            var cantidad    = ( padre.find('#amount-jobs').val() == undefined || padre.find('#amount-jobs').val() == "" ) ? 0 : padre.find('#amount-jobs').val(); 
                 
             if ( isNaN(cantidad) == true || isNaN(periodos)  == true ){
                 alert("Existe un error con un valor no numerico");
             }else{
                 //console.error("Falta change de valor unitario!");
-                var jobPlace          = $('#select-jobPlace').children('option:selected').data('option');
-                var computerEquipment = $('#select-computerEquipment').children('option:selected').data('option');
-                var computerLicences  = $('#select-computerLicences').children('option:selected').data('option');
-                var typeHeadbands     = $('#select-headbands').children('option:selected').data('option');
-                var lincencesMarkers  = $('#select-lincencesMarkers').children('option:selected').data('option');
+                var jobPlace          = padre.find('#select-jobPlace').children('option:selected').data('option');
+                var computerEquipment = padre.find('#select-computerEquipment').children('option:selected').data('option');
+                var computerLicences  = padre.find('#select-computerLicences').children('option:selected').data('option');
+                var typeHeadbands     = padre.find('#select-headbands').children('option:selected').data('option');
+                var lincencesMarkers  = padre.find('#select-lincencesMarkers').children('option:selected').data('option');
                 
                     //Puesto de trabajo
                     if ( jobPlace != undefined ){
@@ -124,8 +125,9 @@ function globalCalculate(){
                     if ( lincencesMarkers != undefined ){
                        obtainUnitValues( lincencesMarkers, periodoText, periodos, cantidad, "lincencesMarkers" );
                     }else{  clearForm("lincencesMarkers"); }
-
-                    $(".aditionals-elements").each(function(){
+                    
+                   //Elementos Adicionales
+                    padre.find(".aditionals-elements").each(function(){
                         var grupo = $(this).data('grupo');
                         var optionDataAdic = $(this).children('option:selected').data('option');
                             console.warn("grupo", grupo);
