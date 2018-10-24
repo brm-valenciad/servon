@@ -27,8 +27,8 @@
                  $.getJSON(
                     url_,
                     function( response ) {
-                        console.info("cargando info:", response);
-                        console.info("#select-"+place);
+                        //console.info("cargando info:", response);
+                       // console.info("#select-"+place);
                             $.each(response.data, function( key, val ) {
                                 var option_ = $("<option/>");
                                     option_.attr("value", val.nombre.value);
