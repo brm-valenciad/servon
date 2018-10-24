@@ -80,6 +80,7 @@ $("body").on("click", "#add-new-placeJob", function(){
                     $(this).val("");
                 }
             });
+       console.info(clone_el);
        $("#all-place-jobs").append(clone_el);
 });
 
