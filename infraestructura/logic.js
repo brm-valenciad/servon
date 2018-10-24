@@ -57,8 +57,7 @@
 //Desencadenar el eveto principal
  $("body").on("change", "select#time-periods, input#amout-periods, #amount-jobs, select", function(){
         var padre = $("#formOm-"+$(this).attr("data-padre"));
-        console.info("padre", padre);
-                globalCalculate(padre);
+           globalCalculate(padre);
 });
 
 //Agregar puesto de trabajo
@@ -103,27 +102,27 @@ function globalCalculate(padre){
                 
                     //Puesto de trabajo
                     if ( jobPlace != undefined ){
-                       obtainUnitValues( jobPlace, periodoText, periodos, cantidad, "jobPlace" );
+                       obtainUnitValues( padre, jobPlace, periodoText, periodos, cantidad, "jobPlace" );
                     }else{ clearForm("jobPlace"); }
 
                     //Equipo_de_computo
                     if ( computerEquipment != undefined ){
-                       obtainUnitValues( computerEquipment, periodoText, periodos, cantidad, "computerEquipment" );
+                       obtainUnitValues( padre, computerEquipment, periodoText, periodos, cantidad, "computerEquipment" );
                     }else{ clearForm("computerEquipment"); }
 
                     //Lincencias
                     if ( computerLicences != undefined ){
-                       obtainUnitValues( computerLicences, periodoText, periodos, cantidad, "computerLicences" );
+                       obtainUnitValues( padre, computerLicences, periodoText, periodos, cantidad, "computerLicences" );
                     }else{  clearForm("computerLicences"); }
 
                     //typeHeadbands
                     if ( typeHeadbands != undefined ){
-                       obtainUnitValues( typeHeadbands, periodoText, periodos, cantidad, "headbands" );
+                       obtainUnitValues( padre, typeHeadbands, periodoText, periodos, cantidad, "headbands" );
                     }else{  clearForm("headbands"); }
 
                     //marcadoras
                     if ( lincencesMarkers != undefined ){
-                       obtainUnitValues( lincencesMarkers, periodoText, periodos, cantidad, "lincencesMarkers" );
+                       obtainUnitValues( padre, lincencesMarkers, periodoText, periodos, cantidad, "lincencesMarkers" );
                     }else{  clearForm("lincencesMarkers"); }
                     
                    //Elementos Adicionales
@@ -136,11 +135,12 @@ function globalCalculate(padre){
             }
 }
 
-       function obtainUnitValues(mainObj, searchBy, cantidad, periodos, identify){
+       function obtainUnitValues(padre, mainObj, searchBy, cantidad, periodos, identify){
+            console.info("padre", padre);
             console.info('#'+identify+'_unitario');
-            $('#'+identify+'_unitario').val( fNumber.go(mainObj[searchBy].value, "COP") );
-            $('#'+identify+'_total').val( fNumber.go(mainObj[searchBy].value*cantidad*periodos, "COP") );
-            $('#'+identify+'_total').data('cost', mainObj[searchBy].value * cantidad * periodos);     
+            padre.find('#'+identify+'_unitario').val( fNumber.go(mainObj[searchBy].value, "COP") );
+            padre.find('#'+identify+'_total').val( fNumber.go(mainObj[searchBy].value*cantidad*periodos, "COP") );
+            padre.find('#'+identify+'_total').data('cost', mainObj[searchBy].value * cantidad * periodos);     
         }
 
         var fNumber = {
