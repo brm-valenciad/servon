@@ -144,7 +144,7 @@ function globalCalculate(padre){
                     }else{  clearForm("lincencesMarkers"); }
                     
                    //Elementos Adicionales
-                     padre.find(".aditionals-elements").each(function(){
+                    padre.find(".aditionals-elements").each(function(){
                         var grupo = $(this).data('grupo');
                         var optionDataAdic = $(this).children('option:selected').data('option');
                             console.warn("grupo", grupo);
@@ -153,13 +153,82 @@ function globalCalculate(padre){
                             if ( optionDataAdic != undefined ){
                                 obtainUnitValues( padre, optionDataAdic, periodoText, periodos, cantidad, "optionDataAdic" );  
                              }else{  clearForm("optionDataAdic"); }
-                    }); 
+                    });
+
+                var totalFinal = 0;
+                var resumenCotizacion = periodoText+' + '+cantidad+' unidades + '+periodos+' periodos + ';
+
+
+                //CONTAMOS lOS PUESTOS DE TRABAJO
+                $("#all-place-jobs .calculator").each(function(index){
+                    var fechaInicio      = $(this).find("#start-date").val();
+                    var TimePeriod       = $(this).find("#time-periods").val();
+                    var cantidadPeriodos = $(this).find("#time-periods").val();
+                    var FechaFinal       = ""//$(this).find("#time-periods").val();;
+
+                    console.warn("fechaInicio", fechaInicio);
+                    console.warn("TimePeriod", TimePeriod);
+                    console.warn("cantidadPeriodos", cantidadPeriodos);
+                    console.warn("FechaFinal", FechaFinal);
+
+                    var PuestoDeTrabajo         = $(this).find("#select-jobPlace").val();
+                    var PuestoDeTrabajoCantidad = $(this).find("#amount-jobs").val();
+                    var PuestoDeTrabajoUnitario = $(this).find("#jobPlace_unitario").val();
+                    var PuestoDeTrabajoTotal    = $(this).find("#jobPlace_total").val();
+
+                    console.warn("PuestoDeTrabajoTotal", PuestoDeTrabajoTotal);
+                    console.warn("PuestoDeTrabajoCantidad", PuestoDeTrabajoCantidad);
+                    console.warn("PuestoDeTrabajoUnitario", PuestoDeTrabajoUnitario);
+                    console.warn("PuestoDeTrabajoTotal", PuestoDeTrabajoTotal);
+
+                /*::::::::*/
+                    var EquiposDeComputo = "",
+                        EquiposDeComputoUnidad = "",
+                        EquiposDeComputoTotal  = "";
+
+                    var TiposDeLicencias = "",
+                        TiposDeLicenciasUnidad = "",
+                        TiposDeLicenciasTotal = "";
+
+                    var TiposDeDiadema = "",
+                        TiposDeDiademaUnidad = "",
+                        TiposDeDiademaTotal  = "";
+
+                    var LicenciaDeMarcadoras = "",
+                        LicenciaDeMarcadorasUnidad = "",
+                        LicenciaDeMarcadorasTotal  = "";
+                 /*::::::::*/
+
+
+                /*::::Elementos Adicionales::::*/
+                    $(this).find("#adicionalesOm .aditional_").each(function(){
+                        console.warn("dentro de los elementos adicionales!");
+                        var ElementoAdicionalNombre   = $(this).find("#select-additionalsElements").val(),
+                            ElementoAdicionalUnitario = $(this).find("#optionDataAdic_unitario").val(),
+                            ElementoAdicionalTotal    = $(this).find("#optionDataAdic_total").val();
+
+                            console.info("Nombre", ElementoAdicionalNombre);
+                            console.info("Valor unitario", ElementoAdicionalUnitario);
+                            console.info("Valor Total", ElementoAdicionalTotal);
+                    });
+                /*::::Fin Elementos Adicionales::::*/
+
+
+                    console.warn("contando puestos");
+                            console.info("Puesto #", index+1);
+                });
+
+                $("input[placeholder='$Total']").each(function(){
+                    if ( $(this).val() != '' ){
+                            totalFinal += parseInt($(this).data('cost'));
+                    }
+                });
+
+                console.error("Total final", totalFinal);
             }
 }
 
        function obtainUnitValues(padre, mainObj, searchBy, cantidad, periodos, identify){
-            console.info("padre", padre);
-            console.info('#'+identify+'_unitario');
             padre.find('#'+identify+'_unitario').val( fNumber.go(mainObj[searchBy].value, "COP") );
             padre.find('#'+identify+'_total').val( fNumber.go(mainObj[searchBy].value*cantidad*periodos, "COP") );
             padre.find('#'+identify+'_total').data('cost', mainObj[searchBy].value * cantidad * periodos);     
