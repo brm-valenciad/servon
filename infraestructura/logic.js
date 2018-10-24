@@ -40,18 +40,17 @@
 
        //Agregar elementos Adicionales
         $("body").on("click","#add-new-aditional", function(){
-            console.warn($(this).attr("data-padre"));
-
-         var additional = $(".aditional_:first-child").clone();
-             additional.find("#title").remove();
-             additional.find("input").each(function(){ $(this).val(''); });
+            var padre_ = $("#formOm-"+$(this).attr("data-padre"));
+            var additional = padre_.find(".aditional_:first-child").clone();
+                additional.find("#title").remove();
+                additional.find("input").each(function(){ $(this).val(''); });
                 
-                $("#adicionalesOm").append(additional);
+                padre_.find("#adicionalesOm").append(additional);
         });
         //Remover elemento Adicional
         $("body").on("click","#removeMe", function(){
-            console.warn($(this).attr("data-padre"));
-            if ( $(".aditional_").length > 1){
+            console.warn("Eliminando");
+            if ( $("#formOm-"+$(this).attr("data-padre")).find(".aditional_").length > 1){
                   $(this).parent().parent().parent().parent().remove();  
             }
         })
