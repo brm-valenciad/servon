@@ -56,6 +56,7 @@
 
 //Desencadenar el eveto principal
  $("body").on("change", "select#time-periods, input#amout-periods, #amount-jobs, select", function(){
+        console.error("Trabajando en multimples tareas");
         var padre = $("#formOm-"+$(this).attr("data-padre"));
            globalCalculate(padre);
 });
@@ -66,13 +67,15 @@ $("body").on("click", "#add-new-placeJob", function(){
        
     var clone_el = $("#formOm-1").clone();
         clone_el.attr("id", "formOm-"+elemIds+1);
-    
-       console.error(clone_el);
        
+            clone_el.find("select").each(function(){
+                   $(this).attr("data-padre", elemIds+1);
+            });
+
             clone_el.find("input").each(function(){
                 var typeDate = $(this).attr("type", "date");
                 var typeText = $(this).attr("type", "text");
-
+                     $(this).attr("data-padre", elemIds+1);
                 if ( typeDate.length >= 0 ){
                        console.warn("formatear fecha");
                     //$(this).val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
@@ -82,7 +85,6 @@ $("body").on("click", "#add-new-placeJob", function(){
                     $(this).val("");
                 }
             });
-       console.info(clone_el);
        $("#all-place-jobs").append(clone_el);
 });
 
