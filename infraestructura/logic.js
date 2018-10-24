@@ -50,12 +50,12 @@
         //Remover elemento Adicional
         $("body").on("click","#removeMe", function(){
             var padre_ = $("#formOm-"+$(this).attr("data-padre"));
-            console.warn( padre_.find(".aditional_").length );
-             padre_.find(".aditional_").css("border","1px solid magenta");
-            $(this).parent().parent().parent().parent().css("border","1px solid red")
-            if ( padre_.find(".aditional_").length != 0 ){
+            console.warn( padre_.find(".aditionals-to-clone").length );
+
+            $(this).parent().parent().parent().parent().css("border","1px solid red");
+           /* if ( padre_.find(".aditional_").length != 0 ){
                   $(this).parent().parent().parent().parent().remove();  
-            }
+            }*/
         })
 
 //Desencadenar el eveto principal
