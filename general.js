@@ -1,4 +1,5 @@
 console.warn("Soy el general.js");
+
         if (location.protocol == 'http:'){
             location.href = location.href.replace(/^http:/, 'https:');
         }
