@@ -166,44 +166,54 @@ function globalCalculate(padre){
                     var cantidadPeriodos = $(this).find("#time-periods").val();
                     var FechaFinal       = ""//$(this).find("#time-periods").val();;
 
-                    console.warn("fechaInicio", fechaInicio);
-                    console.warn("TimePeriod", TimePeriod);
-                    console.warn("cantidadPeriodos", cantidadPeriodos);
-                    console.warn("FechaFinal", FechaFinal);
-
                     var PuestoDeTrabajo         = $(this).find("#select-jobPlace").val();
                     var PuestoDeTrabajoCantidad = $(this).find("#amount-jobs").val();
                     var PuestoDeTrabajoUnitario = $(this).find("#jobPlace_unitario").val();
                     var PuestoDeTrabajoTotal    = $(this).find("#jobPlace_total").val();
 
-                    console.warn("PuestoDeTrabajoTotal", PuestoDeTrabajoTotal);
-                    console.warn("PuestoDeTrabajoCantidad", PuestoDeTrabajoCantidad);
-                    console.warn("PuestoDeTrabajoUnitario", PuestoDeTrabajoUnitario);
-                    console.warn("PuestoDeTrabajoTotal", PuestoDeTrabajoTotal);
+                    if ( TimePeriod != undefined && cantidadPeriodos != '' && PuestoDeTrabajo != '' && PuestoDeTrabajoCantidad != ''){
 
-                /*::::::::*/
-                    var EquiposDeComputo = "",
-                        EquiposDeComputoUnidad = "",
-                        EquiposDeComputoTotal  = "";
+                        console.warn("fechaInicio", fechaInicio);
+                        console.warn("TimePeriod", TimePeriod);
+                        console.warn("cantidadPeriodos", cantidadPeriodos);
+                        console.warn("FechaFinal", FechaFinal);
 
-                    var TiposDeLicencias = "",
-                        TiposDeLicenciasUnidad = "",
-                        TiposDeLicenciasTotal = "";
 
-                    var TiposDeDiadema = "",
-                        TiposDeDiademaUnidad = "",
-                        TiposDeDiademaTotal  = "";
+                        console.warn("PuestoDeTrabajoTotal", PuestoDeTrabajo);
+                        console.warn("PuestoDeTrabajoCantidad", PuestoDeTrabajoCantidad);
+                        console.warn("PuestoDeTrabajoUnitario", PuestoDeTrabajoUnitario);
+                        console.warn("PuestoDeTrabajoTotal", PuestoDeTrabajoTotal);
 
-                    var LicenciaDeMarcadoras = "",
-                        LicenciaDeMarcadorasUnidad = "",
-                        LicenciaDeMarcadorasTotal  = "";
-                 /*::::::::*/
+                        /*::::::::*/
+                            var EquiposDeComputo = $(this).find("#select-computerEquipment").val(),
+                                EquiposDeComputoUnidad = "",
+                                EquiposDeComputoTotal  = "";
+
+                                console.info("value", EquiposDeComputo);
+
+                            var TiposDeLicencias = "",
+                                TiposDeLicenciasUnidad = "",
+                                TiposDeLicenciasTotal = "";
+
+                            var TiposDeDiadema = "",
+                                TiposDeDiademaUnidad = "",
+                                TiposDeDiademaTotal  = "";
+
+                            var LicenciaDeMarcadoras = "",
+                                LicenciaDeMarcadorasUnidad = "",
+                                LicenciaDeMarcadorasTotal  = "";
+                         /*::::::::*/
+
+
+                    }else{
+                        console.error("No podemos calcular nada Aún");
+                    }
 
 
                 /*::::Elementos Adicionales::::*/
                     $(this).find("#adicionalesOm .aditional_").each(function(){
                         console.warn("dentro de los elementos adicionales!");
-                        var ElementoAdicionalNombre   = $(this).find("#select-additionalsElements").val(),
+                        var ElementoAdicionalNombre   = $(this).find("#select-additionalsElements").text(),
                             ElementoAdicionalUnitario = $(this).find("#optionDataAdic_unitario").val(),
                             ElementoAdicionalTotal    = $(this).find("#optionDataAdic_total").val();
 
