@@ -64,12 +64,16 @@
 
 //Agregar puesto de trabajo
 $("body").on("click", "#add-new-placeJob", function(){
-    var elemIds = $("#formOm-1.calculator").length;
-       console.error("Numero actual de puestos", elemIds);
-    var clone_el = $("#formOm").clone();
-        clone_el.attr("id", "#formOm-"+elemIds+1);
-       
+    var elemIds = $("#all-place-jobs .calculator").length;
+        elemIds = elemIds+1;  
+
+    var clone_el = $("#formOm-1").clone();
+        clone_el.attr("id", "formOm-"+elemIds);
+            clone_el.find("select").each(function(){
+                   $(this).attr("data-padre", elemIds);
+            });
             clone_el.find("input").each(function(){
+                    $(this).attr("data-padre", elemIds);
                 var typeIs = $(this).attr("type");
 
                 if ( typeIs == "date" ){
@@ -82,9 +86,9 @@ $("body").on("click", "#add-new-placeJob", function(){
                     $(this).val("");
                 }
             });
-       console.info(clone_el);
        $("#all-place-jobs").append(clone_el);
 });
+
 
 
 function globalCalculate(padre){
