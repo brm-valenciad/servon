@@ -4,9 +4,7 @@
             local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
             return local.toJSON().slice(0,10);
         });
-
-        $('#start-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
-     
+        $('#start-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue()); 
 //Cargando Puestos de trabajo
         loadInfo("21/PUESTO/grupo/false/", "jobPlace");
         //Cargando puestos de trabajo
