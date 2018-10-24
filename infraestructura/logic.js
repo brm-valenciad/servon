@@ -49,7 +49,7 @@
         });
        //Remover elemento Adicional
         $("body").on("click","#removeMe", function(){
-            var padre = $(this).attr("data-padre");
+            var padre_ = $("#formOm-"+$(this).attr("data-padre"));
             console.warn( padre.find(".aditional_").length );
             if ( padre.find(".aditional_").length > 1 ){
                   $(this).parent().parent().parent().parent().remove();  
