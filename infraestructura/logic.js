@@ -38,22 +38,23 @@
                     });
         }
 
-    //Agregar elementos Adicionales
+       //Agregar elementos Adicionales
         $("body").on("click","#add-new-aditional", function(){
+            console.warn($(this).attr("data-padre"));
+
          var additional = $(".aditional_:first-child").clone();
-            additional.find("#title").remove();
-                additional.find("input").each(function(){
-                    $(this).val('');
-                });
+             additional.find("#title").remove();
+             additional.find("input").each(function(){ $(this).val(''); });
+                
                 $("#adicionalesOm").append(additional);
         });
         //Remover elemento Adicional
         $("body").on("click","#removeMe", function(){
+            console.warn($(this).attr("data-padre"));
             if ( $(".aditional_").length > 1){
                   $(this).parent().parent().parent().parent().remove();  
             }
         })
-
 //Desencadenar el eveto principal
  $("body").on("change", "select#time-periods, input#amout-periods, #amount-jobs, select", function(){
         console.error("Trabajando en multimples tareas", $(this).attr("data-padre") );
@@ -69,6 +70,14 @@ $("body").on("click", "#add-new-placeJob", function(){
 
     var clone_el = $("#formOm-1").clone();
         clone_el.attr("id", "formOm-"+elemIds);
+            
+            clone_el.find("#add-new-aditional").each(function(){
+                $(this).attr("data-padre", elemIds);
+            })
+            clone_el.find("#removeMe").each(function(){
+                $(this).attr("data-padre", elemIds);
+            })
+       
             clone_el.find("select").each(function(){
                    $(this).attr("data-padre", elemIds);
             });
