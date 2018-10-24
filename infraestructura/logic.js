@@ -61,7 +61,7 @@
                 globalCalculate();
 });
 //Agregar puesto de trabajo
-$("body").on("click", "#add-new-placeJob", function(){
+/*$("body").on("click", "#add-new-placeJob", function(){
     var elemIds = $("#formOm.calculator").length;
         //console.error("Numero actual de puestos", elemIds);
     var clone_el = $("#formOm").clone();
@@ -75,7 +75,7 @@ $("body").on("click", "#add-new-placeJob", function(){
                      console.warn("typeText", typeText);
             });
        $("#all-place-jobs").append(clone_el);
-})
+})*/
 
 
 function globalCalculate(){
