@@ -44,6 +44,22 @@ console.warn("Formateamos las fechas");
                     });
         }
 
+    //Agregar elementos Adicionales
+        $("body").on("click","#add-new-aditional", function(){
+         var additional = $(".aditional_:first-child").clone();
+            additional.find("#title").remove();
+                additional.find("input").each(function(){
+                    $(this).val('');
+                });
+                $("#adicionalesOm").append(additional);
+        });
+        //Remover elemento Adicional
+        $("body").on("click","#removeMe", function(){
+            if ( $(".aditional_").length > 1){
+                  $(this).parent().parent().parent().parent().remove();  
+            }
+        })
+
 //Desencadenar el eveto principal
  $("body").on("change", "select#time-periods, input#amout-periods, #amount-jobs, select", function(){
                 globalCalculate();
