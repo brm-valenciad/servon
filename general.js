@@ -33,10 +33,11 @@ console.warn("Soy el general.js");
         };
         $.ajax({
             data:  parameters,
-            url: '<?=APP_PAGE_OMOLDS;?>web/json_menu',
+            url: 'https://www.servon.com.co/web/json_menu',
             type: 'POST',
             success: function(result) {
                 var data = result.data || [];
+                    console.warn(data);
                 if(result.success == "true"){
                     var tmpl = $.templates(data.component); // Get compiled template
                     var html = tmpl.render(data); // Render template using data - as HTML string
