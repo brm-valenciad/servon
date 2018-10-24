@@ -61,30 +61,28 @@
            globalCalculate(padre);
 });
 
+
 //Agregar puesto de trabajo
 $("body").on("click", "#add-new-placeJob", function(){
-    var elemIds = $("#all-place-jobs .calculator").length;
-        elemIds = elemIds+1;           
-    var clone_el = $("#formOm-1").clone();
-        clone_el.attr("id", "formOm-"+elemIds);
+    var elemIds = $("#formOm-1.calculator").length;
+       console.error("Numero actual de puestos", elemIds);
+    var clone_el = $("#formOm").clone();
+        clone_el.attr("id", "#formOm-"+elemIds+1);
        
-            clone_el.find("select").each(function(){
-                   $(this).attr("data-padre", elemIds);
-            });
-
             clone_el.find("input").each(function(){
-                var typeDate = $(this).attr("type", "date");
-                var typeText = $(this).attr("type", "text");
-                     $(this).attr("data-padre", elemIds);
-                if ( typeDate.length >= 0 ){
+                var typeIs = $(this).attr("type");
+
+                if ( typeIs == "date" ){
                        console.warn("formatear fecha");
-                    //$(this).val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
+                    $(this).val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
                 }
 
-                if ( typeText.length >= 0 ){
+                if ( typeIs == "text" ){
+                    console.info("Es un tipo texto");
                     $(this).val("");
                 }
             });
+       console.info(clone_el);
        $("#all-place-jobs").append(clone_el);
 });
 
