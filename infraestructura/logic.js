@@ -4,9 +4,9 @@
             local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
             return local.toJSON().slice(0,10);
         });
-        
-     $('#start-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
 
+        $('#start-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
+     
 //Cargando Puestos de trabajo
         loadInfo("21/PUESTO/grupo/false/", "jobPlace");
         //Cargando puestos de trabajo
@@ -67,8 +67,16 @@ $("body").on("click", "#add-new-placeJob", function(){
     var clone_el = $("#formOm").clone();
         clone_el.attr("id", "#formOm-"+elemIds);
 
+            clone_el.find("input", function(){
+                console.info("Buscando los inputs");
+                var typeDate = $(this).attr("type", "date");
+                var typeText = $(this).attr("type", "text");
+                    console.warn("typeDate", typeDate);
+                     console.warn("typeText", typeText);
+            });
        $("#all-place-jobs").append(clone_el);
 })
+
 
 function globalCalculate(){
             var periodo     = ( $('#time-periods').val() == undefined || $('#time-periods').val() == "") ? "dia" : $('#time-periods').val();
