@@ -144,11 +144,15 @@ function globalCalculate(padre){
                     }else{  clearForm("lincencesMarkers"); }
                     
                    //Elementos Adicionales
-                    padre.find(".aditionals-elements").each(function(){
+                     padre.find(".aditionals-elements").each(function(){
                         var grupo = $(this).data('grupo');
                         var optionDataAdic = $(this).children('option:selected').data('option');
                             console.warn("grupo", grupo);
                             console.info("optionDataAdic", optionDataAdic);
+
+                            if ( optionDataAdic != undefined ){
+                                obtainUnitValues( padre, optionDataAdic, periodoText, periodos, cantidad, "optionDataAdic" );  
+                             }else{  clearForm("optionDataAdic"); }
                     }); 
             }
 }
