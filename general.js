@@ -1,11 +1,11 @@
-console.warn("Soy el general.js");
+/*console.warn("Soy el general.js");
 
         if (location.protocol == 'http:'){
             location.href = location.href.replace(/^http:/, 'https:');
         }
         
 
-        /*usuario loguin registrado*/
+       
         $(document).ready(function(){
             if('<?= $login ?>' == 'true'){
                 var Base64Usrl = Base64.encode(location.href);
@@ -23,7 +23,7 @@ console.warn("Soy el general.js");
             var Base64Usrl = Base64.encode(location.href);
             Base64Usrl =  Base64Usrl.replace(/[/]/g, "OMOLDS");
             $('#login-form').attr('action', $('#login-form').attr('action')+'/'+Base64Usrl);
-        });
+        });*/
 
        
         
