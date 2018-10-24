@@ -47,11 +47,11 @@
                 
                 padre_.find("#adicionalesOm").append(additional);
         });
-       //Remover elemento Adicional
+        //Remover elemento Adicional
         $("body").on("click","#removeMe", function(){
             var padre_ = $("#formOm-"+$(this).attr("data-padre"));
             console.warn( padre_.find(".aditional_").length );
-            if ( padre_.find(".aditional_").length > 1 ){
+            if ( padre_.find(".aditional_").length != 0 ){
                   $(this).parent().parent().parent().parent().remove();  
             }
         })
