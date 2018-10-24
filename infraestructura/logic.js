@@ -63,9 +63,11 @@
 //Agregar puesto de trabajo
 $("body").on("click", "#add-new-placeJob", function(){
     var elemIds = $("#all-place-jobs.calculator").length;
-       console.error("Numero actual de puestos", elemIds);
+       
     var clone_el = $("#formOm-1").clone();
-        clone_el.attr("id", "#formOm-"+elemIds+1);
+        clone_el.attr("id", "formOm-"+elemIds+1);
+    
+       console.error(clone_el);
        
             clone_el.find("input").each(function(){
                 var typeDate = $(this).attr("type", "date");
