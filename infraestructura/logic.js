@@ -49,8 +49,9 @@
         });
         //Remover elemento Adicional
         $("body").on("click","#removeMe", function(){
-            console.warn("Eliminando");
-            if ( $("#formOm-"+$(this).attr("data-padre")).find(".aditional_").length > 1){
+            var padre = $(this).attr("data-padre");
+            console.warn(padre.length );
+            if ( $("#formOm-"+padre).find(".aditional_").length > 1){
                   $(this).parent().parent().parent().parent().remove();  
             }
         })
