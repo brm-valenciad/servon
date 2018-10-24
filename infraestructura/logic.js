@@ -50,8 +50,10 @@
          //Remover elemento Adicional
         $("body").on("click","#removeMe", function(){
             var padre_ = $("#formOm-"+$(this).attr("data-padre"));
+               console.info(padre_);
             if ( padre_.find(".aditionals-to-clone").length > 1 ){
-                $(this).parent().parent().parent().parent().parent(".aditionals-to-clone").remove();  
+                   console.info("sadasd");
+                $(this).parent().parent().parent().parent().parent().remove();  
             }
         })
 
