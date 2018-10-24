@@ -178,30 +178,43 @@ function globalCalculate(padre){
                         console.warn("cantidadPeriodos", cantidadPeriodos);
                         console.warn("FechaFinal", FechaFinal);
 
-
                         console.warn("PuestoDeTrabajoTotal", PuestoDeTrabajo);
                         console.warn("PuestoDeTrabajoCantidad", PuestoDeTrabajoCantidad);
                         console.warn("PuestoDeTrabajoUnitario", PuestoDeTrabajoUnitario);
                         console.warn("PuestoDeTrabajoTotal", PuestoDeTrabajoTotal);
 
                         /*::::::::*/
-                            var EquiposDeComputo = $(this).find("#select-computerEquipment").val(),
-                                EquiposDeComputoUnidad = "",
-                                EquiposDeComputoTotal  = "";
+                            var EquiposDeComputo       = $(this).find("#select-computerEquipment").val(),
+                                EquiposDeComputoUnidad = $(this).find("#optionDataAdic_unitario").val(),
+                                EquiposDeComputoTotal  = $(this).find("#optionDataAdic_total").val();
 
-                                console.info("value", EquiposDeComputo);
+                                if ( EquiposDeComputo != undefined || EquiposDeComputo != "" ){
+                                    console.error("EquiposDeComputo", EquiposDeComputo);
+                                }
 
-                            var TiposDeLicencias = "",
-                                TiposDeLicenciasUnidad = "",
-                                TiposDeLicenciasTotal = "";
+                            var TiposDeLicencias       = $(this).find("#select-computerLicences").val(),
+                                TiposDeLicenciasUnidad = $(this).find("#computerLicences_unitario").val(),
+                                TiposDeLicenciasTotal  = $(this).find("#computerLicences_total").val();
 
-                            var TiposDeDiadema = "",
-                                TiposDeDiademaUnidad = "",
-                                TiposDeDiademaTotal  = "";
+                                 if ( TiposDeLicencias != undefined || TiposDeLicencias != "" ){
+                                    console.error("TiposDeLicencias", TiposDeLicencias);
+                                }
 
-                            var LicenciaDeMarcadoras = "",
-                                LicenciaDeMarcadorasUnidad = "",
-                                LicenciaDeMarcadorasTotal  = "";
+                            var TiposDeDiadema       = $(this).find("#select-headbands").val(),
+                                TiposDeDiademaUnidad = $(this).find("#headbands_unitario").val(),
+                                TiposDeDiademaTotal  = $(this).find("#headbands_total").val();
+
+                                 if ( TiposDeDiadema != undefined || TiposDeDiadema != "" ){
+                                    console.error("TiposDeDiadema", TiposDeDiadema);
+                                }
+
+                            var LicenciaDeMarcadoras       = $(this).find("#select-lincencesMarkers").val(),
+                                LicenciaDeMarcadorasUnidad = $(this).find("#lincencesMarkers_unitario").val(),
+                                LicenciaDeMarcadorasTotal  = $(this).find("#lincencesMarkers_total").val();
+
+                                if ( LicenciaDeMarcadoras != undefined || LicenciaDeMarcadoras != "" ){
+                                    console.error("LicenciaDeMarcadoras", LicenciaDeMarcadoras);
+                                }
                          /*::::::::*/
 
 
