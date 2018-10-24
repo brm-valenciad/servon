@@ -47,10 +47,10 @@
                 
                 padre_.find("#adicionalesOm").append(additional);
         });
-        //Remover elemento Adicional
+         //Remover elemento Adicional
         $("body").on("click","#removeMe", function(){
             var padre_ = $("#formOm-"+$(this).attr("data-padre"));
-            if ( padre_.find(".aditionals-to-clone").length != 0 ){
+            if ( padre_.find(".aditionals-to-clone").length > 1 ){
                 $(this).parent().parent().parent().parent().parent(".aditionals-to-clone").remove();  
             }
         })
