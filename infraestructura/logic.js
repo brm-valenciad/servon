@@ -56,6 +56,7 @@
 
 //Desencadenar el eveto principal
  $("body").on("change", "select#time-periods, input#amout-periods, #amount-jobs, select", function(){
+        console.info($(this).attr("data-padre"));
                 globalCalculate();
 });
 
