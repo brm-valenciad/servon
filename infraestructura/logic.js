@@ -64,7 +64,7 @@
 //Agregar puesto de trabajo
 $("body").on("click", "#add-new-placeJob", function(){
     var elemIds = $("#formOm-1.calculator").length;
-        //console.error("Numero actual de puestos", elemIds);
+       console.error("Numero actual de puestos", elemIds);
     var clone_el = $("#formOm").clone();
         clone_el.attr("id", "#formOm-"+elemIds+1);
        
