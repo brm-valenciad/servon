@@ -164,8 +164,7 @@ function globalCalculate(padre){
                     }
                 });
 
-                $("#total-final").text(totalFinal);
-                console.error("Total final", totalFinal);
+                $("#total-final").text(fNumber.go(totalFinal, "$")+' COP');
             }
 }
 
@@ -254,16 +253,14 @@ function cResumenFinal(){
                                                 console.info("Valor Total", ElementoAdicionalTotal);
                                         });
                                     /*::::Fin Elementos Adicionales::::*/
-                            if ( $("#web-car-summary").find("#"+identify_) < 0){
+                                    console.info("Información final", $("#web-car-summary").find("#"+identify_).length);
+                            if ( $("#web-car-summary").find("#"+identify_).length < 0){
                                     console.warn("No existe");
                                 $("#web-car-summary").append(clone);
                             }
-                            
                     }else{
                         console.error("No podemos calcular nada Aún");
                     }
-
-               
                 });
 }
 
