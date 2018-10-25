@@ -188,7 +188,7 @@ function cResumenFinal(){
 
                             clone.find(".nameMarketStall").text(index+1);
                             clone.find(".nameMarketStall").html(index+1);
-                            clone.find(".nameMarketStall").replaceWith(index+1);
+                            clone.find(".nameMarketStall").replaceWith("<h1>MALDITA SEA</h1>");
 
                             clone.find(".nameMarketStall").css("border","1px solid red");
 
