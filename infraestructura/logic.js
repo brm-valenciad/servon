@@ -192,23 +192,20 @@ function cResumenFinal(){
 
                     if ( TimePeriod != undefined && cantidadPeriodos != '' && PuestoDeTrabajo != '' && PuestoDeTrabajoCantidad != ''){
 
-                        var identify_ = "cotization-"+$(this).attr("id");//$("#web-car-summary .cotization").length;
+                        var identify_ = "cotization-"+$(this).attr("id");
                         
                         var clone    = $("#basic-cotization").clone();
 
-                            //clone.attr("id",identify_);
                             clone.attr("style","");
 
                             console.error(clone.html());
-                            console.error(cantidadPeriodos+" - "+TimePeriod);
 
-                            clone.find(".nameMarketStall").text(index+1);
-                            clone.find(".nameMarketStall").css("border","1px solid magenta");
-                            clone.find(".periodoDeTiempo h5").html(cantidadPeriodos+" - "+TimePeriod);
-                            clone.find(".fechaDeInicio h5").html(fechaInicio);
-                            clone.find(".fechaDeFinal h5").html(FechaFinal);
-
-                            clone.find(".puestoDeTrabajo").find("h5").text("(#"+PuestoDeTrabajoCantidad+") "+PuestoDeTrabajo);
+                            clone.find(".nameMarketStall").replaceWith(index+1);
+                            clone.find(".nameMarketStall").replaceWith("border","1px solid magenta");
+                            clone.find(".periodoDeTiempo h5").replaceWith(cantidadPeriodos+" - "+TimePeriod);
+                            clone.find(".fechaDeInicio h5").replaceWith(fechaInicio);
+                            clone.find(".fechaDeFinal h5").replaceWith(FechaFinal);
+                            clone.find(".puestoDeTrabajo").find("h5").replaceWith("(#"+PuestoDeTrabajoCantidad+") "+PuestoDeTrabajo);
 
                         /*::::::::*/
                             var EquiposDeComputo       = $(this).find("#select-computerEquipment").val();
