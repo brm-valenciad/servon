@@ -169,7 +169,6 @@ function globalCalculate(padre){
 }
 
 $("#total-final").click(function(){
-    console.info("calculo final");
     cResumenFinal();
 })
 
@@ -188,7 +187,7 @@ function cResumenFinal(){
 
                     if ( TimePeriod != undefined || cantidadPeriodos != '' || PuestoDeTrabajo != '' || PuestoDeTrabajoCantidad != ''){
 
-                        var identify_ = "cotization-"+index+1;//$("#web-car-summary .cotization").length;
+                        var identify_ = "cotization-"+$(this).attr("id");//$("#web-car-summary .cotization").length;
                         
                         var clone    = $("#basic-cotization").clone();
 
@@ -258,6 +257,8 @@ function cResumenFinal(){
                                     console.warn("No existe");
                                 $("#web-car-summary").append(clone);
                             }
+
+                            console.warn("identify_", identify_);
                     }else{
                         console.error("No podemos calcular nada Aún");
                     }
