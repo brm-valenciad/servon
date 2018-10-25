@@ -228,7 +228,7 @@ function globalCalculate(padre){
                                 clone.find(".tipoDeDiadema").find("h5.titleTipoDiadema").text(TiposDeDiadema);
                                 clone.find(".titleTipoLicencia").find("h5.titleTipoDiadema").text(LicenciaDeMarcadoras);
 
-                            $("##web-car-summary").append(clone);
+                            $("#web-car-summary").append(clone);
                     }else{
                         console.error("No podemos calcular nada Aún");
                     }
