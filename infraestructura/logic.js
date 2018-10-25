@@ -25,8 +25,6 @@
                  $.getJSON(
                     url_,
                     function( response ) {
-                        //console.info("cargando info:", response);
-                       // console.info("#select-"+place);
                             $.each(response.data, function( key, val ) {
                                 var option_ = $("<option/>");
                                     option_.attr("value", val.nombre.value);
@@ -50,16 +48,13 @@
          //Remover elemento Adicional
         $("body").on("click","#removeMe", function(){
             var padre_ = $("#formOm-"+$(this).attr("data-padre"));
-               console.info(padre_);
             if ( padre_.find(".aditionals-to-clone").length > 1 ){
-                   console.info("sadasd");
                 $(this).parent().parent().parent().parent().parent().remove();  
             }
         })
 
 //Desencadenar el eveto principal
  $("body").on("change", "select#time-periods, input#amout-periods, #amount-jobs, select", function(){
-        console.error("Trabajando en multimples tareas", $(this).attr("data-padre") );
         var padre = $("#formOm-"+$(this).attr("data-padre"));
            globalCalculate(padre);
 });
@@ -88,12 +83,11 @@ $("body").on("click", "#add-new-placeJob", function(){
                 var typeIs = $(this).attr("type");
 
                 if ( typeIs == "date" ){
-                       console.warn("formatear fecha");
+                       //console.warn("formatear fecha");
                     $(this).val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
                 }
 
                 if ( typeIs == "text" ){
-                    console.info("Es un tipo texto");
                     $(this).val("");
                 }
             });
@@ -147,9 +141,6 @@ function globalCalculate(padre){
                     padre.find(".aditionals-elements").each(function(){
                         var grupo = $(this).data('grupo');
                         var optionDataAdic = $(this).children('option:selected').data('option');
-                            console.warn("grupo", grupo);
-                            console.info("optionDataAdic", optionDataAdic);
-
                             if ( optionDataAdic != undefined ){
                                 obtainUnitValues( padre, optionDataAdic, periodoText, periodos, cantidad, "optionDataAdic" );  
                              }else{  clearForm("optionDataAdic"); }
@@ -185,23 +176,17 @@ function cResumenFinal(){
                     var PuestoDeTrabajoUnitario = $(this).find("#jobPlace_unitario").val();
                     var PuestoDeTrabajoTotal    = $(this).find("#jobPlace_total").val();
 
-                         console.error(TimePeriod);
-                         console.error(cantidadPeriodos);
-                         console.error(PuestoDeTrabajo);
-                         console.error(PuestoDeTrabajoCantidad);
-
                     if ( TimePeriod != undefined && cantidadPeriodos != '' && PuestoDeTrabajo != '' && PuestoDeTrabajoCantidad != ''){
 
                         var identify_ = "cotization-"+$(this).attr("id");
                         
-                        var clone    = $("#basic-cotization").clone();
+                        var clone    = $(".basic-cotization:first-child").clone();
 
                             clone.attr("style","");
 
                             console.error(clone.html());
 
                             clone.find(".nameMarketStall").replaceWith(index+1);
-                            clone.find(".nameMarketStall").replaceWith("border","1px solid magenta");
                             clone.find(".periodoDeTiempo h5").replaceWith(cantidadPeriodos+" - "+TimePeriod);
                             clone.find(".fechaDeInicio h5").replaceWith(fechaInicio);
                             clone.find(".fechaDeFinal h5").replaceWith(FechaFinal);
