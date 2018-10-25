@@ -170,12 +170,13 @@ function globalCalculate(padre){
 }
 
 $("#total-final").click(function(){
+    console.info("calculo final");
     cResumenFinal();
 })
 
 function cResumenFinal(){
     //CONTAMOS lOS PUESTOS DE TRABAJO
-                $("#all-place-jobs .calculator").each(function(index){
+        $("#all-place-jobs .calculator").each(function(index){
                     var fechaInicio      = $(this).find("#start-date").val();
                     var TimePeriod       = $(this).find("#time-periods").val();
                     var cantidadPeriodos = $(this).find("#time-periods").val();
@@ -186,7 +187,7 @@ function cResumenFinal(){
                     var PuestoDeTrabajoUnitario = $(this).find("#jobPlace_unitario").val();
                     var PuestoDeTrabajoTotal    = $(this).find("#jobPlace_total").val();
 
-                    if ( TimePeriod != undefined && cantidadPeriodos != '' && PuestoDeTrabajo != '' && PuestoDeTrabajoCantidad != ''){
+                    if ( TimePeriod != undefined || cantidadPeriodos != '' || PuestoDeTrabajo != '' || PuestoDeTrabajoCantidad != ''){
 
                         var identify_ = $("#web-car-summary .cotization").length;
 
@@ -247,7 +248,6 @@ function cResumenFinal(){
                     }else{
                         console.error("No podemos calcular nada Aún");
                     }
-
 
                 /*::::Elementos Adicionales::::*/
                     $(this).find("#adicionalesOm .aditional_").each(function(){
