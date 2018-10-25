@@ -185,7 +185,12 @@ function cResumenFinal(){
                     var PuestoDeTrabajoUnitario = $(this).find("#jobPlace_unitario").val();
                     var PuestoDeTrabajoTotal    = $(this).find("#jobPlace_total").val();
 
-                    if ( TimePeriod != undefined || cantidadPeriodos != '' || PuestoDeTrabajo != '' || PuestoDeTrabajoCantidad != ''){
+                         console.error(TimePeriod);
+                         console.error(cantidadPeriodos);
+                         console.error(PuestoDeTrabajo);
+                         console.error(PuestoDeTrabajoCantidad);
+
+                    if ( TimePeriod != undefined && cantidadPeriodos != '' && PuestoDeTrabajo != '' && PuestoDeTrabajoCantidad != ''){
 
                         var identify_ = "cotization-"+$(this).attr("id");//$("#web-car-summary .cotization").length;
                         
@@ -195,7 +200,7 @@ function cResumenFinal(){
                             clone.attr("style","");
 
                             console.error(cantidadPeriodos+" - "+TimePeriod);
-                            
+
                             clone.find(".nameMarketStall").text(index+1);
                             clone.find(".periodoDeTiempo").find("h5").text(cantidadPeriodos+" - "+TimePeriod);
                             clone.find(".fechaDeInicio").find("h5").text(fechaInicio);
@@ -224,7 +229,6 @@ function cResumenFinal(){
                                 if ( EquiposDeComputo == undefined || EquiposDeComputo == "" ){
                                         EquiposDeComputo = "No aplica";
                                 }
-
                                  if ( TiposDeLicencias == undefined || TiposDeLicencias == "" ){
                                        TiposDeLicencias = "No aplica";
                                 }
