@@ -184,11 +184,11 @@ function cResumenFinal(){
 
                             clone.attr("style","");
 
-                            console.error(clone.html());
+                            console.error( index+1 );
 
                             clone.find(".nameMarketStall").text(index+1);
                             clone.find(".nameMarketStall").html(index+1);
-                            clone.find(".nameMarketStall").replaceWith("<h1>MALDITA SEA</h1>");
+                            clone.find(".nameMarketStall").replaceWith("<span>"+index+1+"</span>");
 
                             clone.find(".nameMarketStall").css("border","1px solid red");
 
