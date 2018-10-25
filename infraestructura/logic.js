@@ -202,9 +202,9 @@ function cResumenFinal(){
                             console.error(cantidadPeriodos+" - "+TimePeriod);
 
                             clone.find(".nameMarketStall").text(index+1);
-                            clone.find(".periodoDeTiempo").find("h5").text(cantidadPeriodos+" - "+TimePeriod);
-                            clone.find(".fechaDeInicio").find("h5").text(fechaInicio);
-                            clone.find(".fechaDeFinal").find("h5").text(FechaFinal);
+                            clone.find(".periodoDeTiempo h5").text(cantidadPeriodos+" - "+TimePeriod);
+                            clone.find(".fechaDeInicio h5").text(fechaInicio);
+                            clone.find(".fechaDeFinal h5").text(FechaFinal);
 
                             clone.find(".puestoDeTrabajo").find("h5").text("(#"+PuestoDeTrabajoCantidad+") "+PuestoDeTrabajo);
 
