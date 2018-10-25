@@ -176,7 +176,7 @@ function cResumenFinal(){
     //CONTAMOS lOS PUESTOS DE TRABAJO
         $("#all-place-jobs .calculator").each(function(index){
                     var fechaInicio      = $(this).find("#start-date").val();
-                    var TimePeriod       = $(this).find("#time-periods").val();
+                    var TimePeriod       = $(this).find("#amout-periods").val();
                     var cantidadPeriodos = $(this).find("#time-periods").val();
                     var FechaFinal       = ""//$(this).find("#time-periods").val();;
 
@@ -199,6 +199,7 @@ function cResumenFinal(){
                             clone.attr("id",identify_);
                             clone.attr("style","");
 
+                            console.error(clone);
                             console.error(cantidadPeriodos+" - "+TimePeriod);
 
                             clone.find(".nameMarketStall").text(index+1);
