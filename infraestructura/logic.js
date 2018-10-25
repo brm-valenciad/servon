@@ -158,8 +158,23 @@ function globalCalculate(padre){
                 var totalFinal = 0;
                 var resumenCotizacion = periodoText+' + '+cantidad+' unidades + '+periodos+' periodos + ';
 
+                $("input[placeholder='$Total']").each(function(){
+                    if ( $(this).val() != '' ){
+                            totalFinal += parseInt($(this).data('cost'));
+                    }
+                });
 
-                //CONTAMOS lOS PUESTOS DE TRABAJO
+                $("#total-final").text(totalFinal);
+                console.error("Total final", totalFinal);
+            }
+}
+
+$("#total-final").click(function(){
+    cResumenFinal();
+})
+
+function cResumenFinal(){
+    //CONTAMOS lOS PUESTOS DE TRABAJO
                 $("#all-place-jobs .calculator").each(function(index){
                     var fechaInicio      = $(this).find("#start-date").val();
                     var TimePeriod       = $(this).find("#time-periods").val();
@@ -251,15 +266,6 @@ function globalCalculate(padre){
                     console.warn("contando puestos");
                             console.info("Puesto #", index+1);
                 });
-
-                $("input[placeholder='$Total']").each(function(){
-                    if ( $(this).val() != '' ){
-                            totalFinal += parseInt($(this).data('cost'));
-                    }
-                });
-
-                console.error("Total final", totalFinal);
-            }
 }
 
        function obtainUnitValues(padre, mainObj, searchBy, cantidad, periodos, identify){
