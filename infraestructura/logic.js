@@ -190,19 +190,19 @@ function globalCalculate(padre){
                         console.warn("PuestoDeTrabajoTotal", PuestoDeTrabajo);
 
                         /*::::::::*/
-                            var EquiposDeComputo       = $(this).find("#select-computerEquipment").val(),
+                            var EquiposDeComputo       = $(this).find("#select-computerEquipment").val();
                                 //EquiposDeComputoUnidad = $(this).find("#optionDataAdic_unitario").val();
                                 //EquiposDeComputoTotal  = $(this).find("#optionDataAdic_total").val();
 
-                            var TiposDeLicencias       = $(this).find("#select-computerLicences").val(),
+                            var TiposDeLicencias       = $(this).find("#select-computerLicences").val();
                                 //TiposDeLicenciasUnidad = $(this).find("#computerLicences_unitario").val();
                                 //TiposDeLicenciasTotal  = $(this).find("#computerLicences_total").val();
 
-                            var TiposDeDiadema       = $(this).find("#select-headbands").val(),
+                            var TiposDeDiadema       = $(this).find("#select-headbands").val();
                                 //TiposDeDiademaUnidad = $(this).find("#headbands_unitario").val();
                                 //TiposDeDiademaTotal  = $(this).find("#headbands_total").val();
 
-                            var LicenciaDeMarcadoras       = $(this).find("#select-lincencesMarkers").val(),
+                            var LicenciaDeMarcadoras       = $(this).find("#select-lincencesMarkers").val();
                                 //LicenciaDeMarcadorasUnidad = $(this).find("#lincencesMarkers_unitario").val();
                                 //LicenciaDeMarcadorasTotal  = $(this).find("#lincencesMarkers_total").val();
 
