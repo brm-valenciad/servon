@@ -196,7 +196,7 @@ function cResumenFinal(){
                         
                         var clone    = $("#basic-cotization").clone();
 
-                            clone.attr("id",identify_);
+                            //clone.attr("id",identify_);
                             clone.attr("style","");
 
                             console.error(clone.html());
