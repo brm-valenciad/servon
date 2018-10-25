@@ -173,51 +173,62 @@ function globalCalculate(padre){
 
                     if ( TimePeriod != undefined && cantidadPeriodos != '' && PuestoDeTrabajo != '' && PuestoDeTrabajoCantidad != ''){
 
-                        console.warn("fechaInicio", fechaInicio);
-                        console.warn("TimePeriod", TimePeriod);
-                        console.warn("cantidadPeriodos", cantidadPeriodos);
-                        console.warn("FechaFinal", FechaFinal);
+                        var identify_ = $("#web-car-summary .cotization").length;
+
+                        var clone    = $("#basic-cotization").clone();
+                            clone.attr("id","cotization-"+identify_);
+
+                            clone.find(".nameMarketStall").text(index);
+                            clone.find(".periodoDeTiempo").find("h5").text(cantidadPeriodos+" - "+TimePeriod);
+                            clone.find(".fechaDeInicio").find("h5").text(fechaInicio);
+                            clone.find(".fechaDeFinal").find("h5").text(FechaFinal);
+
+                            clone.find(".puestoDeTrabajo").find("h5").text("(#"+PuestoDeTrabajoCantidad+") "+PuestoDeTrabajo);
+
+                        //
 
                         console.warn("PuestoDeTrabajoTotal", PuestoDeTrabajo);
-                        console.warn("PuestoDeTrabajoCantidad", PuestoDeTrabajoCantidad);
-                        console.warn("PuestoDeTrabajoUnitario", PuestoDeTrabajoUnitario);
-                        console.warn("PuestoDeTrabajoTotal", PuestoDeTrabajoTotal);
 
                         /*::::::::*/
                             var EquiposDeComputo       = $(this).find("#select-computerEquipment").val(),
-                                EquiposDeComputoUnidad = $(this).find("#optionDataAdic_unitario").val(),
-                                EquiposDeComputoTotal  = $(this).find("#optionDataAdic_total").val();
-
-                                if ( EquiposDeComputo != undefined || EquiposDeComputo != "" ){
-                                    console.error("EquiposDeComputo", EquiposDeComputo);
-                                }
+                                //EquiposDeComputoUnidad = $(this).find("#optionDataAdic_unitario").val();
+                                //EquiposDeComputoTotal  = $(this).find("#optionDataAdic_total").val();
 
                             var TiposDeLicencias       = $(this).find("#select-computerLicences").val(),
-                                TiposDeLicenciasUnidad = $(this).find("#computerLicences_unitario").val(),
-                                TiposDeLicenciasTotal  = $(this).find("#computerLicences_total").val();
-
-                                 if ( TiposDeLicencias != undefined || TiposDeLicencias != "" ){
-                                    console.error("TiposDeLicencias", TiposDeLicencias);
-                                }
+                                //TiposDeLicenciasUnidad = $(this).find("#computerLicences_unitario").val();
+                                //TiposDeLicenciasTotal  = $(this).find("#computerLicences_total").val();
 
                             var TiposDeDiadema       = $(this).find("#select-headbands").val(),
-                                TiposDeDiademaUnidad = $(this).find("#headbands_unitario").val(),
-                                TiposDeDiademaTotal  = $(this).find("#headbands_total").val();
-
-                                 if ( TiposDeDiadema != undefined || TiposDeDiadema != "" ){
-                                    console.error("TiposDeDiadema", TiposDeDiadema);
-                                }
+                                //TiposDeDiademaUnidad = $(this).find("#headbands_unitario").val();
+                                //TiposDeDiademaTotal  = $(this).find("#headbands_total").val();
 
                             var LicenciaDeMarcadoras       = $(this).find("#select-lincencesMarkers").val(),
-                                LicenciaDeMarcadorasUnidad = $(this).find("#lincencesMarkers_unitario").val(),
-                                LicenciaDeMarcadorasTotal  = $(this).find("#lincencesMarkers_total").val();
+                                //LicenciaDeMarcadorasUnidad = $(this).find("#lincencesMarkers_unitario").val();
+                                //LicenciaDeMarcadorasTotal  = $(this).find("#lincencesMarkers_total").val();
 
-                                if ( LicenciaDeMarcadoras != undefined || LicenciaDeMarcadoras != "" ){
-                                    console.error("LicenciaDeMarcadoras", LicenciaDeMarcadoras);
+
+                                if ( EquiposDeComputo == undefined || EquiposDeComputo == "" ){
+                                        EquiposDeComputo = "No aplica";
+                                }
+
+                                 if ( TiposDeLicencias == undefined || TiposDeLicencias == "" ){
+                                       TiposDeLicencias = "No aplica";
+                                }
+                                if ( TiposDeDiadema == undefined || TiposDeDiadema == "" ){
+                                        TiposDeDiadema = "No aplica";
+                                }
+                                if ( LicenciaDeMarcadoras == undefined || LicenciaDeMarcadoras == "" ){
+                                        LicenciaDeMarcadoras = "No aplica";
                                 }
                          /*::::::::*/
 
+                                clone.find(".equipoDeComputo").find("h5.titleEquipo").text(EquiposDeComputo);
+                                clone.find(".equipoDeComputo").find("h5.titleLicence").text(TiposDeLicencias);
 
+                                clone.find(".tipoDeDiadema").find("h5.titleTipoDiadema").text(TiposDeDiadema);
+                                clone.find(".titleTipoLicencia").find("h5.titleTipoDiadema").text(LicenciaDeMarcadoras);
+
+                            $("##web-car-summary").append(clone);
                     }else{
                         console.error("No podemos calcular nada Aún");
                     }
