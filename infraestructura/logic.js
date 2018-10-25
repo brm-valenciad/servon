@@ -180,7 +180,7 @@ function cResumenFinal(){
 
                         var identify_ = "cotization-"+$(this).attr("id");
                         
-                        var clone    = $(".basic-cotization:first-child").clone();
+                        var clone    = $(".basic-cotization").clone();
 
                             clone.attr("style","");
 
