@@ -189,21 +189,19 @@ function cResumenFinal(){
 
                     if ( TimePeriod != undefined || cantidadPeriodos != '' || PuestoDeTrabajo != '' || PuestoDeTrabajoCantidad != ''){
 
-                        var identify_ = $("#web-car-summary .cotization").length;
-
+                        var identify_ = "cotization-"+index+1;//$("#web-car-summary .cotization").length;
+                        
                         var clone    = $("#basic-cotization").clone();
-                            clone.attr("id","cotization-"+identify_);
 
-                            clone.find(".nameMarketStall").text(index);
+                            clone.attr("id",identify_);
+                            clone.attr("style","");
+
+                            clone.find(".nameMarketStall").text(index+1);
                             clone.find(".periodoDeTiempo").find("h5").text(cantidadPeriodos+" - "+TimePeriod);
                             clone.find(".fechaDeInicio").find("h5").text(fechaInicio);
                             clone.find(".fechaDeFinal").find("h5").text(FechaFinal);
 
                             clone.find(".puestoDeTrabajo").find("h5").text("(#"+PuestoDeTrabajoCantidad+") "+PuestoDeTrabajo);
-
-                        //
-
-                        console.warn("PuestoDeTrabajoTotal", PuestoDeTrabajo);
 
                         /*::::::::*/
                             var EquiposDeComputo       = $(this).find("#select-computerEquipment").val();
@@ -244,27 +242,28 @@ function cResumenFinal(){
                                 clone.find(".tipoDeDiadema").find("h5.titleTipoDiadema").text(TiposDeDiadema);
                                 clone.find(".titleTipoLicencia").find("h5.titleTipoDiadema").text(LicenciaDeMarcadoras);
 
-                            $("#web-car-summary").append(clone);
+                                     /*::::Elementos Adicionales::::*/
+                                        $(this).find("#adicionalesOm .aditional_").each(function(){
+                                            console.warn("dentro de los elementos adicionales!");
+                                            var ElementoAdicionalNombre   = $(this).find("#select-additionalsElements").text(),
+                                                ElementoAdicionalUnitario = $(this).find("#optionDataAdic_unitario").val(),
+                                                ElementoAdicionalTotal    = $(this).find("#optionDataAdic_total").val();
+
+                                                console.info("Nombre", ElementoAdicionalNombre);
+                                                console.info("Valor unitario", ElementoAdicionalUnitario);
+                                                console.info("Valor Total", ElementoAdicionalTotal);
+                                        });
+                                    /*::::Fin Elementos Adicionales::::*/
+                            if ( $("#web-car-summary").find("#"+identify_) < 0){
+                                    console.warn("No existe");
+                                $("#web-car-summary").append(clone);
+                            }
+                            
                     }else{
                         console.error("No podemos calcular nada Aún");
                     }
 
-                /*::::Elementos Adicionales::::*/
-                    $(this).find("#adicionalesOm .aditional_").each(function(){
-                        console.warn("dentro de los elementos adicionales!");
-                        var ElementoAdicionalNombre   = $(this).find("#select-additionalsElements").text(),
-                            ElementoAdicionalUnitario = $(this).find("#optionDataAdic_unitario").val(),
-                            ElementoAdicionalTotal    = $(this).find("#optionDataAdic_total").val();
-
-                            console.info("Nombre", ElementoAdicionalNombre);
-                            console.info("Valor unitario", ElementoAdicionalUnitario);
-                            console.info("Valor Total", ElementoAdicionalTotal);
-                    });
-                /*::::Fin Elementos Adicionales::::*/
-
-
-                    console.warn("contando puestos");
-                            console.info("Puesto #", index+1);
+               
                 });
 }
 
