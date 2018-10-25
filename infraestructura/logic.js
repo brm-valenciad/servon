@@ -203,6 +203,7 @@ function cResumenFinal(){
                             console.error(cantidadPeriodos+" - "+TimePeriod);
 
                             clone.find(".nameMarketStall").text(index+1);
+                            clone.find(".nameMarketStall").css("border","1px solid magenta");
                             clone.find(".periodoDeTiempo h5").html(cantidadPeriodos+" - "+TimePeriod);
                             clone.find(".fechaDeInicio h5").html(fechaInicio);
                             clone.find(".fechaDeFinal h5").html(FechaFinal);
