@@ -194,6 +194,8 @@ function cResumenFinal(){
                             clone.attr("id",identify_);
                             clone.attr("style","");
 
+                            console.error(cantidadPeriodos+" - "+TimePeriod);
+                            
                             clone.find(".nameMarketStall").text(index+1);
                             clone.find(".periodoDeTiempo").find("h5").text(cantidadPeriodos+" - "+TimePeriod);
                             clone.find(".fechaDeInicio").find("h5").text(fechaInicio);
