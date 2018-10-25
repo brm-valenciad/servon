@@ -186,7 +186,13 @@ function cResumenFinal(){
 
                             console.error(clone.html());
 
+                            clone.find(".nameMarketStall").text(index+1);
+                            clone.find(".nameMarketStall").html(index+1);
                             clone.find(".nameMarketStall").replaceWith(index+1);
+                            clone.find(".nameMarketStall").innerHTML(index+1);
+
+                            clone.find(".nameMarketStall").css("border","1px solid red");
+
                             clone.find(".periodoDeTiempo h5").replaceWith(cantidadPeriodos+" - "+TimePeriod);
                             clone.find(".fechaDeInicio h5").replaceWith(fechaInicio);
                             clone.find(".fechaDeFinal h5").replaceWith(FechaFinal);
