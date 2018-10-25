@@ -254,7 +254,7 @@ function cResumenFinal(){
                                         });
                                     /*::::Fin Elementos Adicionales::::*/
                                     console.info("Información final", $("#web-car-summary").find("#"+identify_).length);
-                            if ( $("#web-car-summary").find("#"+identify_).length < 0){
+                            if ( $("#web-car-summary").find("#"+identify_).length <= 0){
                                     console.warn("No existe");
                                 $("#web-car-summary").append(clone);
                             }
