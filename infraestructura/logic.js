@@ -1,4 +1,5 @@
-       /*Formatear las fechas actuale*/
+console.info("Saludo");      
+/*Formatear las fechas actuale*/
         Date.prototype.toDateInputValue = (function() {
             var local = new Date(this);
             local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
