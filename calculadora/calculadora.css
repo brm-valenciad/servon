@@ -1,23 +1,169 @@
+/*:::ESTILOS CALCULADORA INFRAESTRUCTURA:::*/
+form.pay{
+	width:100%;
+	padding-bottom: 23px;
+}
+form.pay .form-group button{
+	margin-top: 10px;
+	width: 100% !important;
+	border-radius: 0px;
+}
+
+form.pay .form-group{
+	width: 60%;
+	margin: 0 auto;
+}
+form.pay .form-group input[type="email"]{
+	border-color:transparent;
+    margin-bottom:10px;
+    font-weight:200;
+    background-color:transparent;
+    border-bottom:2px solid #fff;
+    color:#fff !important;
+}
+
+form.pay .form-group input[type="email"]::placeholder
+{ color: #fff !important; }
+
+#email.noCheked{
+	/*display: none !important;*/
+}
+#all-place-jobs .calculator{
+	border: 1px solid rgba(34,34,34,0.14);
+	border-radius: 1%;
+}
+.delete-current, .delete-current:hover{
+	background-color: #990000;
+	border-color: #fff;
+}
+#web-car-summary{
+	margin-bottom: 20px;
+}
+.basic-cotization:nth-child(n + 2){
+	margin-top: 30px;
+    padding-top: 30px;
+    border-top: 5px solid #fff;
+}
+.container-aditionals:before{
+	content: "Elementos Adicionales";
+	position: absolute;
+    top: -14px;
+    background-color: #60a7ab;
+    padding: 2px 16px;
+    color: #fff;
+    font-weight: 200;
+}
+.container-aditionals{
+	border:1px solid #fff;
+	padding: 15px;
+	padding-top: 34px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.box-aditional{
+	padding: 7px 10px;
+    margin-right: 15px !important;
+    /*border-right: 1px solid #fff;*/
+    font-weight: 200;
+    color: #fff;
+    min-width: 31.9%;
+    max-width: 31.9%;
+    overflow: hidden;
+}
+.box-aditional p{
+	border-bottom: 1px solid #fff;
+    padding-bottom: 9px;
+    min-height: 55px;
+}
+.box-aditional p h5{
+	font-weight: 700;
+}
+#amountAdiccional:before{
+	content: "Elemento";
+	color: red;
+	position: absolute;
+	top:-5px;
+}
 .clear{clear:both;}
 form.row.calculator .module{
 	margin-top: 20px;
 	border:1px solid #cdd;
 	box-shadow: 0px 0px 5px rgba(191, 191, 191, 0.5);
-	padding-top:20px;
+	padding-top:12px;
 	margin-bottom: 15px;
+}
+#added-services{
+	padding:0px;
+	background-color:rgba(230, 230, 230, .9);
+}
+.flex{
+	display:flex;
+}
+
+.added-services-item label .activate-modules{
+	margin-right:6px;
+}
+.added-services-item label span{
+	width:100%
+}
+.added-services-item{
+	padding-top:10px !important;
+	margin-bottom:0px;
+	opacity:0.6;
+	background-color:#e6e6e6;
+	height: 77px;
+}
+.added-services-item p{
+	font-size:12px;
+	margin-top:5px;
+	font-weight:200;
+	color:#999999;
+}
+#added-services .added-services-item.active{
+	opacity: 1;
+	background-color: #fff;	
+	border-left: 6px solid #63a7aa;
+}
+#added-services .added-services-item.active input[type="text"]{
+	background-color:#fff;
+	border-color: transparent;
+	border-bottom-color:#63a7aa;
+}
+
+#added-services .added-services-item input[type="text"]{
+	background-color:#e6e6e6;
+	border-color: #e6e6e6;
+	border-bottom-color:#737373;
+}
+form.row.calculator ul{
+	list-style: none;
 }
 .checkbox{
 	margin-top:0px;
 	color:#999999;
 	padding-left:30px;
-}		
+}	
+.checkbox label{
+	font-weight:200;
+	font-size:12px;
+}
+.checkbox label span{
+	margin-top:1px;
+	display:inline-block;
+}
+
 .form-group label{
 	color: #72C1Ca;
 	font-size: 13px;
 	font-weight: 450;
 	margin-bottom: 0px;
 }
-.form-group input.outline, select.outline{
+.form-group button.dropdown-toggle:hover, .form-group button.dropdown-toggle.open{
+	background-color: #fff !important;
+	border-color: transparent !important;
+	border-bottom: 2px solid #63a7aa !important;
+}
+.form-group input.outline, select.outline, .form-group button.dropdown-toggle{
 	color: #8c8c8c;
 	font-weight: 200;
 	border-color:#fff;
@@ -62,7 +208,7 @@ form.row.calculator .module{
 .time-cycles.day{
 	background-color: #00aaff;
 }
-
+/*
 .toggle-group label.toggle-off{
 		color: #666;
     	border-radius: 0px;
@@ -78,14 +224,13 @@ form.row.calculator .module{
 	background-color:#63a7aa;
 	height: 20px;
 	min-height: 20px !important;
-}
+}*/
 .listDays{
 		margin-top: 12px;
 		display:flex;
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
-		list-style:none;
 		margin-bottom:20px;
 		width:100%;
 }
