@@ -58,7 +58,7 @@ var totalFinal = 0;
 
             var additional = padre_.find(".aditional_:first-child").clone();
                 additional.find("#title").remove();
-                additional.find("input").each(function(){ $(this).val('').attr("data-clone-index", index_); });
+                additional.find("input").each(function(){ $(this).attr("data-clone-index", index_); });
                 
                 padre_.find("#adicionalesOm").append(additional);
         });
@@ -111,7 +111,7 @@ $("body").on("click", "#add-new-placeJob", function(){
                    $(this).attr("data-padre", elemIds);
             });
             //Vacia inputs y los referencua al padre
-            /*clone_el.find("input").each(function(){
+            clone_el.find("input").each(function(){
                     $(this).attr("data-padre", elemIds);
                 var typeIs = $(this).attr("type");
                 if ( typeIs == "date" ){
@@ -121,7 +121,7 @@ $("body").on("click", "#add-new-placeJob", function(){
                 if ( typeIs == "text" || typeIs == "number" ){
                     $(this).val("");
                 }
-            });*/
+            });
         /*::Fin:::*/
        $("#all-place-jobs").append(clone_el);
 });
