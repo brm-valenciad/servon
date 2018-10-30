@@ -9,11 +9,11 @@
     $('#start-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
     $('#end-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
 
-    //var b = moment.tz( "Africa/Bujumbura" );
-    //var str = "GMT-5:00 - US/East-Indiana - EST - Hora oficial del Este de EE.UU.";
+    var b = moment.tz( "Africa/Bujumbura" );
+    var str = "GMT-5:00 - US/East-Indiana - EST - Hora oficial del Este de EE.UU.";
 
 
-    	//console.info( str.split("-")[2] );
+    	console.info( str.split("-")[2] );
 $(document).ready(function(){
 	//Realizamos llamadas a la base de datos 
 	function load(param){
@@ -150,11 +150,7 @@ $(document).ready(function(){
 		}else{
 			console.error("Las horas no pueden ser iguales");
 			//return false;
-		}
-
-			console.error(totalHours);*/
-			//console.info( HoraInicial );
-			//console.info( HoraFinal );
+		}*/
 
 		//Constantes 
 		var ocupation = 70 / 100;//horas reales de trabajo
@@ -250,10 +246,10 @@ $(document).ready(function(){
 
 							var businessDays = moment().recur(JstartDate, JendDate).every(daysToInclude).daysOfWeek();
 
-							var totalDaysGestion  = businessDays.all().length,
+							var totalDaysGestion  = businessDays.all().length + 1,
 								diffHours  = Math.abs(JstartDate.diff(JendDate, 'hours')),
 								diffWeeks  = Math.abs(JstartDate.diff(JendDate, 'weeks'));
-							
+
 							var totalHours = 8 * totalDaysGestion
 
 							$("#days-inside-range").text(totalDaysGestion);
@@ -266,20 +262,11 @@ $(document).ready(function(){
 								third_part 	= totalDaysGestion * minutosProductivosDiarios,
 								fourth_part = (-absenteeism - rotation) + 1;
 
-							var asesorsRequireds = (first_part*second_part) / ((third_part*fourth_part) * ocupation);
-								
-								//console.warn("first_part: ",  first_part);
-								//console.warn("second_part: ", second_part);
-								//console.warn("third_part: ",  third_part);
-								//console.warn("fourth_part: ",  fourth_part);
-
-								//console.warn(":::primero:::", first_part*second_part);
-								//console.warn(":::segundo:::", (third_part*fourth_part) * ocupation);
-								
-
+							var asesorsRequireds = Math.round((first_part*second_part) / ((third_part*fourth_part) * ocupation));
+							
 						//Financiero
 						var _tmp_cargaPrestacional = 1+cargaPrestacional,//use Math.round
-							costoNominaAgentes = (totalDaysGestion * 34778 * asesorsRequireds )*( _tmp_cargaPrestacional ) + 10,//Desajuste de 10 pesos
+							costoNominaAgentes = ( totalDaysGestion * 34778 * asesorsRequireds )*( _tmp_cargaPrestacional ),//Desajuste de 10 pesos
 							bolsaCommisiones   = ( $("input.bag-comition").prop("checked") != false && $("#input-bag-comition").val() != "") ? $("#input-bag-comition").val() : 0 , 
  							costoTotalNomina   = bolsaCommisiones / _tmp_cargaPrestacional + costoNominaAgentes,
  							overhead_          = overhead*costoTotalNomina //Desajuste de 5
@@ -288,40 +275,43 @@ $(document).ready(function(){
  							IngresoXagente     = ingreso / asesorsRequireds;
  							CostoPorRegistro   = ingreso / peopleToCall;
 
+ 							console.warn(_tmp_cargaPrestacional);
+
+ 						var HorasLaborxDia  = asesorsRequireds * 8,
+ 							TotalHorasLabor = HorasLaborxDia * totalDaysGestion,
+ 							precioXHora      = ingreso / TotalHorasLabor;
+
  						var grabaciones  = ( $("#check-grabations").prop("checked") != true ) ? 0 : 3257,
  							audition     = ( $("#check-auditoria").prop("checked") != true ) ? 0 :  1004464;
+
+ 							console.info("grabaciones", grabaciones);
+ 							console.warn("audition", audition);
 
  							var _totalParcial = ingreso + grabaciones + audition;
  							var _iva   = _totalParcial * 0.19;
  							var total_ = _totalParcial + _iva;
 
- 								console.warn(_totalParcial);
- 								console.warn("total_", total_);
-
-
-	 							console.warn("%c#########","color:orange; font-size:22px;");
-	 								console.info("Asesores Requeridos", costoNominaAgentes);
-	 								console.info("costoNominaAgentes", costoNominaAgentes );
-	 								console.info("Bolsa Comisiones", bolsaCommisiones );
-	 								console.info("costo Total Nomina", costoTotalNomina );
-	 								console.info("overhead_", overhead_ );
-	 								console.info("profit_", profit_ );
-	 								console.info("ingreso", ingreso );
-	 								console.info("Ingreso x agente", IngresoXagente);
-	 								console.info("Costo x Registro", CostoPorRegistro);
-	 								console.info("grabaciones", grabaciones);
- 									console.warn("audition", audition);
-	 							console.warn("%c#########","color:orange; font-size:22px;");
+ 								console.clear();
  								
- 							//console.warn(costoNominaAgentes);
- 							//console.info("bolsaCommisiones", bolsaCommisiones);
- 							//console.info("costoTotalNomina", costoTotalNomina);
- 							//console.info("overhead_", overhead_);
-							//console.info("profit_", profit_);
-							//console.info("ingreso", ingreso);
-							//console.info("IngresoXagente", IngresoXagente);
-							//console.info("CostoPorRegistro", CostoPorRegistro);
+ 								console.warn("%c#########","color:orange; font-size:22px;");
+	 								console.info("Asesores Requeridos", asesorsRequireds);
+	 								console.info("costoNominaAgentes",  fNumber.go(Math.round(costoNominaAgentes ),"$"));
+	 								console.info("Bolsa Comisiones",  fNumber.go(Math.round(bolsaCommisiones ),"$"));
+	 								console.info("costo Total Nomina",  fNumber.go(Math.round(costoTotalNomina ),"$"));
+	 								console.info("overhead_",  fNumber.go(Math.round(overhead_ ),"$"));
+	 								console.info("profit_",  fNumber.go(Math.round(profit_ ),"$"));
+	 								console.info("ingreso",  fNumber.go(Math.round(ingreso ),"$"));
+	 								console.info("Ingreso x agente",  fNumber.go(Math.round(IngresoXagente),"$"));
+	 								console.info("Costo x Registro",  fNumber.go(Math.round(CostoPorRegistro),"$"));
+	 								console.error( "precioXHora",  fNumber.go(Math.round(precioXHora ),"$"));
 
+	 								console.info("grabaciones",  fNumber.go(Math.round(grabaciones),"$"));
+ 									console.warn("Auditoria_",  fNumber.go(Math.round(audition),"$"));
+ 									
+ 									console.warn("SubTotal",  fNumber.go(Math.round(_totalParcial),"$"));
+ 									console.warn("Iva",   fNumber.go( Math.round(_iva) ,"$"));
+ 									console.warn("total_",  fNumber.go( Math.round(total_),"$"));
+	 							console.warn("%c#########","color:orange; font-size:22px;");	
 					}
 				}else{
 					console.warn("las fechas son iguales");
@@ -331,3 +321,23 @@ $(document).ready(function(){
 		}//fin del if else principal
 	});
 })
+
+ var fNumber = {
+                sepMil: ".", /* separador para los miles*/
+                sepDec: ',', /* separador para los decimales*/
+                formatear:function (num){
+                    num +='';
+                    var splitStr = num.split('.');
+                    var splitLeft = splitStr[0];
+                    var splitRight = splitStr.length > 1 ? this.sepDec + splitStr[1] : '';
+                    var regx = /(\d+)(\d{3})/;
+                    while (regx.test(splitLeft)) {
+                        splitLeft = splitLeft.replace(regx, '$1' + this.sepMil + '$2');
+                    }
+                    return this.simbol+' '+ splitLeft + splitRight;
+                },
+                go:function(num, simbol){
+                    this.simbol = simbol ||'';
+                    return this.formatear(num);
+                }
+            }
