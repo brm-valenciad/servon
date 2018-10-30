@@ -12,8 +12,6 @@
     //var b = moment.tz( "Africa/Bujumbura" );
     //var str = "GMT-5:00 - US/East-Indiana - EST - Hora oficial del Este de EE.UU.";
 
-
-    	console.info( str.split("-")[2] );
 $(document).ready(function(){
 	//Realizamos llamadas a la base de datos 
 	function load(param){
