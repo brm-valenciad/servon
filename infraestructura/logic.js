@@ -45,6 +45,7 @@ var totalFinal = 0;
                 var state = confirm("¿Esta seguro de eliminar este elemento?");
                 if ( state ){
                      parent.remove();    
+                     calculateEnd();
                 }
             }
         });
@@ -200,14 +201,19 @@ function globalCalculate(padre){
                 
                 var resumenCotizacion = periodoText+' + '+cantidad+' unidades + '+periodos+' periodos + ';
 
-                $("input[placeholder='$Total']").each(function(){
-                    if ( $(this).val() != '' ){
-                            totalFinal += parseInt($(this).data('cost'));
-                    }
-                });
-                $("#total-final").text(fNumber.go(totalFinal, "$")+' COP');
-                cResumenFinal();
+               calculateEnd();
             }
+}
+
+function calculateEnd(){
+    console.warn("Hacemos el final");
+     $("input[placeholder='$Total']").each(function(){
+            if ( $(this).val() != '' ){
+               totalFinal += parseInt($(this).data('cost'));
+            }
+        });
+    $("#total-final").text(fNumber.go(totalFinal, "$")+' COP');
+        cResumenFinal();
 }
 
        function obtainUnitValues(padre, mainObj, searchBy, cantidad, periodos, identify, cloneI, value){
