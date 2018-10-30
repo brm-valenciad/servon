@@ -1,4 +1,5 @@
-/*Formatear las fechas actuale*/
+/*Formatear las fechas actuales*/
+
 	Date.prototype.toDateInputValue = (function() {
 	    var local = new Date(this);
 	    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
@@ -8,6 +9,11 @@
     $('#start-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
     $('#end-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
 
+    var b = moment.tz( "Africa/Bujumbura" );
+    var str = "GMT-5:00 - US/East-Indiana - EST - Hora oficial del Este de EE.UU.";
+
+
+    	console.info( str.split("-")[2] );
 $(document).ready(function(){
 	//Realizamos llamadas a la base de datos 
 	function load(param){
@@ -30,19 +36,28 @@ $(document).ready(function(){
 		       			}
 		       			else if ( res[0].start_hour != undefined ) {
 		       				for (var i = 0; i <= res.length - 1; i++) {
-		       					var startDate_ = res[i].start_hour.value + res[i].start_meridiem.value,
-		       						endDate_   = res[i].end_hour.value + res[i].end_meridiem.value;
+		       					
+			
+		       					if ( res[i].start_hour ){
+		       						var startDate_ = res[i].start_hour.value +" "+ res[i].start_meridiem.value;
+		       						var option_ = $("<option/>");
+		       							option_.val(startDate_);
+			       						option_.text(startDate_);
+			       						$("#start-time-journal").append(option_);
+		       					}
 
-			       				var completeDate = startDate_+" a "+endDate_;
+		       					if ( res[i].end_hour ){
+		       						var startDate_ = res[i].end_hour.value +" "+ res[i].end_meridiem.value;
+		       						var option_ = $("<option/>");
+		       							option_.val(startDate_);
+			       						option_.text(startDate_);
 
-			       				var option_ = $("<option/>");
-			       					option_.val(completeDate);
-			       					option_.text(completeDate);
-			       				$("#journal-time-tmk").append(option_);
+			       						$("#end-time-journal").append(option_);
+		       					}
 		       				};
 		       			}
 		       			else if ( res[0].aht_estimado != undefined ){
-		       				
+		       				var res = res.reverse();
 		       				for (var i = 0; i <= res.length - 1; i++) {
 		       					var option_ = $("<option/>");
 			       					option_.val(res[i].name.value);
@@ -109,7 +124,38 @@ $(document).ready(function(){
 	});
 
 
-	$("body").on("change","input[type='date']", function(){
+	$("body").on("change blur click","input[type='date'], input, div.filter-option, a.selected, select", function(){
+		var HoraInicial  = $(".start-time-journal").find("div.filter-option").find(".filter-option-inner-inner").text();
+		var HoraFinal    = $(".end-time-journal").find("div.filter-option").find(".filter-option-inner-inner").text();
+		var HoraInicialMeridiem = HoraInicial.split(" ")[1];
+		var HoraFinalMeridiem   = HoraFinal.split(" ")[1];
+		
+		var totalHours  = 0;
+		var	HoraInicial = parseInt(HoraInicial);
+		var	HoraFinal   = parseInt(HoraFinal);
+
+		console.info(HoraInicialMeridiem);
+		//console.info(HoraFinalMeridiem);
+		if ( HoraInicial != HoraFinal){
+			if ( HoraInicialMeridiem == "am" ){
+				totalHours = 12 - HoraInicial + HoraFinal;
+			}
+
+			if ( HoraInicialMeridiem == "pm" || HoraFinalMeridiem == "pm" ){
+					if ( HoraInicial > HoraFinal ){
+						console.info( (HoraFinal+12) - HoraInicial);
+					}
+				totalHours = HoraFinal - HoraInicial;
+			}
+		}else{
+			console.error("Las horas no pueden ser iguales");
+			//return false;
+		}
+
+			console.error(totalHours);
+			//console.info( HoraInicial );
+			//console.info( HoraFinal );
+
 		//Constantes 
 		var ocupation = 70 / 100;//horas reales de trabajo
 		var absenteeism = 10 / 100; //Ausentismo
@@ -208,7 +254,7 @@ $(document).ready(function(){
 								diffHours  = Math.abs(JstartDate.diff(JendDate, 'hours')),
 								diffWeeks  = Math.abs(JstartDate.diff(JendDate, 'weeks'));
 							
-							var totalHours = 8*totalDaysGestion
+							var totalHours = 8 * totalDaysGestion
 
 							$("#days-inside-range").text(totalDaysGestion);
 							$("#weeks-inside-range").text(diffWeeks);
@@ -242,14 +288,27 @@ $(document).ready(function(){
  							IngresoXagente     = ingreso / asesorsRequireds;
  							CostoPorRegistro   = ingreso / peopleToCall;
 
- 							console.warn(costoNominaAgentes);
+ 						var grabaciones  = ( $("#check-grabations").prop("checked") != true ) ? 0 : 3257,
+ 							audition     = ( $("#check-auditoria").prop("checked") != true ) ? 0 :  1004464;
+
+ 							console.info("grabaciones", grabaciones);
+ 							console.warn("audition", audition);
+
+ 							var _totalParcial = ingreso + grabaciones + audition;
+ 							var _iva   = _totalParcial * 0.19;
+ 							var total_ = _totalParcial + _iva;
+
+ 								console.warn(_totalParcial);
+ 								console.warn("total_", total_);
+
+ 							/*console.warn(costoNominaAgentes);
  							console.info("bolsaCommisiones", bolsaCommisiones);
  							console.info("costoTotalNomina", costoTotalNomina);
  							console.info("overhead_", overhead_);
 							console.info("profit_", profit_);
 							console.info("ingreso", ingreso);
 							console.info("IngresoXagente", IngresoXagente);
-							console.info("CostoPorRegistro", CostoPorRegistro);				
+							console.info("CostoPorRegistro", CostoPorRegistro);	*/			
 					}
 				}else{
 					console.warn("las fechas son iguales");
