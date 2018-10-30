@@ -301,14 +301,21 @@ $(document).ready(function(){
  								console.warn(_totalParcial);
  								console.warn("total_", total_);
 
- 							/*console.warn(costoNominaAgentes);
+
+	 							console.warn("%c#########","color:orange; font-size:22px;");
+	 								console.info("%cAsesores Requeridos", asesorsRequireds ,"color:blue;font-size:14px;");
+	 								console.info("%ccostoNominaAgentes", asesorsRequireds ,"color:blue;font-size:14px;");
+	 							console.warn("%c#########","color:orange; font-size:22px;");
+ 								
+ 							console.warn(costoNominaAgentes);
  							console.info("bolsaCommisiones", bolsaCommisiones);
  							console.info("costoTotalNomina", costoTotalNomina);
  							console.info("overhead_", overhead_);
 							console.info("profit_", profit_);
 							console.info("ingreso", ingreso);
 							console.info("IngresoXagente", IngresoXagente);
-							console.info("CostoPorRegistro", CostoPorRegistro);	*/			
+							console.info("CostoPorRegistro", CostoPorRegistro);
+
 					}
 				}else{
 					console.warn("las fechas son iguales");
