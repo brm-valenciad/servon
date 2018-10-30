@@ -291,9 +291,6 @@ $(document).ready(function(){
  						var grabaciones  = ( $("#check-grabations").prop("checked") != true ) ? 0 : 3257,
  							audition     = ( $("#check-auditoria").prop("checked") != true ) ? 0 :  1004464;
 
- 							console.info("grabaciones", grabaciones);
- 							console.warn("audition", audition);
-
  							var _totalParcial = ingreso + grabaciones + audition;
  							var _iva   = _totalParcial * 0.19;
  							var total_ = _totalParcial + _iva;
@@ -303,18 +300,27 @@ $(document).ready(function(){
 
 
 	 							console.warn("%c#########","color:orange; font-size:22px;");
-	 								console.info("%cAsesores Requeridos", asesorsRequireds ,"color:blue;font-size:14px;");
-	 								console.info("%ccostoNominaAgentes", asesorsRequireds ,"color:blue;font-size:14px;");
+	 								console.info("Asesores Requeridos", costoNominaAgentes);
+	 								console.info("costoNominaAgentes", costoNominaAgentes );
+	 								console.info("Bolsa Comisiones", bolsaCommisiones );
+	 								console.info("costo Total Nomina", costoTotalNomina );
+	 								console.info("overhead_", overhead_ );
+	 								console.info("profit_", profit_ );
+	 								console.info("ingreso", ingreso );
+	 								console.info("Ingreso x agente", IngresoXagente);
+	 								console.info("Costo x Registro", CostoPorRegistro);
+	 								console.info("grabaciones", grabaciones);
+ 									console.warn("audition", audition);
 	 							console.warn("%c#########","color:orange; font-size:22px;");
  								
- 							console.warn(costoNominaAgentes);
- 							console.info("bolsaCommisiones", bolsaCommisiones);
- 							console.info("costoTotalNomina", costoTotalNomina);
- 							console.info("overhead_", overhead_);
-							console.info("profit_", profit_);
-							console.info("ingreso", ingreso);
-							console.info("IngresoXagente", IngresoXagente);
-							console.info("CostoPorRegistro", CostoPorRegistro);
+ 							//console.warn(costoNominaAgentes);
+ 							//console.info("bolsaCommisiones", bolsaCommisiones);
+ 							//console.info("costoTotalNomina", costoTotalNomina);
+ 							//console.info("overhead_", overhead_);
+							//console.info("profit_", profit_);
+							//console.info("ingreso", ingreso);
+							//console.info("IngresoXagente", IngresoXagente);
+							//console.info("CostoPorRegistro", CostoPorRegistro);
 
 					}
 				}else{
