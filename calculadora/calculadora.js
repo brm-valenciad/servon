@@ -9,11 +9,11 @@
     $('#start-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
     $('#end-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
 
-    var b = moment.tz( "Africa/Bujumbura" );
-    var str = "GMT-5:00 - US/East-Indiana - EST - Hora oficial del Este de EE.UU.";
+    //var b = moment.tz( "Africa/Bujumbura" );
+    //var str = "GMT-5:00 - US/East-Indiana - EST - Hora oficial del Este de EE.UU.";
 
 
-    	console.info( str.split("-")[2] );
+    	//console.info( str.split("-")[2] );
 $(document).ready(function(){
 	//Realizamos llamadas a la base de datos 
 	function load(param){
@@ -125,7 +125,7 @@ $(document).ready(function(){
 
 
 	$("body").on("change blur click","input[type='date'], input, div.filter-option, a.selected, select", function(){
-		var HoraInicial  = $(".start-time-journal").find("div.filter-option").find(".filter-option-inner-inner").text();
+		/*var HoraInicial  = $(".start-time-journal").find("div.filter-option").find(".filter-option-inner-inner").text();
 		var HoraFinal    = $(".end-time-journal").find("div.filter-option").find(".filter-option-inner-inner").text();
 		var HoraInicialMeridiem = HoraInicial.split(" ")[1];
 		var HoraFinalMeridiem   = HoraFinal.split(" ")[1];
@@ -152,7 +152,7 @@ $(document).ready(function(){
 			//return false;
 		}
 
-			console.error(totalHours);
+			console.error(totalHours);*/
 			//console.info( HoraInicial );
 			//console.info( HoraFinal );
 
