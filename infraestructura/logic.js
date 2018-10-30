@@ -67,6 +67,7 @@ var totalFinal = 0;
             var padre_ = $("#formOm-"+$(this).attr("data-padre"));
             if ( padre_.find(".aditionals-to-clone").length > 1 ){
                 $(this).parent().parent().parent().parent().parent().remove();  
+                    calculateEnd();
             }
         })
 
