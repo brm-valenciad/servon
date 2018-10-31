@@ -158,6 +158,9 @@ $(document).ready(function(){
 		var cargaPrestacional = 0.4353;
 		var overhead = 45 / 100;
 		var profit = 40 / 100;
+		var EfectividadBase = 16 / 100;
+		var Penalizacion    = 5 / 100;
+		var objetivoEventos = 50 / 100;
 
 		//bolsa de comisión
 		var comitionInput = $("#input-bag-comition");
@@ -242,9 +245,11 @@ $(document).ready(function(){
 							var JstartDate = moment(startDate);
 							var JendDate   = moment(endDate);
 
-							var businessDays = moment().recur(JstartDate, JendDate).every(daysToInclude).daysOfWeek();
+							//console.error( JstartDate.day() )
 
-							var totalDaysGestion  = businessDays.all().length + 1,
+							var businessDays = moment().recur(JstartDate, JendDate).every(daysToInclude)//.daysOfWeek();
+								console.warn(businessDays);
+							var totalDaysGestion  = businessDays.all().length,
 								diffHours  = Math.abs(JstartDate.diff(JendDate, 'hours')),
 								diffWeeks  = Math.abs(JstartDate.diff(JendDate, 'weeks'));
 
@@ -260,8 +265,8 @@ $(document).ready(function(){
 								third_part 	= totalDaysGestion * minutosProductivosDiarios,
 								fourth_part = (-absenteeism - rotation) + 1;
 
-							var asesorsRequireds = Math.round((first_part*second_part) / ((third_part*fourth_part) * ocupation));
-							
+							var asesorsRequireds = ( (first_part*second_part) / ((third_part*fourth_part) * ocupation)).toFixed(1);
+								
 						//Financiero
 						var _tmp_cargaPrestacional = 1+cargaPrestacional,//use Math.round
 							costoNominaAgentes = ( totalDaysGestion * 34778 * asesorsRequireds )*( _tmp_cargaPrestacional ),//Desajuste de 10 pesos
@@ -273,24 +278,47 @@ $(document).ready(function(){
  							IngresoXagente     = ingreso / asesorsRequireds;
  							CostoPorRegistro   = ingreso / peopleToCall;
 
- 							console.warn(_tmp_cargaPrestacional);
-
  						var HorasLaborxDia  = asesorsRequireds * 8,
  							TotalHorasLabor = HorasLaborxDia * totalDaysGestion,
  							precioXHora      = ingreso / TotalHorasLabor;
 
- 						var grabaciones  = ( $("#check-grabations").prop("checked") != true ) ? 0 : 3257,
- 							audition     = ( $("#check-auditoria").prop("checked") != true ) ? 0 :  1004464;
+ 						//Resultados
+ 						var contactados      = Math.round(peopleToCall * contactability),
+ 							contactadosDaily = Math.round(contactados / totalDaysGestion),
+ 							efectivos        = Math.round(peopleToCall * EfectividadBase * (1 - Penalizacion)),
+ 							EfectivoDiario   = Math.round(efectivos / totalDaysGestion),
+ 							EfectivosActivados       = Math.round(efectivos * objetivoEventos),
+ 							EfectivosActivadosDiario = Math.round( EfectivosActivados / totalDaysGestion );
 
- 							console.info("grabaciones", grabaciones);
- 							console.warn("audition", audition);
+ 						var tarifaVariable = 25000,
+ 								tarifaFee      = 60000,
+ 								grabaciones_nmb;
 
- 							var _totalParcial = ingreso + grabaciones + audition;
- 							var _iva   = _totalParcial * 0.19;
- 							var total_ = _totalParcial + _iva;
+ 						
 
- 								console.clear();
- 								
+	 						if ( peopleToCall > 499 ){
+	 							grabaciones_nmb = Math.round( ((efectivos / 350) * tarifaVariable) + tarifaFee );
+	 						}else{
+	 							grabaciones_nmb =  Math.round( (efectivos / 350 ) * tarifaVariable);
+	 						}
+	 						var calcAudition = (asesorsRequireds/50) * 2800000;
+							var	audition    = ( $("#check-auditoria").prop("checked") != true ) ? 0 :  calcAudition;
+							var grabaciones = ( $("#check-grabations").prop("checked") != true ) ? 0 : grabaciones_nmb;
+	 						var _totalParcial = ingreso + grabaciones + audition;
+	 						var _iva   = _totalParcial * 0.19;
+	 						var total_ = _totalParcial + _iva;
+	 						
+	 							
+	 							$("#audition").find("b.value").text(fNumber.go(calcAudition, "$"));	
+	 							$("#grabations").find(".value").text(fNumber.go(grabaciones_nmb,"$"));
+	 					
+ 							//console.info("contactados",contactados);
+ 							//console.info("contactadosDaily",contactadosDaily);
+ 							//console.info("efectivos",efectivos);
+ 							//console.info("EfectivoDiario",EfectivoDiario);
+ 							//console.info("EfectivosActivados",EfectivosActivados);
+ 							//console.info("EfectivosActivadosDiario",EfectivosActivadosDiario);
+ 							console.clear();
  								console.warn("%c#########","color:orange; font-size:22px;");
 	 								console.info("Asesores Requeridos", asesorsRequireds);
 	 								console.info("costoNominaAgentes",  fNumber.go(Math.round(costoNominaAgentes ),"$"));
@@ -309,7 +337,7 @@ $(document).ready(function(){
  									console.warn("SubTotal",  fNumber.go(Math.round(_totalParcial),"$"));
  									console.warn("Iva",   fNumber.go( Math.round(_iva) ,"$"));
  									console.warn("total_",  fNumber.go( Math.round(total_),"$"));
-	 							console.warn("%c#########","color:orange; font-size:22px;");	
+	 							console.warn("%c#########","color:orange; font-size:22px;");
 					}
 				}else{
 					console.warn("las fechas son iguales");
@@ -332,7 +360,7 @@ $(document).ready(function(){
                     while (regx.test(splitLeft)) {
                         splitLeft = splitLeft.replace(regx, '$1' + this.sepMil + '$2');
                     }
-                    return this.simbol+' '+ splitLeft + splitRight;
+                    return this.simbol+''+ splitLeft + splitRight;
                 },
                 go:function(num, simbol){
                     this.simbol = simbol ||'';
