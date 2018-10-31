@@ -267,7 +267,7 @@ $(document).ready(function(){
 							var asesorsRequireds = ( (first_part*second_part) / ((third_part*fourth_part) * ocupation));
 						//Financiero
 						var _tmp_cargaPrestacional = 1+cargaPrestacional,//use Math.round
-							costoNominaAgentes = ( totalDaysGestion * 34778 * asesorsRequireds ) * ( _tmp_cargaPrestacional ) + 10,//Desajuste de 10 pesos
+							costoNominaAgentes = ( totalDaysGestion * 34778.12 * asesorsRequireds ) * ( _tmp_cargaPrestacional ),//Desajuste de 10 pesos
 							bolsaCommisiones   = ( $("input.bag-comition").prop("checked") != false && $("#input-bag-comition").val() != "") ? $("#input-bag-comition").val() : 0, 
  							costoTotalNomina   = bolsaCommisiones / _tmp_cargaPrestacional + costoNominaAgentes,
  							overhead_          = overhead*costoTotalNomina //Desajuste de 5
@@ -275,6 +275,12 @@ $(document).ready(function(){
  							ingreso 		   =  costoTotalNomina + overhead_ + profit_,
  							IngresoXagente     = ingreso / asesorsRequireds;
  							CostoPorRegistro   = ingreso / peopleToCall;
+
+
+ 							/*console.error("totalDaysGestion", totalDaysGestion);
+ 							console.error("3477812", 3477812);
+ 							console.error("asesorsRequireds", asesorsRequireds);
+ 							console.error("_tmp_cargaPrestacional", _tmp_cargaPrestacional);
 
  							/*console.error("_tmp_cargaPrestacional", _tmp_cargaPrestacional);
  							console.error("totalDaysGestion", totalDaysGestion);
@@ -317,7 +323,7 @@ $(document).ready(function(){
 	 							
 	 							$("#audition").find("b.value").text(fNumber.go(Math.round(calcAudition), "$"));	
 	 							$("#grabations").find(".value").text(fNumber.go(Math.round(grabaciones_nmb),"$"));
-	 					
+	 						
  							//console.info("contactados",contactados);
  							//console.info("contactadosDaily",contactadosDaily);
  							//console.info("efectivos",efectivos);
@@ -326,7 +332,7 @@ $(document).ready(function(){
  							//console.info("EfectivosActivadosDiario",EfectivosActivadosDiario);
  							console.clear();
  								console.warn("%c#########","color:orange; font-size:22px;");
-	 								console.info("Asesores Requeridos", Math.round(asesorsRequireds) );
+	 								console.info("Asesores Requeridos", asesorsRequireds.toFixed(1) );
 	 								console.info("costoNominaAgentes",  fNumber.go(Math.round(costoNominaAgentes ),"$"));
 	 								console.error("costoNominaAgentes",  fNumber.go(costoNominaAgentes,"$"));
 	 								console.info("Bolsa Comisiones",  fNumber.go(Math.round(bolsaCommisiones ),"$"));
@@ -344,7 +350,7 @@ $(document).ready(function(){
  									console.warn("SubTotal",  fNumber.go(_totalParcial ,"$"));	
  									console.warn("SubTotal",  fNumber.go(Math.round(_totalParcial),"$"));
  									console.warn("Iva",   fNumber.go( Math.round(_iva) ,"$"));
- 									console.warn("total_",  fNumber.go( Math.round(total_),"$"));
+ 									console.warn("total_",  fNumber.go( total_ ,"$"));
 	 							console.warn("%c#########","color:orange; font-size:22px;");
 					}
 				}else{
