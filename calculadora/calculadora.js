@@ -248,7 +248,6 @@ $(document).ready(function(){
 							//console.error( JstartDate.day() )
 
 							var businessDays = moment().recur(JstartDate, JendDate).every(daysToInclude)//.daysOfWeek();
-								console.warn(businessDays);
 							var totalDaysGestion  = businessDays.all().length,
 								diffHours  = Math.abs(JstartDate.diff(JendDate, 'hours')),
 								diffWeeks  = Math.abs(JstartDate.diff(JendDate, 'weeks'));
@@ -265,12 +264,11 @@ $(document).ready(function(){
 								third_part 	= totalDaysGestion * minutosProductivosDiarios,
 								fourth_part = (-absenteeism - rotation) + 1;
 
-							var asesorsRequireds = ( (first_part*second_part) / ((third_part*fourth_part) * ocupation)).toFixed(1);
-								
+							var asesorsRequireds = ( (first_part*second_part) / ((third_part*fourth_part) * ocupation));
 						//Financiero
 						var _tmp_cargaPrestacional = 1+cargaPrestacional,//use Math.round
-							costoNominaAgentes = ( totalDaysGestion * 34778 * asesorsRequireds )*( _tmp_cargaPrestacional ),//Desajuste de 10 pesos
-							bolsaCommisiones   = ( $("input.bag-comition").prop("checked") != false && $("#input-bag-comition").val() != "") ? $("#input-bag-comition").val() : 0 , 
+							costoNominaAgentes = ( totalDaysGestion * 34778 * asesorsRequireds ) * ( _tmp_cargaPrestacional ) + 10,//Desajuste de 10 pesos
+							bolsaCommisiones   = ( $("input.bag-comition").prop("checked") != false && $("#input-bag-comition").val() != "") ? $("#input-bag-comition").val() : 0, 
  							costoTotalNomina   = bolsaCommisiones / _tmp_cargaPrestacional + costoNominaAgentes,
  							overhead_          = overhead*costoTotalNomina //Desajuste de 5
  							profit_ 		   =  (costoTotalNomina + overhead_) * profit,
@@ -278,39 +276,47 @@ $(document).ready(function(){
  							IngresoXagente     = ingreso / asesorsRequireds;
  							CostoPorRegistro   = ingreso / peopleToCall;
 
+ 							/*console.error("_tmp_cargaPrestacional", _tmp_cargaPrestacional);
+ 							console.error("totalDaysGestion", totalDaysGestion);
+ 							console.error("34778", 34778);
+ 							console.error("asesorsRequireds", asesorsRequireds);
+
+ 							console.error("costoNominaAgentes", costoNominaAgentes);
+ 							console.error("bolsaCommisiones", bolsaCommisiones);
+ 							console.error("costoTotalNomina", costoTotalNomina);*/
+
  						var HorasLaborxDia  = asesorsRequireds * 8,
  							TotalHorasLabor = HorasLaborxDia * totalDaysGestion,
  							precioXHora      = ingreso / TotalHorasLabor;
 
  						//Resultados
- 						var contactados      = Math.round(peopleToCall * contactability),
- 							contactadosDaily = Math.round(contactados / totalDaysGestion),
- 							efectivos        = Math.round(peopleToCall * EfectividadBase * (1 - Penalizacion)),
- 							EfectivoDiario   = Math.round(efectivos / totalDaysGestion),
- 							EfectivosActivados       = Math.round(efectivos * objetivoEventos),
- 							EfectivosActivadosDiario = Math.round( EfectivosActivados / totalDaysGestion );
+ 						var contactados      = peopleToCall * contactability,
+ 							contactadosDaily = contactados / totalDaysGestion,
+ 							efectivos        = peopleToCall * EfectividadBase * (1 - Penalizacion),
+ 							EfectivoDiario   = efectivos / totalDaysGestion,
+ 							EfectivosActivados       = efectivos * objetivoEventos,
+ 							EfectivosActivadosDiario =  EfectivosActivados / totalDaysGestion;
 
  						var tarifaVariable = 25000,
  								tarifaFee      = 60000,
  								grabaciones_nmb;
-
  						
-
 	 						if ( peopleToCall > 499 ){
-	 							grabaciones_nmb = Math.round( ((efectivos / 350) * tarifaVariable) + tarifaFee );
+	 							grabaciones_nmb = ((efectivos / 350) * tarifaVariable) + tarifaFee;
 	 						}else{
-	 							grabaciones_nmb =  Math.round( (efectivos / 350 ) * tarifaVariable);
+	 							grabaciones_nmb = (efectivos / 350 ) * tarifaVariable;
 	 						}
-	 						var calcAudition = (asesorsRequireds/50) * 2800000;
+	 						var calcAudition = ( asesorsRequireds / 50) * 2800000;
 							var	audition    = ( $("#check-auditoria").prop("checked") != true ) ? 0 :  calcAudition;
 							var grabaciones = ( $("#check-grabations").prop("checked") != true ) ? 0 : grabaciones_nmb;
+
 	 						var _totalParcial = ingreso + grabaciones + audition;
 	 						var _iva   = _totalParcial * 0.19;
 	 						var total_ = _totalParcial + _iva;
 	 						
 	 							
-	 							$("#audition").find("b.value").text(fNumber.go(calcAudition, "$"));	
-	 							$("#grabations").find(".value").text(fNumber.go(grabaciones_nmb,"$"));
+	 							$("#audition").find("b.value").text(fNumber.go(Math.round(calcAudition), "$"));	
+	 							$("#grabations").find(".value").text(fNumber.go(Math.round(grabaciones_nmb),"$"));
 	 					
  							//console.info("contactados",contactados);
  							//console.info("contactadosDaily",contactadosDaily);
@@ -320,8 +326,9 @@ $(document).ready(function(){
  							//console.info("EfectivosActivadosDiario",EfectivosActivadosDiario);
  							console.clear();
  								console.warn("%c#########","color:orange; font-size:22px;");
-	 								console.info("Asesores Requeridos", asesorsRequireds);
+	 								console.info("Asesores Requeridos", Math.round(asesorsRequireds) );
 	 								console.info("costoNominaAgentes",  fNumber.go(Math.round(costoNominaAgentes ),"$"));
+	 								console.error("costoNominaAgentes",  fNumber.go(costoNominaAgentes,"$"));
 	 								console.info("Bolsa Comisiones",  fNumber.go(Math.round(bolsaCommisiones ),"$"));
 	 								console.info("costo Total Nomina",  fNumber.go(Math.round(costoTotalNomina ),"$"));
 	 								console.info("overhead_",  fNumber.go(Math.round(overhead_ ),"$"));
@@ -332,8 +339,9 @@ $(document).ready(function(){
 	 								console.error( "precioXHora",  fNumber.go(Math.round(precioXHora ),"$"));
 
 	 								console.info("grabaciones",  fNumber.go(Math.round(grabaciones),"$"));
- 									console.warn("Auditoria_",  fNumber.go(Math.round(audition),"$"));
+ 									console.warn("Auditoria_",  fNumber.go( Math.round(audition) ,"$"));
  									
+ 									console.warn("SubTotal",  fNumber.go(_totalParcial ,"$"));	
  									console.warn("SubTotal",  fNumber.go(Math.round(_totalParcial),"$"));
  									console.warn("Iva",   fNumber.go( Math.round(_iva) ,"$"));
  									console.warn("total_",  fNumber.go( Math.round(total_),"$"));
