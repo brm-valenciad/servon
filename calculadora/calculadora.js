@@ -349,7 +349,7 @@ $(document).ready(function(){
  									console.warn("total_",  fNumber.go( total_ ,"$"));
 	 							console.warn("%c#########","color:orange; font-size:22px;");*/
 
-	 							total = fNumber.go( Math.round(total_) ,"$"));
+	 							total = fNumber.go( Math.round(total_) ,"$");
 	 								console.info(total);
 	 							$("#total_inversion").text(total);
 					}
