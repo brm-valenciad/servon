@@ -1,8 +1,90 @@
-.clear{clear:both;}
-#jornada-laboral div.cont{
-	width:48%;
-	display: inline-block;
+/*:::ESTILOS CALCULADORA INFRAESTRUCTURA:::*/
+form.pay{
+	width:100%;
+	padding-bottom: 23px;
 }
+form.pay .form-group button{
+	margin-top: 10px;
+	width: 100% !important;
+	border-radius: 0px;
+}
+
+form.pay .form-group{
+	width: 60%;
+	margin: 0 auto;
+}
+form.pay .form-group input[type="email"]{
+	border-color:transparent;
+    margin-bottom:10px;
+    font-weight:200;
+    background-color:transparent;
+    border-bottom:2px solid #fff;
+    color:#fff !important;
+}
+
+form.pay .form-group input[type="email"]::placeholder
+{ color: #fff !important; }
+
+#email.noCheked{
+	/*display: none !important;*/
+}
+#all-place-jobs .calculator{
+	border: 1px solid rgba(34,34,34,0.14);
+	border-radius: 1%;
+}
+.delete-current, .delete-current:hover{
+	background-color: #990000;
+	border-color: #fff;
+}
+#web-car-summary{
+	margin-bottom: 20px;
+}
+.basic-cotization:nth-child(n + 2){
+	margin-top: 30px;
+    padding-top: 30px;
+    border-top: 5px solid #fff;
+}
+.container-aditionals:before{
+	content: "Elementos Adicionales";
+	position: absolute;
+    top: -14px;
+    background-color: #60a7ab;
+    padding: 2px 16px;
+    color: #fff;
+    font-weight: 200;
+}
+.container-aditionals{
+	border:1px solid #fff;
+	padding: 15px;
+	padding-top: 34px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.box-aditional{
+	padding: 7px 10px;
+    margin-right: 15px !important;
+    /*border-right: 1px solid #fff;*/
+    font-weight: 200;
+    color: #fff;
+    min-width: 31.9%;
+    max-width: 31.9%;
+    overflow: hidden;
+}
+.box-aditional p{
+	border-bottom: 1px solid #fff;
+    padding-bottom: 9px;
+    min-height: 55px;
+}
+.box-aditional p h5{
+	font-weight: 700;
+}
+#amountAdiccional:before{
+	content: "Elemento";
+	color: red;
+	position: absolute;
+	top:-5px;
+}
+.clear{clear:both;}
 form.row.calculator .module{
 	margin-top: 20px;
 	border:1px solid #cdd;
@@ -54,7 +136,7 @@ form.row.calculator .module{
 	border-bottom-color:#737373;
 }
 form.row.calculator ul{
-	list-style: none !important;
+	list-style: none;
 }
 .checkbox{
 	margin-top:0px;
@@ -213,3 +295,4 @@ form.row.calculator ul{
 	font-weight:200;
 	margin-top:17px;
 }
+
