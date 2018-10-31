@@ -1,5 +1,4 @@
 /*Formatear las fechas actuales*/
-
 	Date.prototype.toDateInputValue = (function() {
 	    var local = new Date(this);
 	    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
@@ -8,10 +7,7 @@
 	
     $('#start-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
     $('#end-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
-
-    //var b = moment.tz( "Africa/Bujumbura" );
-    //var str = "GMT-5:00 - US/East-Indiana - EST - Hora oficial del Este de EE.UU.";
-
+var total = 0;
 $(document).ready(function(){
 	//Realizamos llamadas a la base de datos 
 	function load(param){
@@ -331,7 +327,7 @@ $(document).ready(function(){
  							//console.info("EfectivosActivados",EfectivosActivados);
  							//console.info("EfectivosActivadosDiario",EfectivosActivadosDiario);
  							console.clear();
- 								console.warn("%c#########","color:orange; font-size:22px;");
+ 								/*console.warn("%c#########","color:orange; font-size:22px;");
 	 								console.info("Asesores Requeridos", asesorsRequireds.toFixed(1) );
 	 								console.info("costoNominaAgentes",  fNumber.go(Math.round(costoNominaAgentes ),"$"));
 	 								console.error("costoNominaAgentes",  fNumber.go(costoNominaAgentes,"$"));
@@ -351,7 +347,11 @@ $(document).ready(function(){
  									console.warn("SubTotal",  fNumber.go(Math.round(_totalParcial),"$"));
  									console.warn("Iva",   fNumber.go( Math.round(_iva) ,"$"));
  									console.warn("total_",  fNumber.go( total_ ,"$"));
-	 							console.warn("%c#########","color:orange; font-size:22px;");
+	 							console.warn("%c#########","color:orange; font-size:22px;");*/
+
+	 							total = Math.round(fNumber.go( total_ ,"$"));
+	 								console.info(total);
+	 							$("#total_inversion").text(total);
 					}
 				}else{
 					console.warn("las fechas son iguales");
