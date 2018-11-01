@@ -85,7 +85,7 @@ form.pay .form-group input[type="email"]::placeholder
 	top:-5px;
 }
 .clear{clear:both;}
-form.row.calculator .module{
+form .calculator .module{
 	margin-top: 20px;
 	border:1px solid #cdd;
 	box-shadow: 0px 0px 5px rgba(191, 191, 191, 0.5);
