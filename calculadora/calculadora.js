@@ -326,7 +326,7 @@ $(document).ready(function(){
  									Cgrabationc   = $("#bag-grabation-car"),
  									Cauditoria_   = $("#bag-auditoria-car");
 
- 							if ( typeService .length >= 1 ){
+ 							if ( CtypeService_.length >= 1 ){
  								console.warn("Dentro de omolds");
  								CpeoleCall_.find("h5").text(peopleToCall);
  								CdurationCall.find("h5").text(durationCall);
