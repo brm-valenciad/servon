@@ -336,7 +336,7 @@ $(document).ready(function(){
  								CjornadaLabor.text("Jornada laboral");
 								CbagComition.find("h5").text( fNumber.go(Math.round(grabaciones)) );
 								Cgrabationc.find("h5").text( fNumber.go(Math.round(grabaciones)));
-								Cauditoria_.find("h5").text( fNumber.go( Math.round(audition) );
+								Cauditoria_.find("h5").text( fNumber.go( Math.round(audition) ) );
  							}
 
  							console.clear();
