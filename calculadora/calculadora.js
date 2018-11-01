@@ -148,15 +148,12 @@ $(document).ready(function(){
 		var grabationsPrice = ( grabations_.prop("checked") == true ) ? 3257 : 0;
 
 		//Variables recogidas en el formulario
-		console.error("Guardar en un dato value");
+		var ZonaHoraria    = $("#time-zone-tmk").val();
 		var peopleAmount   = $("#persons-to-call").val();
 		var peopleToCall   = ( peopleAmount != "" ) ? peopleAmount : 0 ;//CAMBIAR AQUI
 			peopleToCall   = peopleToCall.replace("$", "");
 			
 			$("#persons-to-call").val( peopleToCall );
-
-			console.info("peopleAmount valor punto", fNumber.go(peopleAmount) );
-
 		var indexMarcation = 5;//Repetición de llamada
 		var durationCall = ($("#duration-call").val() != "") ? $("#duration-call").val() : 0 ;//number 3.45
 		var minutesToDay = 1440;//Minutos que hacen un día
@@ -314,6 +311,7 @@ $(document).ready(function(){
  							//console.info("EfectivoDiario",EfectivoDiario);
  							//console.info("EfectivosActivados",EfectivosActivados);
  							//console.info("EfectivosActivadosDiario",EfectivosActivadosDiario);
+ 							
  								var CtypeService_ = $("#car-type-service-car"),
  									CpeoleCall_   = $("#people-to-call-car"),
  									CdurationCall = $("#call-duration-car"),
@@ -329,16 +327,16 @@ $(document).ready(function(){
  							if ( CtypeService_.length >= 1 ){
  								console.warn("Dentro de omolds");
  								CpeoleCall_.find("h5").text(peopleToCall);
- 								CdurationCall.find("h5").text(durationCall);
+ 								CdurationCall.find("h5").text($("#duration-call").val());
  								CstartService.text(startDate);
  								CendService.text(endDate);
- 								CTimeZone.text("ZONA HORARIA");
+ 								CTimeZone.text(ZonaHoraria);
+ 								CdaysActivity.find("h5").text( totalDaysGestion );
  								CjornadaLabor.text("Jornada laboral");
-								CbagComition.find("h5").text( fNumber.go(Math.round(grabaciones)) );
+								CbagComition.find("h5").text( fNumber.go(Math.round(CbagComition)) );
 								Cgrabationc.find("h5").text( fNumber.go(Math.round(grabaciones)));
 								Cauditoria_.find("h5").text( fNumber.go( Math.round(audition) ) );
  							}
-
  							console.clear();
  								/*console.warn("%c#########","color:orange; font-size:22px;");
 	 								console.info("Asesores Requeridos", asesorsRequireds.toFixed(1) );
