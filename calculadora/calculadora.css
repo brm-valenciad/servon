@@ -1,4 +1,7 @@
 /*:::ESTILOS CALCULADORA INFRAESTRUCTURA:::*/
+.bootstrap-select button.dropdown-toggle{
+	background-color:transparent;
+}
 form.pay{
 	width:100%;
 	padding-bottom: 23px;
