@@ -1,4 +1,7 @@
 /*:::ESTILOS CALCULADORA INFRAESTRUCTURA:::*/
+.summary h5{
+	font-size: 16px !important;
+}
 .bootstrap-select button.dropdown-toggle{
 	background-color:transparent;
 }
@@ -275,7 +278,7 @@ form.row.calculator ul{
 	border-bottom: 1px solid transparent;
 	display:flex;
 	padding:10px 0px;
-	padding-left:25px;
+	padding-left:15px;
 	opacity:.7;
 	justify-content: center;
 }
