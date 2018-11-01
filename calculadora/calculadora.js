@@ -228,7 +228,7 @@ $(document).ready(function(){
 
 							//console.error( JstartDate.day() )
 
-							var businessDays = moment().recur(JstartDate, JendDate).every(daysToInclude)//.daysOfWeek();
+							var businessDays = moment().recur(JstartDate, JendDate).every(daysToInclude).daysOfWeek();
 							var totalDaysGestion  = businessDays.all().length,
 								diffHours  = Math.abs(JstartDate.diff(JendDate, 'hours')),
 								diffWeeks  = Math.abs(JstartDate.diff(JendDate, 'weeks'));
