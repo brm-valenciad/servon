@@ -334,7 +334,7 @@ $(document).ready(function(){
  								CendService.text(endDate);
  								CTimeZone.text("ZONA HORARIA");
  								CjornadaLabor.text("Jornada laboral");
-								CbagComition.find("h5").text( fNumber.go(Math.round(grabaciones));
+								CbagComition.find("h5").text( fNumber.go(Math.round(grabaciones)) );
 								Cgrabationc.find("h5").text( fNumber.go(Math.round(grabaciones)));
 								Cauditoria_.find("h5").text( fNumber.go( Math.round(audition) );
  							}
