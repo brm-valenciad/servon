@@ -1,3 +1,5 @@
+var total = 0;
+
 /*Formatear las fechas actuales*/
 	Date.prototype.toDateInputValue = (function() {
 	    var local = new Date(this);
@@ -7,7 +9,8 @@
 	
     $('#start-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
     $('#end-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
-var total = 0;
+
+
 $(document).ready(function(){
 	//Realizamos llamadas a la base de datos 
 	function load(param){
@@ -118,34 +121,9 @@ $(document).ready(function(){
 	});
 
 
-	$("body").on("change blur click","input[type='date'], input, div.filter-option, a.selected, select", function(){
-		/*var HoraInicial  = $(".start-time-journal").find("div.filter-option").find(".filter-option-inner-inner").text();
-		var HoraFinal    = $(".end-time-journal").find("div.filter-option").find(".filter-option-inner-inner").text();
-		var HoraInicialMeridiem = HoraInicial.split(" ")[1];
-		var HoraFinalMeridiem   = HoraFinal.split(" ")[1];
-		
-		var totalHours  = 0;
-		var	HoraInicial = parseInt(HoraInicial);
-		var	HoraFinal   = parseInt(HoraFinal);
-
-		console.info(HoraInicialMeridiem);
-		//console.info(HoraFinalMeridiem);
-		if ( HoraInicial != HoraFinal){
-			if ( HoraInicialMeridiem == "am" ){
-				totalHours = 12 - HoraInicial + HoraFinal;
-			}
-
-			if ( HoraInicialMeridiem == "pm" || HoraFinalMeridiem == "pm" ){
-					if ( HoraInicial > HoraFinal ){
-						console.info( (HoraFinal+12) - HoraInicial);
-					}
-				totalHours = HoraFinal - HoraInicial;
-			}
-		}else{
-			console.error("Las horas no pueden ser iguales");
-			//return false;
-		}*/
-
+	$("body").on("change blur click keyup","input[type='date'], input, div.filter-option, a.selected, select", function(){
+		console.info("Faltan jorandas laborales");
+		console.info("Faltan puntos de millones");
 		//Constantes 
 		var ocupation = 70 / 100;//horas reales de trabajo
 		var absenteeism = 10 / 100; //Ausentismo
@@ -164,15 +142,25 @@ $(document).ready(function(){
 		//Auditoria
 		var Auditoria_     = $("#check-auditoria");
 		var auditoriaPrice = ( Auditoria_.prop("checked") == true ) ? 27900 : 0;
+
 		//Grabaciones 
 		var grabations_  = $("#check-grabations");
 		var grabationsPrice = ( grabations_.prop("checked") == true ) ? 3257 : 0;
+
 		//Variables recogidas en el formulario
-		var peopleToCall   = ($("#persons-to-call").val() != "") ? $("#persons-to-call").val() : 0 ;
+		console.error("Guardar en un dato value");
+		var peopleAmount   = $("#persons-to-call").val();
+		var peopleToCall   = ( peopleAmount != "" ) ? peopleAmount : 0 ;//CAMBIAR AQUI
+			peopleToCall   = peopleToCall.replace("$", "");
+			
+			$("#persons-to-call").val( peopleToCall );
+
+			console.info("peopleAmount valor punto", fNumber.go(peopleAmount) );
+
 		var indexMarcation = 5;//Repetición de llamada
 		var durationCall = ($("#duration-call").val() != "") ? $("#duration-call").val() : 0 ;//number 3.45
 		var minutesToDay = 1440;//Minutos que hacen un día
-		var somethingWrong = false;
+		var somethingWrong = false;//NO SIRVE
 
 		if ( isNaN(peopleToCall) == true) {
 			console.info("Por favor ingresa un número válido");
@@ -326,6 +314,31 @@ $(document).ready(function(){
  							//console.info("EfectivoDiario",EfectivoDiario);
  							//console.info("EfectivosActivados",EfectivosActivados);
  							//console.info("EfectivosActivadosDiario",EfectivosActivadosDiario);
+ 								var CtypeService_ = $("#car-type-service-car"),
+ 									CpeoleCall_   = $("#people-to-call-car"),
+ 									CdurationCall = $("#call-duration-car"),
+ 									CstartService = $("#start-service-car"),
+ 									CendService   = $("#end-service-car"),
+ 									CTimeZone     = $("#time-zone-car"),
+ 									CdaysActivity = $("#activity-days"),
+ 									CjornadaLabor = $("#laboral-journal-car"),
+ 									CbagComition  = $("#bag-comition-car"),
+ 									Cgrabationc   = $("#bag-grabation-car"),
+ 									Cauditoria_   = $("#bag-auditoria-car");
+
+ 							if ( typeService .length >= 1 ){
+ 								console.warn("Dentro de omolds");
+ 								CpeoleCall_.find("h5").text(peopleToCall);
+ 								CdurationCall.find("h5").text(durationCall);
+ 								CstartService.text(startDate);
+ 								CendService.text(endDate);
+ 								CTimeZone.text("ZONA HORARIA");
+ 								CjornadaLabor.text("Jornada laboral");
+								CbagComition.find("h5").text( fNumber.go(Math.round(grabaciones));
+								Cgrabationc.find("h5").text( fNumber.go(Math.round(grabaciones)));
+								Cauditoria_.find("h5").text( fNumber.go( Math.round(audition) );
+ 							}
+
  							console.clear();
  								/*console.warn("%c#########","color:orange; font-size:22px;");
 	 								console.info("Asesores Requeridos", asesorsRequireds.toFixed(1) );
@@ -351,7 +364,7 @@ $(document).ready(function(){
 
 	 							total = fNumber.go( Math.round(total_) ,"$");
 	 								console.info(total);
-	 							$("#total_inversion").text(total);
+	 							$(".total_inversion").text(total);
 					}
 				}else{
 					console.warn("las fechas son iguales");
