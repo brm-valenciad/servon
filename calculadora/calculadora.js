@@ -1,4 +1,4 @@
-var total = 0;
+var total = 0, total_;
 
 /*Formatear las fechas actuales*/
 	Date.prototype.toDateInputValue = (function() {
@@ -342,7 +342,7 @@ var number = 123456789;
 
 	 						var _totalParcial = ingreso + grabaciones + audition;
 	 						var _iva   = _totalParcial * 0.19;
-	 						var total_ = _totalParcial + _iva;
+	 							total_ = _totalParcial + _iva;
 	 						
 	 							
 	 							$("#audition").find("b.value").text(fNumber.go(Math.round(calcAudition), "$"));	
@@ -481,20 +481,19 @@ $("body").on("click", "#termsConditions", function(event){
                 else{
                     var d = new Date(), n = d.getTime();
                     var reference = "servon-"+n;
-                    var hash = md5("4Vj8eK4rloUd272L48hsrarnUA~508029~"+reference+"~"+total+"~COP");
+                    var hash = md5("4Vj8eK4rloUd272L48hsrarnUA~508029~"+reference+"~"+total_+"~COP");
 
                    var dataPayLatam = [
                     { name: "merchantId", value:"508029" },
                     { name: "accountId", value:"512321" },
                     { name: "description", value:"Pago de infraestructura - Servon.com.co" },
                     { name: "referenceCode", value:reference },
-                    { name: "amount", value: total },
+                    { name: "amount", value: total_ },
                     { name: "tax", value:"0" },
                     { name: "taxReturnBase", value:"0" },
                     { name: "currency", value:"COP" },
                     { name: "signature", value:hash },
                     { name: "test", value:"1" },
-                    //{ name: "buyerEmail", value:"test@test.com" },
                     { name: "responseUrl", value:"http://www.test.com/response" },
                     { name: "confirmationUrl", value:"http://www.test.com/confirmation" }
                         ];
