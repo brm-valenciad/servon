@@ -404,7 +404,9 @@ var number = 123456789;
 	 							console.warn("%c#########","color:orange; font-size:22px;");
 							
 	 							total = fNumber.go( Math.round(total_) ,"$");
-	 								if ( isNaN(total) == false ){
+
+	 							console.error( isNaN(total) );
+	 								if ( isNaN(total) == true ){
 	 									$(".total_inversion").text(total);
 	 									$(".summary-car").removeClass("d-none");
 	 								}else{
