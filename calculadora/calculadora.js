@@ -361,7 +361,7 @@ var number = 123456789;
  									CstartService = $("#start-service-car"),
  									CendService   = $("#end-service-car"),
  									CTimeZone     = $("#time-zone-car"),
- 									CdaysActivity = $("#activity-days"),
+ 									CdaysActivity = $("#activity-days-car"),
  									CjornadaLabor = $("#laboral-journal-car"),
  									CbagComition  = $("#bag-comition-car"),
  									Cgrabationc   = $("#bag-grabation-car"),
@@ -376,9 +376,9 @@ var number = 123456789;
  								CTimeZone.text(ZonaHoraria);
  								CdaysActivity.find("h5").text( totalDaysGestion );
  								CjornadaLabor.text("Jornada laboral");
-								CbagComition.find("h5").text( fNumber.go(Math.round(CbagComition)) );
-								Cgrabationc.find("h5").text( fNumber.go(Math.round(grabaciones)));
-								Cauditoria_.find("h5").text( fNumber.go( Math.round(audition) ) );
+								CbagComition.find("span").text( fNumber.go(Math.round(CbagComition)) );
+								Cgrabationc.find("span").text( fNumber.go(Math.round(grabaciones)));
+								Cauditoria_.find("span").text( fNumber.go( Math.round(audition) ) );
  							}
  							console.clear();
  								console.warn("%c#########","color:orange; font-size:22px;");
@@ -405,7 +405,7 @@ var number = 123456789;
 							
 	 							total = fNumber.go( Math.round(total_) ,"$");
 	 							//console.error( isNaN(total) );
-	 							
+
 	 								if ( isNaN(total_) == false ){
 	 									$(".total_inversion").text(total);
 	 									$(".summary-car").removeClass("d-none");
