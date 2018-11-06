@@ -442,7 +442,23 @@ var number = 123456789;
                     return this.formatear(num);
                 }
             }
-   
+
+//Click en aceptar terminos
+$("body").on("click", "#termsConditions", function(event){
+    if ( totalFinal != 0 && $("#email").val() != ''){
+        if ( $(this).prop("checked") == false ){
+            $("#pay").attr("disabled","disabled");
+        }
+        else if ( $(this).prop("checked") == true ){
+            $("#pay").removeAttr("disabled");
+        }
+    }else{
+        alert("El valor final o el email no pueden estar vacios");
+        event.preventDefault();
+    }
+});
+
+ 
    	$("body").on("click","#pay", function(event){
             event.preventDefault();
                 if ( totalFinal == 0 || $( "#termsConditions").prop("checked") == false ){
