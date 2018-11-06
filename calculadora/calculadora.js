@@ -375,8 +375,8 @@ var number = 123456789;
  								CendService.text(endDate);
  								CTimeZone.text(ZonaHoraria);
  								CdaysActivity.find("h5").text( totalDaysGestion );
- 								CjornadaLabor.text("Jornada laboral");
-								CbagComition.find("span").text( fNumber.go(Math.round(CbagComition)) );
+ 								CjornadaLabor.text("Por defecto: 8 Horas");
+								CbagComition.find("span").text( fNumber.go(  fNumber.go(Math.round(bolsaCommisiones ),"$") );
 								Cgrabationc.find("span").text( fNumber.go(Math.round(grabaciones)));
 								Cauditoria_.find("span").text( fNumber.go( Math.round(audition) ) );
  							}
