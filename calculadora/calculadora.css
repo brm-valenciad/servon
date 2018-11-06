@@ -117,7 +117,7 @@ form.calculator .module{
 	margin-bottom:0px;
 	opacity:0.6;
 	background-color:#e6e6e6;
-	height: 77px;
+	height: auto;
 }
 .added-services-item p{
 	font-size:12px;
