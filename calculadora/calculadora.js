@@ -481,21 +481,23 @@ $("body").on("click", "#termsConditions", function(event){
                 else{
                     var d = new Date(), n = d.getTime();
                     var reference = "servon-"+n;
-                    var hash = md5("4Vj8eK4rloUd272L48hsrarnUA~508029~"+reference+"~"+total_+"~COP");
+                    //var hash = md5("4Vj8eK4rloUd272L48hsrarnUA~508029~"+reference+"~"+total_+"~COP");
+                    var hash = md5("wns266ZHs6P8KNk08Mu531qWB6~677879~"+reference+"~"+total_+"~COP");
+
 
                    var dataPayLatam = [
-                    { name: "merchantId", value:"508029" },
-                    { name: "accountId", value:"512321" },
-                    { name: "description", value:"Pago de infraestructura - Servon.com.co" },
-                    { name: "referenceCode", value:reference },
-                    { name: "amount", value: total_ },
-                    { name: "tax", value:"0" },
-                    { name: "taxReturnBase", value:"0" },
-                    { name: "currency", value:"COP" },
-                    { name: "signature", value:hash },
-                    { name: "test", value:"1" },
-                    { name: "responseUrl", value:"https://www.servon.com.co/web/index/returnpayment" },
-                    { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment" }
+	                    { name: "merchantId", value:"677879" },
+	                    { name: "accountId", value:"760061" },
+	                    { name: "description", value:"Pago TMK - Servon.com.co" },
+	                    { name: "referenceCode", value:reference },
+	                    { name: "amount", value: total_ },
+	                    { name: "tax", value:"0" },
+	                    { name: "taxReturnBase", value:"0" },
+	                    { name: "currency", value:"COP" },
+	                    { name: "signature", value:hash },
+	                    { name: "test", value:"0" },
+	                    { name: "responseUrl", value:"https://www.servon.com.co/web/index/returnpayment" },
+	                    { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment" }
                         ];
                     for (var i = 0; i <= dataPayLatam.length - 1; i++) {
                         var input_ = $("<input/>");
@@ -507,4 +509,4 @@ $("body").on("click", "#termsConditions", function(event){
                     $(".pay").submit();
                 }
         }); 
-
+console.error("noW!!!!!!");
