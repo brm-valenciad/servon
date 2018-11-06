@@ -458,10 +458,10 @@ $("body").on("click", "#termsConditions", function(event){
     }
 });
 
- 
+
    	$("body").on("click","#pay", function(event){
             event.preventDefault();
-                if ( totalFinal == 0 || $( "#termsConditions").prop("checked") == false ){
+                if ( Total == 0 || $( "#termsConditions").prop("checked") == false ){
                     alert("Debes seleccionar todos los datos previos");
                     return false;
                 }
@@ -472,14 +472,14 @@ $("body").on("click", "#termsConditions", function(event){
                 else{
                     var d = new Date(), n = d.getTime();
                     var reference = "servon-"+n;
-                    var hash = md5("4Vj8eK4rloUd272L48hsrarnUA~508029~"+reference+"~"+totalFinal+"~COP");
+                    var hash = md5("4Vj8eK4rloUd272L48hsrarnUA~508029~"+reference+"~"+Total+"~COP");
 
                    var dataPayLatam = [
                     { name: "merchantId", value:"508029" },
                     { name: "accountId", value:"512321" },
                     { name: "description", value:"Pago de infraestructura - Servon.com.co" },
                     { name: "referenceCode", value:reference },
-                    { name: "amount", value: totalFinal },
+                    { name: "amount", value: Total },
                     { name: "tax", value:"0" },
                     { name: "taxReturnBase", value:"0" },
                     { name: "currency", value:"COP" },
