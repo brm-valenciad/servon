@@ -367,7 +367,7 @@ var number = 123456789;
  									Cgrabationc   = $("#bag-grabation-car"),
  									Cauditoria_   = $("#bag-auditoria-car");
 
- 							if ( CtypeService_.length >= 1 ){
+ 						if ( CtypeService_.length >= 1 ){
  								CtypeService_.find("h5").text(TipoDeServicio);
  								CpeoleCall_.find("h5").text(peopleToCall);
  								CdurationCall.find("h5").text($("#duration-call").val());
@@ -379,7 +379,8 @@ var number = 123456789;
 								CbagComition.find("span").text( fNumber.go(  fNumber.go( Math.round(bolsaCommisiones ),"$") ) );
 								Cgrabationc.find("span").text( fNumber.go(Math.round(grabaciones)));
 								Cauditoria_.find("span").text( fNumber.go( Math.round(audition) ) );
- 							}
+ 						}
+
  							console.clear();
  								console.warn("%c#########","color:orange; font-size:22px;");
 	 								console.info("Asesores Requeridos", asesorsRequireds.toFixed(1) );
@@ -404,8 +405,7 @@ var number = 123456789;
 	 							console.warn("%c#########","color:orange; font-size:22px;");
 							
 	 							total = fNumber.go( Math.round(total_) ,"$");
-	 							//console.error( isNaN(total) );
-
+	 							
 	 								if ( isNaN(total_) == false ){
 	 									$(".total_inversion").text(total);
 	 									$(".summary-car").removeClass("d-none");
@@ -413,7 +413,6 @@ var number = 123456789;
 	 									$(".summary-car").addClass("d-none");
 	 									console.error("Ha ocurrido un error con los datos");
 	 								}
-	 							
 					}
 				}else{
 					console.warn("las fechas son iguales");
