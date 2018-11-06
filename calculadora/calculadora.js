@@ -376,9 +376,11 @@ var number = 123456789;
  								CTimeZone.text(ZonaHoraria);
  								CdaysActivity.find("h5").text( totalDaysGestion );
  								CjornadaLabor.text("Por defecto: 8 Horas");
-								CbagComition.find("span").text( fNumber.go(  fNumber.go( Math.round(bolsaCommisiones ),"$") ) );
+								CbagComition.find("span").text( fNumber.go(  fNumber.go( Math.round(bolsaCommisiones),"$") ) );
 								Cgrabationc.find("span").text( fNumber.go(Math.round(grabaciones)));
 								Cauditoria_.find("span").text( fNumber.go( Math.round(audition) ) );
+
+								console.error("informaciones",fNumber.go( Math.round(bolsaCommisiones),"$") ));
  						}
 
  							console.clear();
@@ -405,7 +407,7 @@ var number = 123456789;
 	 							console.warn("%c#########","color:orange; font-size:22px;");
 							
 	 							total = fNumber.go( Math.round(total_) ,"$");
-	 							
+
 	 								if ( isNaN(total_) == false ){
 	 									$(".total_inversion").text(total);
 	 									$(".summary-car").removeClass("d-none");
