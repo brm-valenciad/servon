@@ -470,8 +470,8 @@ $("body").on("click", "#termsConditions", function(event){
 
    	$("body").on("click","#pay", function(event){
             event.preventDefault();
-            alert("pago", total_);
-                if ( total == 0 || $( "#termsConditions").prop("checked") == false ){
+            console.info( total_);
+                /*if ( total == 0 || $( "#termsConditions").prop("checked") == false ){
                     alert("Debes seleccionar todos los datos previos");
                     return false;
                 }
@@ -506,6 +506,6 @@ $("body").on("click", "#termsConditions", function(event){
                         $(".pay").append(input_);
                     }; 
                     $(".pay").submit();
-                }
+                }*/
         }); 
 
