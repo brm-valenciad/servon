@@ -10,7 +10,6 @@ var total = 0, total_;
     $('#start-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
     $('#end-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
 
-
 $(document).ready(function(){
 	//Realizamos llamadas a la base de datos 
 	var times = [ 
@@ -409,7 +408,9 @@ var number = 123456789;
 	 								if ( isNaN(total_) == false ){
 	 									$(".total_inversion").text(total);
 	 									$(".summary-car").removeClass("d-none");
+	 									$("#totalFlotanteOm").removeClass("d-none").find("h3").text(total);
 	 								}else{
+	 									$("#totalFlotanteOm").addClass("d-none").find("h3").text(0);
 	 									$(".summary-car").addClass("d-none");
 	 									console.error("Ha ocurrido un error con los datos");
 	 								}
