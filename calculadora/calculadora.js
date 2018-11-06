@@ -404,14 +404,14 @@ var number = 123456789;
 	 							console.warn("%c#########","color:orange; font-size:22px;");
 							
 	 							total = fNumber.go( Math.round(total_) ,"$");
-
-	 							console.error( isNaN(total) );
-	 								if ( isNaN(total) == true ){
+	 							//console.error( isNaN(total) );
+	 							
+	 								if ( isNaN(total_) == false ){
 	 									$(".total_inversion").text(total);
 	 									$(".summary-car").removeClass("d-none");
 	 								}else{
 	 									$(".summary-car").addClass("d-none");
-	 									alert("Ha ocurrido un error con los datos");
+	 									console.error("Ha ocurrido un error con los datos");
 	 								}
 	 							
 					}
