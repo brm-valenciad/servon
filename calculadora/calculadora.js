@@ -13,6 +13,33 @@ var total = 0;
 
 $(document).ready(function(){
 	//Realizamos llamadas a la base de datos 
+	var times = [ 
+			"2:00", "2:15", "2:30",  "2:45", 
+			"3:00", "3:15", "3:30", "3:45",
+			"4:00", "4:15", "4:30", "4:45",
+			"5:00", "5:15", "5:30", "5:45",
+			"6:00", "6:15", "6:30", "6:45",
+			"7:00", "7:15", "8:30", "9:45",
+			"10:00", "10:15", "10:30",  "10:45",
+			"11:00", "11:15",  "11:30", "11:45", 
+			"12:00", "12:15", "12:30", "12:45", 
+			"13:00", "13:15", "13:30",  "13:45",
+			"14:00", "14:15",  "14:30", "14:45", 
+			"15:00", "15:15", "15:30", "15:45"];
+
+	function populateTimeToCall(){
+		for (var i = 0; i <= times.length; i++) {
+			var option_ = $("<option/>");
+			if ( i == 0){ option_.attr("selected")}
+				option_.val(times[i]);
+			    option_.text(times[i]);
+
+			$("#duration-call").append(option_);
+		};
+	}
+
+	populateTimeToCall();
+
 	function load(param){
 		var urlElemental = "https://servon.com.co/index/dataGet/be5c205a1cec81934cee5a7e6e28f34e/1/1000/";
 
@@ -120,8 +147,10 @@ $(document).ready(function(){
 			$("input[type='date']").trigger("change");
 	});
 
+var number = 123456789;
 
-	$("body").on("change blur click keyup","input[type='date'], input, div.filter-option, a.selected, select", function(){
+
+	$("body").on("change blur click keyup","input[type='date'], input, div.filter-option, a.selected, select, .day", function(){
 		console.info("Faltan jorandas laborales");
 		console.info("Faltan puntos de millones");
 		//Constantes 
@@ -138,26 +167,39 @@ $(document).ready(function(){
 
 		//bolsa de comisión
 		var comitionInput = $("#input-bag-comition");
-		var bag_comition = ( comitionInput.attr("disabled") == true ) ? 0 : (isNaN(comitionInput.val()) == true ) ? 0 : Math.floor(comitionInput.val()) ;
+			bag_comition_value  = comitionInput.val();
+			bag_comition  = ( bag_comition_value.indexOf(".") != -1 ) ? bag_comition_value.replace(/\./g,'') : bag_comition_value;
+			
+		if( isNaN(bag_comition) == false ){
+			comitionInput.val( new Intl.NumberFormat("de-DE").format(bag_comition) );			
+		}else{ comitionInput.val(0); }
+		
 		//Auditoria
 		var Auditoria_     = $("#check-auditoria");
 		var auditoriaPrice = ( Auditoria_.prop("checked") == true ) ? 27900 : 0;
-
 		//Grabaciones 
-		var grabations_  = $("#check-grabations");
+		var grabations_     = $("#check-grabations");
 		var grabationsPrice = ( grabations_.prop("checked") == true ) ? 3257 : 0;
 
 		//Variables recogidas en el formulario
-		var ZonaHoraria    = $("#time-zone-tmk").val();
-		var peopleAmount   = $("#persons-to-call").val();
-		var peopleToCall   = ( peopleAmount != "" ) ? peopleAmount : 0 ;//CAMBIAR AQUI
-			peopleToCall   = peopleToCall.replace("$", "");
-			
-			$("#persons-to-call").val( peopleToCall );
+		var ZonaHoraria       = $("#time-zone-tmk").val();
+		var peopleToCallInput = $("#persons-to-call");
+		var peopleAmountValueCurrency =  peopleToCallInput.val();
+			peopleAmount = ( peopleAmountValueCurrency.indexOf(".") != -1 ) ? peopleAmountValueCurrency.replace(/\./g,'') : peopleAmountValueCurrency;
+
+		if ( isNaN(peopleAmount) == false ){
+			peopleToCallInput.val(new Intl.NumberFormat("de-DE").format(peopleAmount))
+		}else{
+			peopleToCallInput.val(300);
+		}
+
+		var peopleToCall   = ( peopleAmount != "" ) ? peopleAmount : 0 ;
 		var indexMarcation = 5;//Repetición de llamada
 		var durationCall = ($("#duration-call").val() != "") ? $("#duration-call").val() : 0 ;//number 3.45
 		var minutesToDay = 1440;//Minutos que hacen un día
 		var somethingWrong = false;//NO SIRVE
+
+		console.info(durationCall);
 
 		if ( isNaN(peopleToCall) == true) {
 			console.info("Por favor ingresa un número válido");
@@ -228,7 +270,7 @@ $(document).ready(function(){
 
 							//console.error( JstartDate.day() )
 
-							var businessDays = moment().recur(JstartDate, JendDate).every(daysToInclude).daysOfWeek();
+							var businessDays = moment().recur(JstartDate, JendDate).every(daysToInclude);//.daysOfWeek();
 							var totalDaysGestion  = businessDays.all().length,
 								diffHours  = Math.abs(JstartDate.diff(JendDate, 'hours')),
 								diffWeeks  = Math.abs(JstartDate.diff(JendDate, 'weeks'));
@@ -236,6 +278,7 @@ $(document).ready(function(){
 							var totalHours = 8 * totalDaysGestion
 
 							$("#days-inside-range").text(totalDaysGestion);
+							$("#days-to-work").text(totalDaysGestion);
 							$("#weeks-inside-range").text(diffWeeks);
 							$("#total-hours-work").text(totalHours);
 
@@ -248,7 +291,7 @@ $(document).ready(function(){
 							var asesorsRequireds = ( (first_part*second_part) / ((third_part*fourth_part) * ocupation));
 						//Financiero
 						var _tmp_cargaPrestacional = 1+cargaPrestacional,//use Math.round
-							costoNominaAgentes = ( totalDaysGestion * 34778.12 * asesorsRequireds ) * ( _tmp_cargaPrestacional ),//Desajuste de 10 pesos
+							costoNominaAgentes = ( totalDaysGestion * 34778.12 * asesorsRequireds ) * ( _tmp_cargaPrestacional ),
 							bolsaCommisiones   = ( $("input.bag-comition").prop("checked") != false && $("#input-bag-comition").val() != "") ? $("#input-bag-comition").val() : 0, 
  							costoTotalNomina   = bolsaCommisiones / _tmp_cargaPrestacional + costoNominaAgentes,
  							overhead_          = overhead*costoTotalNomina //Desajuste de 5
@@ -337,7 +380,7 @@ $(document).ready(function(){
 								Cgrabationc.find("h5").text( fNumber.go(Math.round(grabaciones)));
 								Cauditoria_.find("h5").text( fNumber.go( Math.round(audition) ) );
  							}
- 							console.clear();
+ 							/*console.clear();
  								console.warn("%c#########","color:orange; font-size:22px;");
 	 								console.info("Asesores Requeridos", asesorsRequireds.toFixed(1) );
 	 								console.info("costoNominaAgentes",  fNumber.go(Math.round(costoNominaAgentes ),"$"));
@@ -359,7 +402,7 @@ $(document).ready(function(){
  									console.warn("Iva",   fNumber.go( Math.round(_iva) ,"$"));
  									console.warn("total_",  fNumber.go( total_ ,"$"));
 	 							console.warn("%c#########","color:orange; font-size:22px;");
-
+							*/
 	 							total = fNumber.go( Math.round(total_) ,"$");
 	 								console.info(total);
 	 							$(".total_inversion").text(total);
