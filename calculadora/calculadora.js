@@ -404,8 +404,14 @@ var number = 123456789;
 	 							console.warn("%c#########","color:orange; font-size:22px;");
 							
 	 							total = fNumber.go( Math.round(total_) ,"$");
-	 								console.info(total);
-	 							$(".total_inversion").text(total);
+	 								if ( isNaN(total) == false ){
+	 									$(".total_inversion").text(total);
+	 									$(".summary-car").removeClass("d-none");
+	 								}else{
+	 									$(".summary-car").addClass("d-none");
+	 									alert("Ha ocurrido un error con los datos");
+	 								}
+	 							
 					}
 				}else{
 					console.warn("las fechas son iguales");
