@@ -470,6 +470,7 @@ $("body").on("click", "#termsConditions", function(event){
 
    	$("body").on("click","#pay", function(event){
             event.preventDefault();
+            alert("pago", total_);
                 if ( total == 0 || $( "#termsConditions").prop("checked") == false ){
                     alert("Debes seleccionar todos los datos previos");
                     return false;
