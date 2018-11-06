@@ -376,12 +376,13 @@ var number = 123456789;
  								CTimeZone.text(ZonaHoraria);
  								CdaysActivity.find("h5").text( totalDaysGestion );
  								CjornadaLabor.text("Por defecto: 8 Horas");
+ 								console.error(bolsaCommisiones);
 								CbagComition.find("span").text( fNumber.go(  fNumber.go( bolsaCommisiones,"$") ) );
 								Cgrabationc.find("span").text( fNumber.go(Math.round(grabaciones)));
 								Cauditoria_.find("span").text( fNumber.go( Math.round(audition) ) );
  						}
 
- 							console.clear();
+ 							/*console.clear();
  								console.warn("%c#########","color:orange; font-size:22px;");
 	 								console.info("Asesores Requeridos", asesorsRequireds.toFixed(1) );
 	 								console.info("costoNominaAgentes",  fNumber.go(Math.round(costoNominaAgentes ),"$"));
@@ -402,7 +403,7 @@ var number = 123456789;
  									console.warn("SubTotal",  fNumber.go(Math.round(_totalParcial),"$"));
  									console.warn("Iva",   fNumber.go( Math.round(_iva) ,"$"));
  									console.warn("total_",  fNumber.go( total_ ,"$"));
-	 							console.warn("%c#########","color:orange; font-size:22px;");
+	 							console.warn("%c#########","color:orange; font-size:22px;");*/
 							
 	 							total = fNumber.go( Math.round(total_) ,"$");
 
