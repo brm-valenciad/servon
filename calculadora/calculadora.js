@@ -381,7 +381,7 @@ var number = 123456789;
 								Cauditoria_.find("span").text( fNumber.go( Math.round(audition) ) );
  						}
 
- 							/*console.clear();
+ 							console.clear();
  								console.warn("%c#########","color:orange; font-size:22px;");
 	 								console.info("Asesores Requeridos", asesorsRequireds.toFixed(1) );
 	 								console.info("costoNominaAgentes",  fNumber.go(Math.round(costoNominaAgentes ),"$"));
@@ -402,7 +402,7 @@ var number = 123456789;
  									console.warn("SubTotal",  fNumber.go(Math.round(_totalParcial),"$"));
  									console.warn("Iva",   fNumber.go( Math.round(_iva) ,"$"));
  									console.warn("total_",  fNumber.go( total_ ,"$"));
-	 							console.warn("%c#########","color:orange; font-size:22px;");*/
+	 							console.warn("%c#########","color:orange; font-size:22px;");
 							
 	 							total = fNumber.go( total_ ,"$");
 
@@ -466,7 +466,6 @@ $("body").on("click", "#termsConditions", function(event){
         else
             return false;
     }
-
 
    	$("body").on("click","#pay", function(event){
             event.preventDefault();
