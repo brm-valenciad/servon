@@ -445,7 +445,7 @@ var number = 123456789;
 
 //Click en aceptar terminos
 $("body").on("click", "#termsConditions", function(event){
-    if ( totalFinal != 0 && $("#email").val() != ''){
+    if ( total != 0 && $("#email").val() != ''){
         if ( $(this).prop("checked") == false ){
             $("#pay").attr("disabled","disabled");
         }
@@ -461,7 +461,7 @@ $("body").on("click", "#termsConditions", function(event){
 
    	$("body").on("click","#pay", function(event){
             event.preventDefault();
-                if ( Total == 0 || $( "#termsConditions").prop("checked") == false ){
+                if ( total == 0 || $( "#termsConditions").prop("checked") == false ){
                     alert("Debes seleccionar todos los datos previos");
                     return false;
                 }
