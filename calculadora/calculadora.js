@@ -494,8 +494,8 @@ $("body").on("click", "#termsConditions", function(event){
                     { name: "currency", value:"COP" },
                     { name: "signature", value:hash },
                     { name: "test", value:"1" },
-                    { name: "responseUrl", value:"http://www.test.com/response" },
-                    { name: "confirmationUrl", value:"http://www.test.com/confirmation" }
+                    { name: "responseUrl", value:"https://www.servon.com.co/web/index/returnpayment" },
+                    { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment" }
                         ];
                     for (var i = 0; i <= dataPayLatam.length - 1; i++) {
                         var input_ = $("<input/>");
