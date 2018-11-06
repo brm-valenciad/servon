@@ -459,7 +459,6 @@ $("body").on("click", "#termsConditions", function(event){
     }
 });
 
-
      function validEmail(email){
       var pattern = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
         if( email.match(pattern) )
@@ -480,13 +479,12 @@ $("body").on("click", "#termsConditions", function(event){
                 }
                 else{
                     var d = new Date(), n = d.getTime();
-                    var reference = "servon-"+n;
-                    //var hash = md5("4Vj8eK4rloUd272L48hsrarnUA~508029~"+reference+"~"+total_+"~COP");
-                    var hash = md5("wns266ZHs6P8KNk08Mu531qWB6~677879~"+reference+"~"+total_+"~COP");
-
+                    var reference  = "TMK-"+n;
+                    var merchantId = "677879";
+                    var hash = md5("wns266ZHs6P8KNk08Mu531qWB6~"+merchantId+"~"+reference+"~"+total_+"~COP");
 
                    var dataPayLatam = [
-	                    { name: "merchantId", value:"677879" },
+	                    { name: "merchantId", value: merchantId },
 	                    { name: "accountId", value:"760061" },
 	                    { name: "description", value:"Pago TMK - Servon.com.co" },
 	                    { name: "referenceCode", value:reference },
@@ -509,4 +507,5 @@ $("body").on("click", "#termsConditions", function(event){
                     $(".pay").submit();
                 }
         }); 
-console.error("noW!!!!!!");
+
+console.info("PAGOS LISTOS!!");
