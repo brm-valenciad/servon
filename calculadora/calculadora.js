@@ -152,7 +152,8 @@ var number = 123456789;
 
 	$("body").on("change blur click keyup","input[type='date'], input, div.filter-option, a.selected, select, .day", function(){
 		console.info("Faltan jorandas laborales");
-		console.info("Faltan puntos de millones");
+		
+		var TipoDeServicio = $("#service-type-tmk").val();
 		//Constantes 
 		var ocupation = 70 / 100;//horas reales de trabajo
 		var absenteeism = 10 / 100; //Ausentismo
@@ -355,7 +356,7 @@ var number = 123456789;
  							//console.info("EfectivosActivados",EfectivosActivados);
  							//console.info("EfectivosActivadosDiario",EfectivosActivadosDiario);
  							
- 								var CtypeService_ = $("#car-type-service-car"),
+ 								var CtypeService_ = $("#car-type-service"),
  									CpeoleCall_   = $("#people-to-call-car"),
  									CdurationCall = $("#call-duration-car"),
  									CstartService = $("#start-service-car"),
@@ -368,7 +369,7 @@ var number = 123456789;
  									Cauditoria_   = $("#bag-auditoria-car");
 
  							if ( CtypeService_.length >= 1 ){
- 								console.warn("Dentro de omolds");
+ 								CtypeService_.find("h5").text(TipoDeServicio);
  								CpeoleCall_.find("h5").text(peopleToCall);
  								CdurationCall.find("h5").text($("#duration-call").val());
  								CstartService.text(startDate);
