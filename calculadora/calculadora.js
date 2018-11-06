@@ -481,14 +481,14 @@ $("body").on("click", "#termsConditions", function(event){
                 else{
                     var d = new Date(), n = d.getTime();
                     var reference = "servon-"+n;
-                    var hash = md5("4Vj8eK4rloUd272L48hsrarnUA~508029~"+reference+"~"+Total+"~COP");
+                    var hash = md5("4Vj8eK4rloUd272L48hsrarnUA~508029~"+reference+"~"+total+"~COP");
 
                    var dataPayLatam = [
                     { name: "merchantId", value:"508029" },
                     { name: "accountId", value:"512321" },
                     { name: "description", value:"Pago de infraestructura - Servon.com.co" },
                     { name: "referenceCode", value:reference },
-                    { name: "amount", value: Total },
+                    { name: "amount", value: total },
                     { name: "tax", value:"0" },
                     { name: "taxReturnBase", value:"0" },
                     { name: "currency", value:"COP" },
