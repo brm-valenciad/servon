@@ -342,7 +342,7 @@ var number = 123456789;
 
 	 						var _totalParcial = ingreso + grabaciones + audition;
 	 						var _iva   = _totalParcial * 0.19;
-	 							total_ = _totalParcial + _iva;
+	 							total_ = Math.round(_totalParcial + _iva);
 	 						
 	 							
 	 							$("#audition").find("b.value").text(fNumber.go(Math.round(calcAudition), "$"));	
@@ -404,7 +404,7 @@ var number = 123456789;
  									console.warn("total_",  fNumber.go( total_ ,"$"));
 	 							console.warn("%c#########","color:orange; font-size:22px;");*/
 							
-	 							total = fNumber.go( Math.round(total_) ,"$");
+	 							total = fNumber.go( total_ ,"$");
 
 	 								if ( isNaN(total_) == false ){
 	 									$(".total_inversion").text(total);
@@ -470,8 +470,7 @@ $("body").on("click", "#termsConditions", function(event){
 
    	$("body").on("click","#pay", function(event){
             event.preventDefault();
-            console.info( total_);
-                /*if ( total == 0 || $( "#termsConditions").prop("checked") == false ){
+                if ( total == 0 || $( "#termsConditions").prop("checked") == false ){
                     alert("Debes seleccionar todos los datos previos");
                     return false;
                 }
@@ -506,6 +505,6 @@ $("body").on("click", "#termsConditions", function(event){
                         $(".pay").append(input_);
                     }; 
                     $(".pay").submit();
-                }*/
+                }
         }); 
 
