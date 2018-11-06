@@ -170,7 +170,7 @@ var number = 123456789;
 		var comitionInput = $("#input-bag-comition");
 			bag_comition_value  = comitionInput.val();
 			bag_comition  = ( bag_comition_value.indexOf(".") != -1 ) ? bag_comition_value.replace(/\./g,'') : bag_comition_value;
-			
+
 		if( isNaN(bag_comition) == false ){
 			comitionInput.val( new Intl.NumberFormat("de-DE").format(bag_comition) );			
 		}else{ comitionInput.val(0); }
@@ -293,14 +293,13 @@ var number = 123456789;
 						//Financiero
 						var _tmp_cargaPrestacional = 1+cargaPrestacional,//use Math.round
 							costoNominaAgentes = ( totalDaysGestion * 34778.12 * asesorsRequireds ) * ( _tmp_cargaPrestacional ),
-							bolsaCommisiones   = ( $("input.bag-comition").prop("checked") != false && $("#input-bag-comition").val() != "") ? $("#input-bag-comition").val() : 0, 
+							bolsaCommisiones   = ( $("input.bag-comition").prop("checked") != false && $("#input-bag-comition").val() != "") ? bag_comition : 0, 
  							costoTotalNomina   = bolsaCommisiones / _tmp_cargaPrestacional + costoNominaAgentes,
  							overhead_          = overhead*costoTotalNomina //Desajuste de 5
  							profit_ 		   =  (costoTotalNomina + overhead_) * profit,
  							ingreso 		   =  costoTotalNomina + overhead_ + profit_,
  							IngresoXagente     = ingreso / asesorsRequireds;
  							CostoPorRegistro   = ingreso / peopleToCall;
-
 
  							/*console.error("totalDaysGestion", totalDaysGestion);
  							console.error("3477812", 3477812);
@@ -381,7 +380,7 @@ var number = 123456789;
 								Cgrabationc.find("h5").text( fNumber.go(Math.round(grabaciones)));
 								Cauditoria_.find("h5").text( fNumber.go( Math.round(audition) ) );
  							}
- 							/*console.clear();
+ 							console.clear();
  								console.warn("%c#########","color:orange; font-size:22px;");
 	 								console.info("Asesores Requeridos", asesorsRequireds.toFixed(1) );
 	 								console.info("costoNominaAgentes",  fNumber.go(Math.round(costoNominaAgentes ),"$"));
@@ -403,7 +402,7 @@ var number = 123456789;
  									console.warn("Iva",   fNumber.go( Math.round(_iva) ,"$"));
  									console.warn("total_",  fNumber.go( total_ ,"$"));
 	 							console.warn("%c#########","color:orange; font-size:22px;");
-							*/
+							
 	 							total = fNumber.go( Math.round(total_) ,"$");
 	 								console.info(total);
 	 							$(".total_inversion").text(total);
