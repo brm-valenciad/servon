@@ -459,18 +459,19 @@ function fillSummaryCar_(data){
 }
 //Llenar formulario para insertar dentro de OMOLDS
 function fillFormInsert(){
-	var financiero_  = "Costo Nomina Agentes: "+ summaryCarData.financiero.costoNominaAgentes + " / ";
-		financiero_ += "Costo Total Nomina: "+ summaryCarData.financiero.costoTotalNomina + " / ";
-		financiero_ += "Costo Por registro: "+ summaryCarData.financiero.costoXregistro + " / ";
-		financiero_ += "Ingreso: "+ summaryCarData.financiero.ingreso + " / ";
-		financiero_ += "Ingreso Por Agente: "+ summaryCarData.financiero.ingresoXagente + " / ";
-		financiero_ += "Overhead: "+ summaryCarData.financiero.overhead + " / ";
-		financiero_ += "Precio por Hora: "+ summaryCarData.financiero.precioXHora + " / ";
-		financiero_ += "Profit: "+ summaryCarData.financiero.profit + " / ";
+	var financiero_  = "<h6>Financiero</h6>";
+		financiero_ += "Costo Nomina Agentes: "+ summaryCarData.financiero.costoNominaAgentes + "<br>";
+		financiero_ += "Costo Total Nomina: "+ summaryCarData.financiero.costoTotalNomina + "<br>";
+		financiero_ += "Costo Por registro: "+ summaryCarData.financiero.costoXregistro + "<br>";
+		financiero_ += "Ingreso: "+ summaryCarData.financiero.ingreso + "<br>";
+		financiero_ += "Ingreso Por Agente: "+ summaryCarData.financiero.ingresoXagente + "<br>";
+		financiero_ += "Overhead: "+ summaryCarData.financiero.overhead + "<br>";
+		financiero_ += "Precio por Hora: "+ summaryCarData.financiero.precioXHora + "<br>";
+		financiero_ += "Profit: "+ summaryCarData.financiero.profit + "<br>";
 		financiero_ += "<br>:::::::::::::::::::::<br>";
-		financiero_ += "SubTotal: "+ summaryCarData.costos.subTotal + " / ";
-		financiero_ += "Iva: "+ summaryCarData.costos.iva + " / ";
-		financiero_ += "Total: "+ summaryCarData.costos.total + " / ";
+		financiero_ += "SubTotal: "+ summaryCarData.costos.subTotal + "<br>";
+		financiero_ += "Iva: "+ summaryCarData.costos.iva + "<br>";
+		financiero_ += "Total: "+ summaryCarData.costos.total + "<br>";
 
 	//console.error(summaryCarData);
 	//console.error(financiero_);
@@ -479,7 +480,7 @@ function fillFormInsert(){
 	$("#OMOLDS_SERVICETYPE").val( summaryCarData.tipoDeServicio );
 	$("#OMOLDS_PEOPLETOCALL").val( summaryCarData.personasAllamar );
 	$("#OMOLDS_DURATIONOCALL").val( summaryCarData.duracionLlamada );
-	$("#OMOLDS_SERVICEDATE").val( "Fecha Inicial: "+ summaryCarData.fechaInicio +" / Fecha Final: "+ summaryCarData.fechaFinal );
+	$("#OMOLDS_SERVICEDATE").val( "Fecha Inicial: "+ summaryCarData.fechaInicio +" <br> Fecha Final: "+ summaryCarData.fechaFinal );
 	$("#OMOLDS_ACTIVITYDAYS").val(summaryCarData.diasGestion);
 	$("#OMOLDS_BAGCOMITION").val(summaryCarData.bolsaCommisiones);
 	$("#OMOLDS_GRABATIONS").val( summaryCarData.grabaciones );
@@ -602,4 +603,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("aAAa!!");
+console.info("aja!!");
