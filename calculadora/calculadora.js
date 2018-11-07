@@ -501,10 +501,7 @@ function fillFormInsert(){
 	            contentType:false,
 	            processData:false,
 	        }).done(function(response){ 
-	            console.log(response.id);
-	            console.error( getCookie('paymentCurrent') )
-	            	setCookie('paymentCurrent', response.id , 1); 
-	            console.error( getCookie('paymentCurrent') )
+	            console.log("id de la tabla:", response.id);
 	            if(response.tipoMsm == 'success'){
 	            	console.info("Procesar pago de PAYULATAM");
 	            	$(".pay").submit();
@@ -589,7 +586,8 @@ $("body").on("click", "#termsConditions", function(event){
 		                    { name: "signature", value:hash },
 		                    { name: "test", value:"0" },
 		                    { name: "responseUrl", value:"https://www.servon.com.co/web/index/returnpayment" },
-		                    { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment" }
+		                    { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment" },
+		                    { NAME: 'extra1', value:120}
 	                    ];
 	                    for (var i = 0; i <= dataPayLatam.length - 1; i++) {
 	                        var input_ = $("<input/>");
@@ -602,4 +600,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("revsssisar!!");
+console.info("aa!!");
