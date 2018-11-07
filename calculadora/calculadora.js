@@ -486,29 +486,30 @@ function fillFormInsert(){
 	$("#OMOLDS_AUDITIONS").val( summaryCarData.audition );
 	$("#OMOLDS_CONSULTANTS").val( summaryCarData.asesoresRequeridos );
 	$("#OMOLDS_FINANCIALSUMMARY").val( financiero_ );
+	$('#formPayu').submit();
+}
 
 	$('#formPayu').submit(function( event ) {
         event.preventDefault();
         var form = this;
         var post_url = $(this).attr("action"); 
         var request_method = $(this).attr("method"); 
-        $.ajax({
-            url : post_url,
-            method: request_method,
-            data: new FormData(this),
-            contentType:false,
-            processData:false,
-        }).done(function(response){ 
-            console.log(response)
-            if(response.tipoMsm == 'success'){
-            	console.info("Procesar pago de PAYULATAM");
-            	$(".pay").submit();
-            }else{
-            	alert("Ha ocurrido un fallo al guardar los datos");
-            }
-        });
+	        $.ajax({
+	            url : post_url,
+	            method: request_method,
+	            data: new FormData(this),
+	            contentType:false,
+	            processData:false,
+	        }).done(function(response){ 
+	            console.log(response)
+	            if(response.tipoMsm == 'success'){
+	            	console.info("Procesar pago de PAYULATAM");
+	            	$(".pay").submit();
+	            }else{
+	            	alert("Ha ocurrido un fallo al guardar los datos");
+	            }
+	        });
     });
-}
 
 
 		 var fNumber = {
