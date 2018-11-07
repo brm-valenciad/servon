@@ -459,9 +459,33 @@ function fillSummaryCar_(data){
 }
 
 function fillFormInsert(){
+	var financiero_  = "Costo Nomina Agentes: "+ summaryCarData.financiero.costoNominaAgentes + " / ";
+		financiero_ += "Costo Total Nomina: "+ summaryCarData.financiero.costoTotalNomina + " / ";
+		financiero_ += "Costo Por registro: "+ summaryCarData.financiero.costoXregistro + " / ";
+		financiero_ += "Ingreso: "+ summaryCarData.financiero.ingreso + " / ";
+		financiero_ += "Ingreso Por Agente: "+ summaryCarData.financiero.ingresoXagente + " / ";
+		financiero_ += "Overhead: "+ summaryCarData.financiero.overhead + " / ";
+		financiero_ += "Precio por Hora: "+ summaryCarData.financiero.precioXHora + " / ";
+		financiero_ += "Profit: "+ summaryCarData.financiero.profit + " / ";
+		financiero_ += ":::::::::::::::::::::";
+		financiero_ += "SubTotal: "+ summaryCarData.costos.subTotal + " / ";
+		financiero_ += "Iva: "+ summaryCarData.costos.iva + " / ";
+		financiero_ += "Ttal: "+ summaryCarData.costos.total + " / ";
+
 	console.error(summaryCarData);
-	console.error(summaryCarData.referenceCode);
-	$("input[name='referencecode[value]']").val( summaryCarData.referenceCode );
+	console.error(sfinanciero_);
+
+	$("#OMOLDS_REFERENCECODE").val( summaryCarData.referenceCode );
+	$("#OMOLDS_SERVICETYPE").val( summaryCarData.tipoDeServicio );
+	$("#OMOLDS_PEOPLETOCALL").val( summaryCarData.personasAllamar );
+	$("#OMOLDS_DURATIONOCALL").val( summaryCarData.duracionLlamada );
+	$("#OMOLDS_SERVICEDATE").val( summaryCarData.fechaInicio +" - "+ summaryCarData.fechaFinal );
+	$("#OMOLDS_ACTIVITYDAYS").val(summaryCarData.diasGestion);
+	$("#OMOLDS_BAGCOMITION").val(summaryCarData.bolsaCommisiones);
+	$("#OMOLDS_GRABATIONS").val( summaryCarData.grabaciones );
+	$("#OMOLDS_AUDITIONS").val( summaryCarData.audition );
+	$("#OMOLDS_CONSULTANTS").val( summaryCarData.asesoresRequeridos );
+	$("#OMOLDS_FINANCIALSUMMARY").val( financiero_ );
 }
 
 
@@ -556,4 +580,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("cansse!!");
+console.info("medi!!");
