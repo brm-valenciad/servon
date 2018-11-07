@@ -456,8 +456,11 @@ function fillSummaryCar_(data){
 		CbagComition.find("span").text( data.bolsaCommisiones );
 		Cgrabationc.find("span").text( data.grabaciones );
 		Cauditoria_.find("span").text( data.audition );
+}
 
-		console.warn("Formateando carrito");
+function fillFormInsert(){
+	console.error(summaryCarData);
+	$("input[name='referencecode[value]']").val(summaryCarData.referenceCode);
 }
 
 
@@ -505,11 +508,6 @@ $("body").on("click", "#termsConditions", function(event){
     }
 
 
-
-
-
-
-
 /*Funcion para pagos*/
    	$("body").on("click","#pay", function(event){
             event.preventDefault();
@@ -527,6 +525,8 @@ $("body").on("click", "#termsConditions", function(event){
                     var merchantId = "677879";
                     var hash = md5("wns266ZHs6P8KNk08Mu531qWB6~"+merchantId+"~"+reference+"~"+total_+"~COP");
 
+                    summaryCarData.push({ referenceCode: reference });
+
                    var dataPayLatam = [
 	                    { name: "merchantId", value: merchantId },
 	                    { name: "accountId", value:"760061" },
@@ -540,7 +540,7 @@ $("body").on("click", "#termsConditions", function(event){
 	                    { name: "test", value:"0" },
 	                    { name: "responseUrl", value:"https://www.servon.com.co/web/index/returnpayment" },
 	                    { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment" }
-                        ];
+                    ];
                     for (var i = 0; i <= dataPayLatam.length - 1; i++) {
                         var input_ = $("<input/>");
                              input_.attr("name", dataPayLatam[i].name);
