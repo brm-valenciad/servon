@@ -587,7 +587,7 @@ $("body").on("click", "#termsConditions", function(event){
 		                    { name: "test", value:"0" },
 		                    { name: "responseUrl", value:"https://www.servon.com.co/web/index/returnpayment" },
 		                    { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment" },
-		                    { NAME: 'extra1', value:120}
+		                    { name: 'extra1', value:120 }
 	                    ];
 	                    for (var i = 0; i <= dataPayLatam.length - 1; i++) {
 	                        var input_ = $("<input/>");
