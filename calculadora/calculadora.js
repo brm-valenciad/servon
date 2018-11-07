@@ -536,7 +536,7 @@ function fillFormInsert(){
 	                        input_.val(response.id);
 	                        $(".pay").append(input_);
 	                        console.error("No puedo hacer exposicion");
-	            	//$(".pay").submit();
+	            	$(".pay").submit();
 	            }else{
 	            	alert("Ha ocurrido un fallo al guardar los datos");
 	            }
@@ -622,7 +622,6 @@ $("body").on("click", "#termsConditions", function(event){
 		                    { name: "test", value:"0" },
 		                    { name: "responseUrl", value:"https://www.servon.com.co/web/index/response/" },
 		                    { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment/" },
-		                   // { name: 'extra3', value: 120 }
 	                    ];
 	                    for (var i = 0; i <= dataPayLatam.length - 1; i++) {
 	                        var input_ = $("<input/>");
