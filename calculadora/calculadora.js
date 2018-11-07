@@ -460,6 +460,7 @@ function fillSummaryCar_(data){
 
 function fillFormInsert(){
 	console.error(summaryCarData);
+	console.error(summaryCarData.referenceCode);
 	$("input[name='referencecode[value]']").val(summaryCarData.referenceCode);
 }
 
@@ -512,7 +513,7 @@ $("body").on("click", "#termsConditions", function(event){
    	$("body").on("click","#pay", function(event){
             event.preventDefault();
             	fillFormInsert()
-                /*if ( total == 0 || $( "#termsConditions").prop("checked") == false ){
+                if ( total == 0 || $( "#termsConditions").prop("checked") == false ){
                     alert("Debes seleccionar todos los datos previos");
                     return false;
                 }
@@ -528,7 +529,7 @@ $("body").on("click", "#termsConditions", function(event){
 
                     summaryCarData.push({ referenceCode: reference });
 
-                   var dataPayLatam = [
+                  /* var dataPayLatam = [
 	                    { name: "merchantId", value: merchantId },
 	                    { name: "accountId", value:"760061" },
 	                    { name: "description", value:"Pago TMK - Servon.com.co" },
@@ -549,8 +550,8 @@ $("body").on("click", "#termsConditions", function(event){
                              input_.val(dataPayLatam[i].value);
                         $(".pay").append(input_);
                     }; 
-                    $(".pay").submit();
-                }*/
+                    $(".pay").submit();*/
+                }
         }); 
 
 console.info("probando!!");
