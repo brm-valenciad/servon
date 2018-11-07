@@ -179,6 +179,14 @@ $(document).ready(function(){
 			FinJornada         = parseInt($("#end-time-journal").val().replace(":",".")),
 			HorasDeTrabajoXdia = ( InicioJornada != FinJornada ) ?  Math.abs( InicioJornada - FinJornada ): 12;
 
+			console.error(InicioJornada);
+			console.info(FinJornada);
+
+			if ( InicioJornada > FinJornada){
+				errorCalculator("La hora de inicio no puede ser mayor a la hora de salida");
+				return false;
+			}
+
 		var TipoDeServicio = $("#service-type-tmk").val();
 		//Constantes 
 		var ocupation = 70 / 100;//horas reales de trabajo
@@ -629,4 +637,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("aja daniel!!");
+console.info("aja ahs!!");
