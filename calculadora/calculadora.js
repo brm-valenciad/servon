@@ -11,6 +11,7 @@ var total = 0, total_, summaryCarData;
     $('#end-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
 
 $(document).ready(function(){
+	//$(".pay").find()
 	//Realizamos llamadas a la base de datos 
 	var times = [ 
 			"2:00", "2:15", "2:30",  "2:45", 
@@ -503,7 +504,7 @@ function fillFormInsert(){
 	            console.log(response)
 	            if(response.tipoMsm == 'success'){
 	            	console.info("Procesar pago de PAYULATAM");
-	            	$(".pay").submit();
+	            	//$(".pay").submit();
 	            }else{
 	            	alert("Ha ocurrido un fallo al guardar los datos");
 	            }
@@ -598,4 +599,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("FINAL!!");
+console.info("ver!!");
