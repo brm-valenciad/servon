@@ -587,7 +587,7 @@ $("body").on("click", "#termsConditions", function(event){
 		                    { name: "currency", value:"COP" },
 		                    { name: "signature", value:hash },
 		                    { name: "test", value:"0" },
-		                    { name: "responseUrl", value:"https://www.servon.com.co/web/index/returnpayment/" },
+		                    { name: "responseUrl", value:"https://www.servon.com.co/web/index/response/" },
 		                    { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment/" },
 		                   // { name: 'extra3', value: 120 }
 	                    ];
@@ -602,4 +602,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("aAAaSS!!");
+console.info("aAAa!!");
