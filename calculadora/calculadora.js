@@ -1,3 +1,4 @@
+setCookie('paymentCurrent', 0); 
 var total = 0, total_, summaryCarData;
 
 /*Formatear las fechas actuales*/
@@ -501,10 +502,13 @@ function fillFormInsert(){
 	            contentType:false,
 	            processData:false,
 	        }).done(function(response){ 
-	            console.log(response)
+	            console.log(response.id);
+	            console.error( getCookie('paymentCurrent') )
+	            	setCookie('paymentCurrent', response.id , 1); 
+	            console.error( getCookie('paymentCurrent') )
 	            if(response.tipoMsm == 'success'){
 	            	console.info("Procesar pago de PAYULATAM");
-	            	//$(".pay").submit();
+	            	$(".pay").submit();
 	            }else{
 	            	alert("Ha ocurrido un fallo al guardar los datos");
 	            }
@@ -599,4 +603,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("ver!!");
+console.info("revisar!!");
