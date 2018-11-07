@@ -1,4 +1,4 @@
-var total = 0, total_;
+var total = 0, total_, summaryCarData;
 
 /*Formatear las fechas actuales*/
 	Date.prototype.toDateInputValue = (function() {
