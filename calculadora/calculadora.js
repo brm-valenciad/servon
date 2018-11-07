@@ -461,7 +461,7 @@ function fillSummaryCar_(data){
 function fillFormInsert(){
 	console.error(summaryCarData);
 	console.error(summaryCarData.referenceCode);
-	$("input[name='referencecode[value]']").val(summaryCarData.referenceCode);
+	$("input[name='referencecode[value]']").val( summaryCarData.referenceCode );
 }
 
 
@@ -512,7 +512,7 @@ $("body").on("click", "#termsConditions", function(event){
 /*Funcion para pagos*/
    	$("body").on("click","#pay", function(event){
             event.preventDefault();
-            	fillFormInsert()
+            	
                 if ( total == 0 || $( "#termsConditions").prop("checked") == false ){
                     alert("Debes seleccionar todos los datos previos");
                     return false;
@@ -528,6 +528,8 @@ $("body").on("click", "#termsConditions", function(event){
                     var hash = md5("wns266ZHs6P8KNk08Mu531qWB6~"+merchantId+"~"+reference+"~"+total_+"~COP");
 
                     summaryCarData.referenceCode = reference;
+					fillFormInsert();
+
 
                   /* var dataPayLatam = [
 	                    { name: "merchantId", value: merchantId },
@@ -554,4 +556,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("cabse!!");
+console.info("cansse!!");
