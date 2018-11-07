@@ -501,12 +501,11 @@ function fillFormInsert(){
         }).done(function(response){ 
             console.log(response)
             if(response.tipoMsm == 'success'){
-            	console.info("Procesar pafo de PAYULATAM");
-
+            	console.info("Procesar pago de PAYULATAM");
+            	$(".pay").submit();
             }else{
-
+            	alert("Ha ocurrido un fallo al guardar los datos");
             }
-           
         });
     });
 }
@@ -577,30 +576,28 @@ $("body").on("click", "#termsConditions", function(event){
                     summaryCarData.referenceCode = reference;
 					fillFormInsert();
 
-
-                  /* var dataPayLatam = [
-	                    { name: "merchantId", value: merchantId },
-	                    { name: "accountId", value:"760061" },
-	                    { name: "description", value:"Pago TMK - Servon.com.co" },
-	                    { name: "referenceCode", value:reference },
-	                    { name: "amount", value: total_ },
-	                    { name: "tax", value:"0" },
-	                    { name: "taxReturnBase", value:"0" },
-	                    { name: "currency", value:"COP" },
-	                    { name: "signature", value:hash },
-	                    { name: "test", value:"0" },
-	                    { name: "responseUrl", value:"https://www.servon.com.co/web/index/returnpayment" },
-	                    { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment" }
-                    ];
-                    for (var i = 0; i <= dataPayLatam.length - 1; i++) {
-                        var input_ = $("<input/>");
-                             input_.attr("name", dataPayLatam[i].name);
-                             input_.attr("type", "hidden");
-                             input_.val(dataPayLatam[i].value);
-                        $(".pay").append(input_);
-                    }; 
-                    $(".pay").submit();*/
+	                  var dataPayLatam = [
+		                    { name: "merchantId", value: merchantId },
+		                    { name: "accountId", value:"760061" },
+		                    { name: "description", value:"Pago TMK - Servon.com.co" },
+		                    { name: "referenceCode", value:reference },
+		                    { name: "amount", value: total_ },
+		                    { name: "tax", value:"0" },
+		                    { name: "taxReturnBase", value:"0" },
+		                    { name: "currency", value:"COP" },
+		                    { name: "signature", value:hash },
+		                    { name: "test", value:"0" },
+		                    { name: "responseUrl", value:"https://www.servon.com.co/web/index/returnpayment" },
+		                    { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment" }
+	                    ];
+	                    for (var i = 0; i <= dataPayLatam.length - 1; i++) {
+	                        var input_ = $("<input/>");
+	                             input_.attr("name", dataPayLatam[i].name);
+	                             input_.attr("type", "hidden");
+	                             input_.val(dataPayLatam[i].value);
+	                        $(".pay").append(input_);
+	                    }; 
                 }
         }); 
 
-console.info("medi!!");
+console.info("guardado!!");
