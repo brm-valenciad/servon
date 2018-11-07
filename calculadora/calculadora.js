@@ -467,19 +467,19 @@ function fillFormInsert(){
 		financiero_ += "Overhead: "+ summaryCarData.financiero.overhead + " / ";
 		financiero_ += "Precio por Hora: "+ summaryCarData.financiero.precioXHora + " / ";
 		financiero_ += "Profit: "+ summaryCarData.financiero.profit + " / ";
-		financiero_ += ":::::::::::::::::::::";
+		financiero_ += "<br>:::::::::::::::::::::<br>";
 		financiero_ += "SubTotal: "+ summaryCarData.costos.subTotal + " / ";
 		financiero_ += "Iva: "+ summaryCarData.costos.iva + " / ";
-		financiero_ += "Ttal: "+ summaryCarData.costos.total + " / ";
+		financiero_ += "Total: "+ summaryCarData.costos.total + " / ";
 
-	console.error(summaryCarData);
-	console.error(financiero_);
+	//console.error(summaryCarData);
+	//console.error(financiero_);
 
 	$("#OMOLDS_REFERENCECODE").val( summaryCarData.referenceCode );
 	$("#OMOLDS_SERVICETYPE").val( summaryCarData.tipoDeServicio );
 	$("#OMOLDS_PEOPLETOCALL").val( summaryCarData.personasAllamar );
 	$("#OMOLDS_DURATIONOCALL").val( summaryCarData.duracionLlamada );
-	$("#OMOLDS_SERVICEDATE").val( summaryCarData.fechaInicio +" - "+ summaryCarData.fechaFinal );
+	$("#OMOLDS_SERVICEDATE").val( "Fecha Inicial: "+ summaryCarData.fechaInicio +" / Fecha Final: "+ summaryCarData.fechaFinal );
 	$("#OMOLDS_ACTIVITYDAYS").val(summaryCarData.diasGestion);
 	$("#OMOLDS_BAGCOMITION").val(summaryCarData.bolsaCommisiones);
 	$("#OMOLDS_GRABATIONS").val( summaryCarData.grabaciones );
@@ -502,10 +502,9 @@ function fillFormInsert(){
             console.log(response)
             if(response.tipoMsm == 'success'){
             	console.info("Procesar pafo de PAYULATAM");
-                //alert(response.mensaje)
-                //window.location.replace(response.payments_url);
+
             }else{
-                //alert(response.mensaje);
+
             }
            
         });
