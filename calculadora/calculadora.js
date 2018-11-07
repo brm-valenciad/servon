@@ -1,4 +1,3 @@
-setCookie('paymentCurrent', 0); 
 var total = 0, total_, summaryCarData;
 
 /*Formatear las fechas actuales*/
@@ -603,4 +602,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("111revisar!!");
+console.info("revsssisar!!");
