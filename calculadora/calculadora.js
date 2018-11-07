@@ -55,8 +55,7 @@ $(document).ready(function(){
 			       				var option_ = $("<option/>");
 			       					option_.val(res[i].zona_horaria.value);
 			       					option_.text(res[i].zona_horaria.value);
-			       					if ( res[i].zona_horaria.value.indexOf("colombia") ){
-			       						console.error("La hora de colombia!!!!");
+			       					if ( res[i].zona_horaria.value.indexOf("Colombia") != -1 ){
 			       						option_.attr("selected","selected");
 			       					}
 			       				$("#time-zone-tmk").append(option_);
@@ -637,4 +636,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("aja ahs!!");
+console.info("aja selected!!");
