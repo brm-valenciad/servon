@@ -301,9 +301,8 @@ $(document).ready(function(){
 							var JstartDate = moment(startDate);
 							var JendDate   = moment(endDate);
 
-							var businessDays = moment().recur(JstartDate, JendDate).every(daysToInclude).daysOfWeek();
-								
-								console.info("businessDays", businessDays.add(7, 'days') );
+							var businessDays = moment().recur(JstartDate, JendDate).every(daysToInclude).daysOfWeek().add(1, 'days') ;
+
 							var totalDaysGestion  = businessDays.all().length,
 								diffHours  = Math.abs(JstartDate.diff(JendDate, 'hours')),
 								diffWeeks  = Math.abs(JstartDate.diff(JendDate, 'weeks'));
@@ -636,4 +635,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("aja add work!!");
+console.info("aja add woAASKHDGAKSYDrk!!");
