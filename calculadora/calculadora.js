@@ -346,66 +346,75 @@ var number = 123456789;
 	 							
 	 							$("#audition").find("b.value").text(fNumber.go(Math.round(calcAudition), "$"));	
 	 							$("#grabations").find(".value").text(fNumber.go(Math.round(grabaciones_nmb),"$"));
-	 						
- 							//console.info("contactados",contactados);
- 							//console.info("contactadosDaily",contactadosDaily);
- 							//console.info("efectivos",efectivos);
- 							//console.info("EfectivoDiario",EfectivoDiario);
- 							//console.info("EfectivosActivados",EfectivosActivados);
- 							//console.info("EfectivosActivadosDiario",EfectivosActivadosDiario);
  							
- 								var CtypeService_ = $("#car-type-service"),
- 									CpeoleCall_   = $("#people-to-call-car"),
- 									CdurationCall = $("#call-duration-car"),
- 									CstartService = $("#start-service-car"),
- 									CendService   = $("#end-service-car"),
- 									CTimeZone     = $("#time-zone-car"),
- 									CdaysActivity = $("#activity-days-car"),
- 									CjornadaLabor = $("#laboral-journal-car"),
- 									CbagComition  = $("#bag-comition-car"),
- 									Cgrabationc   = $("#bag-grabation-car"),
- 									Cauditoria_   = $("#bag-auditoria-car");
-
- 						if ( CtypeService_.length >= 1 ){
- 								CtypeService_.find("h5").text(TipoDeServicio);
- 								CpeoleCall_.find("h5").text(peopleToCall);
- 								CdurationCall.find("h5").text($("#duration-call").val());
- 								CstartService.text(startDate);
- 								CendService.text(endDate);
- 								CTimeZone.text(ZonaHoraria);
- 								CdaysActivity.find("h5").text( totalDaysGestion );
- 								CjornadaLabor.text("Por defecto: 8 Horas");
-								CbagComition.find("span").text( fNumber.go(   bolsaCommisiones,"$" ) );
-								Cgrabationc.find("span").text( fNumber.go(Math.round(grabaciones)));
-								Cauditoria_.find("span").text( fNumber.go( Math.round(audition) ) );
- 						}
+ 						summaryCarData = {
+	 								tipoDeServicio: TipoDeServicio,
+	 								personasAllamar: peopleToCall,
+	 								duracionLlamada: $("#duration-call").val(),
+	 								fechaInicio: startDate,
+	 								fechaFinal: endDate,
+	 								ZonaHoraria: ZonaHoraria, 
+	 								diasGestion: totalDaysGestion,
+	 								jornada: "Por defecto: 8 Horas",
+	 								bolsaCommisiones: fNumber.go(   Math.round(bolsaCommisiones) ,"$" ),
+	 								grabaciones: fNumber.go(Math.round(grabaciones),"$"),
+	 								audition: fNumber.go( Math.round(audition) , "$"),
+	 								asesoresRequeridos: asesorsRequireds.toFixed(1),
+	 									resultados:{
+	 										contactados: contactados,
+	 										contactadosDiarios: contactadosDaily,
+	 										efectivos: efectivos,
+	 										EfectivoDiario: EfectivoDiario,
+	 										EfectivosActivados: EfectivosActivados,
+	 										EfectivosActivadosDiario : EfectivosActivadosDiario
+	 									},
+		 								financiero: {
+		 									costoNominaAgentes: fNumber.go(Math.round(costoNominaAgentes ),"$"),
+		 									costoTotalNomina: fNumber.go(Math.round(costoTotalNomina ),"$"),
+		 									overhead: fNumber.go(Math.round(overhead_ ),"$"),
+		 									profit: fNumber.go(Math.round(profit_ ),"$"),
+		 									ingreso: fNumber.go(Math.round(ingreso ),"$"),
+		 									ingresoXagente: fNumber.go(Math.round(IngresoXagente),"$"),
+		 									costoXregistro: fNumber.go(Math.round(CostoPorRegistro),"$"),
+		 									precioXHora: fNumber.go(Math.round(precioXHora ),"$"),
+		 								},
+		 								costos: {
+		 									subTotal: fNumber.go(Math.round(_totalParcial ,"$")),
+		 									iva: fNumber.go( Math.round(_iva) ,"$"),
+		 									total: fNumber.go( total_ ,"$")
+		 								}
+ 							}
 
  							console.clear();
  								console.warn("%c#########","color:orange; font-size:22px;");
-	 								console.info("Asesores Requeridos", asesorsRequireds.toFixed(1) );
-	 								console.info("costoNominaAgentes",  fNumber.go(Math.round(costoNominaAgentes ),"$"));
-	 								console.error("costoNominaAgentes",  fNumber.go(costoNominaAgentes,"$"));
-	 								console.info("Bolsa Comisiones",  fNumber.go(Math.round(bolsaCommisiones ),"$"));
-	 								console.info("costo Total Nomina",  fNumber.go(Math.round(costoTotalNomina ),"$"));
-	 								console.info("overhead_",  fNumber.go(Math.round(overhead_ ),"$"));
-	 								console.info("profit_",  fNumber.go(Math.round(profit_ ),"$"));
-	 								console.info("ingreso",  fNumber.go(Math.round(ingreso ),"$"));
-	 								console.info("Ingreso x agente",  fNumber.go(Math.round(IngresoXagente),"$"));
-	 								console.info("Costo x Registro",  fNumber.go(Math.round(CostoPorRegistro),"$"));
-	 								console.error( "precioXHora",  fNumber.go(Math.round(precioXHora ),"$"));
+	 								//console.info("Asesores Requeridos", asesorsRequireds.toFixed(1) );
+	 								//console.info("costoNominaAgentes",  fNumber.go(Math.round(costoNominaAgentes ),"$"));
+	 								//console.error("costoNominaAgentes",  fNumber.go(costoNominaAgentes,"$"));
+	 								//console.info("Bolsa Comisiones",  fNumber.go(Math.round(bolsaCommisiones ),"$"));
+	 								//console.info("costo Total Nomina",  fNumber.go(Math.round(costoTotalNomina ),"$"));
+	 								//console.info("overhead_",  fNumber.go(Math.round(overhead_ ),"$"));
+	 								//console.info("profit_",  fNumber.go(Math.round(profit_ ),"$"));
+	 								//console.info("ingreso",  fNumber.go(Math.round(ingreso ),"$"));
+	 								//console.info("Ingreso x agente",  fNumber.go(Math.round(IngresoXagente),"$"));
+	 								//console.info("Costo x Registro",  fNumber.go(Math.round(CostoPorRegistro),"$"));
+	 								//console.error( "precioXHora",  fNumber.go(Math.round(precioXHora ),"$"));
 
-	 								console.info("grabaciones",  fNumber.go(Math.round(grabaciones),"$"));
- 									console.warn("Auditoria_",  fNumber.go( Math.round(audition) ,"$"));
+	 								//console.info("grabaciones",  fNumber.go(Math.round(grabaciones),"$"));
+ 									//console.warn("Auditoria_",  fNumber.go( Math.round(audition) ,"$"));
  									
- 									console.warn("SubTotal",  fNumber.go(_totalParcial ,"$"));	
- 									console.warn("SubTotal",  fNumber.go(Math.round(_totalParcial),"$"));
- 									console.warn("Iva",   fNumber.go( Math.round(_iva) ,"$"));
- 									console.warn("total_",  fNumber.go( total_ ,"$"));
+ 									//console.warn("SubTotal",  fNumber.go(_totalParcial ,"$"));	
+ 									//console.warn("SubTotal",  fNumber.go(Math.round(_totalParcial),"$"));
+ 									//console.warn("Iva",   fNumber.go( Math.round(_iva) ,"$"));
+ 									//console.warn("total_",  fNumber.go( total_ ,"$"));
+ 									console.error(summaryCarData);
 	 							console.warn("%c#########","color:orange; font-size:22px;");
 							
 	 							total = fNumber.go( total_ ,"$");
 
 	 								if ( isNaN(total_) == false ){
+	 									if ( CtypeService_.length >= 1 ){
+											fillSummaryCar_( fillSummaryCar)
+ 										}
 	 									$(".total_inversion").text(total);
 	 									$(".summary-car").removeClass("d-none");
 	 									$("#totalFlotanteOm").removeClass("d-none").find("h3").text(total);
@@ -424,7 +433,37 @@ var number = 123456789;
 	});
 })
 
- var fNumber = {
+
+function fillSummaryCar_(data){
+	var CtypeService_ = $("#car-type-service"),
+ 		CpeoleCall_   = $("#people-to-call-car"),
+ 		CdurationCall = $("#call-duration-car"),
+ 		CstartService = $("#start-service-car"),
+ 		CendService   = $("#end-service-car"),
+ 		CTimeZone     = $("#time-zone-car"),
+ 		CdaysActivity = $("#activity-days-car"),
+ 		CjornadaLabor = $("#laboral-journal-car"),
+ 		CbagComition  = $("#bag-comition-car"),
+ 		Cgrabationc   = $("#bag-grabation-car"),
+ 		Cauditoria_   = $("#bag-auditoria-car");
+
+ 		CtypeService_.find("h5").text( data.tipoDeServicio );
+ 		CpeoleCall_.find("h5").text( data.personasAllamar );
+ 		CdurationCall.find("h5").text( data.duracionLlamada );
+ 		CstartService.text( data.fechaInicio );
+ 		CendService.text( data.fechaFinal );
+ 		CTimeZone.text( data.ZonaHoraria );
+ 		CdaysActivity.find("h5").text( data.diasGestion );
+ 		CjornadaLabor.text( data.jornada );
+		CbagComition.find("span").text( data.bolsaCommisiones );
+		Cgrabationc.find("span").text( data.grabaciones );
+		Cauditoria_.find("span").text( data.audition );
+
+		console.warn("Formateando carrito");
+}
+
+
+		 var fNumber = {
                 sepMil: ".", /* separador para los miles*/
                 sepDec: ',', /* separador para los decimales*/
                 formatear:function (num){
@@ -467,6 +506,13 @@ $("body").on("click", "#termsConditions", function(event){
             return false;
     }
 
+
+
+
+
+
+
+/*Funcion para pagos*/
    	$("body").on("click","#pay", function(event){
             event.preventDefault();
                 if ( total == 0 || $( "#termsConditions").prop("checked") == false ){
