@@ -65,17 +65,18 @@ $(document).ready(function(){
 		       					if ( res[i].start_hour ){
 		       						var startDate_ = res[i].start_hour.value +" "+ res[i].start_meridiem.value;
 		       						var option_ = $("<option/>");
-		       							option_.val(startDate_);
+		       							option_.val( convertTime12to24(startDate_) );
 			       						option_.text(startDate_);
 			       						$("#start-time-journal").append(option_);
+										//console.info(startDate_);
+										//console.log();
 		       					}
 
 		       					if ( res[i].end_hour ){
 		       						var startDate_ = res[i].end_hour.value +" "+ res[i].end_meridiem.value;
 		       						var option_ = $("<option/>");
-		       							option_.val(startDate_);
+		       							option_.val( convertTime12to24(startDate_) );
 			       						option_.text(startDate_);
-
 			       						$("#end-time-journal").append(option_);
 		       					}
 		       				};
@@ -96,6 +97,24 @@ $(document).ready(function(){
 				$('select.outline').selectpicker();
 			},2000);
 	}
+
+
+	function convertTime12to24(time12h) {
+	  const [time, modifier] = time12h.split(' ');
+
+	  let [hours, minutes] = time.split(':');
+
+	  if (hours === '12') {
+	    hours = '00';
+	  }
+
+	  if (modifier === 'pm') {
+	    hours = parseInt(hours, 10) + 12;
+	  }
+
+	  return hours + ':' + minutes;
+	}
+
 	//Servicios calculadora TMK
 		load("41/false/false/");
 	//zonas Horarias
@@ -147,12 +166,16 @@ $(document).ready(function(){
 			$("input[type='date']").trigger("change");
 	});
 
-var number = 123456789;
-
-
 	$("body").on("change blur click keyup","input[type='date'], input, div.filter-option, a.selected, select, .day", function(){
-		console.info("Faltan jorandas laborales");
-		
+		//console.info("Faltan jorandas laborales");
+		var InicioJornada      = parseInt($("#start-time-journal").val().replace(":",".")),
+			FinJornada         = parseInt($("#end-time-journal").val().replace(":",".")),
+			HorasDeTrabajoXdia = ( InicioJornada != FinJornada ) ?  Math.abs( InicioJornada - FinJornada ): 12;
+
+			console.error("InicioJornada", InicioJornada);
+			console.error("FinJornada", FinJornada);
+			console.error("TiempoTotalJornada", HorasDeTrabajoXdia);
+
 		var TipoDeServicio = $("#service-type-tmk").val();
 		//Constantes 
 		var ocupation = 70 / 100;//horas reales de trabajo
@@ -234,11 +257,10 @@ var number = 123456789;
 
 		var startDate    = $("input#start-date").val(),
 			endDate      = $("input#end-date").val(),
-			HoursWorkByWeek = 8,
 			totalDaysGestion = 0;
 
 		//valor en bruto
-		var productiveHoursPerAgent   = HoursWorkByWeek * ocupation;
+		var productiveHoursPerAgent   = HorasDeTrabajoXdia * ocupation;
 		var minutosProductivosDiarios = productiveHoursPerAgent * 60;
 			
 			productiveHoursPerAgentSplit     = productiveHoursPerAgent.toString().split("."),
@@ -276,12 +298,13 @@ var number = 123456789;
 								diffHours  = Math.abs(JstartDate.diff(JendDate, 'hours')),
 								diffWeeks  = Math.abs(JstartDate.diff(JendDate, 'weeks'));
 
-							var totalHours = 8 * totalDaysGestion
+							var totalHours = HorasDeTrabajoXdia * totalDaysGestion
 
 							$("#days-inside-range").text(totalDaysGestion);
 							$("#days-to-work").text(totalDaysGestion);
 							$("#weeks-inside-range").text(diffWeeks);
 							$("#total-hours-work").text(totalHours);
+							$("#hours-to-Work").text( HorasDeTrabajoXdia );
 
 						//Dimensionamiento
 							var first_part  = peopleToCall * indexMarcation * contactability,
@@ -296,8 +319,8 @@ var number = 123456789;
 							bolsaCommisiones   = ( $("input.bag-comition").prop("checked") != false && $("#input-bag-comition").val() != "") ? bag_comition : 0, 
  							costoTotalNomina   = bolsaCommisiones / _tmp_cargaPrestacional + costoNominaAgentes,
  							overhead_          = overhead*costoTotalNomina //Desajuste de 5
- 							profit_ 		   =  (costoTotalNomina + overhead_) * profit,
- 							ingreso 		   =  costoTotalNomina + overhead_ + profit_,
+ 							profit_ 		   = (costoTotalNomina + overhead_) * profit,
+ 							ingreso 		   = costoTotalNomina + overhead_ + profit_,
  							IngresoXagente     = ingreso / asesorsRequireds;
  							CostoPorRegistro   = ingreso / peopleToCall;
 
@@ -315,9 +338,9 @@ var number = 123456789;
  							console.error("bolsaCommisiones", bolsaCommisiones);
  							console.error("costoTotalNomina", costoTotalNomina);*/
 
- 						var HorasLaborxDia  = asesorsRequireds * 8,
+ 						var HorasLaborxDia  = asesorsRequireds * HorasDeTrabajoXdia,
  							TotalHorasLabor = HorasLaborxDia * totalDaysGestion,
- 							precioXHora      = ingreso / TotalHorasLabor;
+ 							precioXHora     = ingreso / TotalHorasLabor;
 
  						//Resultados
  						var contactados      = peopleToCall * contactability,
@@ -328,8 +351,8 @@ var number = 123456789;
  							EfectivosActivadosDiario =  EfectivosActivados / totalDaysGestion;
 
  						var tarifaVariable = 25000,
- 								tarifaFee      = 60000,
- 								grabaciones_nmb;
+ 							tarifaFee  = 60000,
+ 							grabaciones_nmb;
  						
 	 						if ( peopleToCall > 499 ){
 	 							grabaciones_nmb = ((efectivos / 350) * tarifaVariable) + tarifaFee;
@@ -344,10 +367,9 @@ var number = 123456789;
 	 						var _iva   = _totalParcial * 0.19;
 	 							total_ = Math.round(_totalParcial + _iva);
 	 						
-	 							
 	 							$("#audition").find("b.value").text(fNumber.go(Math.round(calcAudition), "$"));	
 	 							$("#grabations").find(".value").text(fNumber.go(Math.round(grabaciones_nmb),"$"));
- 							
+
  						summaryCarData = {
 	 								tipoDeServicio: TipoDeServicio,
 	 								personasAllamar: peopleToCall,
@@ -356,7 +378,7 @@ var number = 123456789;
 	 								fechaFinal: endDate,
 	 								ZonaHoraria: ZonaHoraria, 
 	 								diasGestion: totalDaysGestion,
-	 								jornada: "Por defecto: 8 Horas",
+	 								jornada: "Horas",
 	 								bolsaCommisiones: fNumber.go(   Math.round(bolsaCommisiones) ,"$" ),
 	 								grabaciones: fNumber.go(Math.round(grabaciones),"$"),
 	 								audition: fNumber.go( Math.round(audition) , "$"),
