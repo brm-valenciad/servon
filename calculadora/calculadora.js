@@ -412,7 +412,7 @@ var number = 123456789;
 	 							total = fNumber.go( total_ ,"$");
 
 	 								if ( isNaN(total_) == false ){
-											fillSummaryCar_( fillSummaryCar)
+											fillSummaryCar_( summaryCarData)
 	 									$(".total_inversion").text(total);
 	 									$(".summary-car").removeClass("d-none");
 	 									$("#totalFlotanteOm").removeClass("d-none").find("h3").text(total);
