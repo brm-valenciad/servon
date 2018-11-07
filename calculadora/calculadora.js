@@ -634,4 +634,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("aja adasduhasiluhd!!");
+console.info("aja s!!");
