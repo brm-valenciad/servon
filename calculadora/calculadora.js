@@ -55,6 +55,10 @@ $(document).ready(function(){
 			       				var option_ = $("<option/>");
 			       					option_.val(res[i].zona_horaria.value);
 			       					option_.text(res[i].zona_horaria.value);
+			       					if ( res[i].zona_horaria.value.indexOf("colombia") ){
+			       						console.error("La hora de colombia!!!!");
+			       						option_.attr("selected","selected");
+			       					}
 			       				$("#time-zone-tmk").append(option_);
 		       				};
 		       			}
@@ -68,8 +72,6 @@ $(document).ready(function(){
 		       							option_.val( convertTime12to24(startDate_) );
 			       						option_.text(startDate_);
 			       						$("#start-time-journal").append(option_);
-										//console.info(startDate_);
-										//console.log();
 		       					}
 
 		       					if ( res[i].end_hour ){
@@ -444,11 +446,11 @@ $(document).ready(function(){
 	 								}else{
 	 									$("#totalFlotanteOm").addClass("d-none").find("h3").text(0);
 	 									$(".summary-car").addClass("d-none");
-	 									console.error("Ha ocurrido un error con los datos");
+	 									errorCalculator("Ha ocurrido un error con los datos");
 	 								}
 					}
 				}else{
-					errorCalculator("Las fechas no pueden ser iguales")
+					errorCalculator("Las fechas no pueden ser iguales");
 				}
 			}
 
@@ -627,4 +629,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("aja ultimo!!");
+console.info("aja daniel!!");
