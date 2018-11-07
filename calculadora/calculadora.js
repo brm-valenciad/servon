@@ -430,8 +430,7 @@ var number = 123456789;
 		}//fin del if else principal
 	});
 })
-
-
+//llenar resumen de la compra
 function fillSummaryCar_(data){
 	var CtypeService_ = $("#car-type-service"),
  		CpeoleCall_   = $("#people-to-call-car"),
@@ -457,7 +456,7 @@ function fillSummaryCar_(data){
 		Cgrabationc.find("span").text( data.grabaciones );
 		Cauditoria_.find("span").text( data.audition );
 }
-
+//Llenar formulario para insertar dentro de OMOLDS
 function fillFormInsert(){
 	var financiero_  = "Costo Nomina Agentes: "+ summaryCarData.financiero.costoNominaAgentes + " / ";
 		financiero_ += "Costo Total Nomina: "+ summaryCarData.financiero.costoTotalNomina + " / ";
@@ -555,7 +554,6 @@ $("body").on("click", "#termsConditions", function(event){
             return false;
     }
 
-
 /*Funcion para pagos*/
    	$("body").on("click","#pay", function(event){
             event.preventDefault();
@@ -575,8 +573,6 @@ $("body").on("click", "#termsConditions", function(event){
                     var hash = md5("wns266ZHs6P8KNk08Mu531qWB6~"+merchantId+"~"+reference+"~"+total_+"~COP");
 
                     summaryCarData.referenceCode = reference;
-					fillFormInsert();
-
 	                  var dataPayLatam = [
 		                    { name: "merchantId", value: merchantId },
 		                    { name: "accountId", value:"760061" },
@@ -597,8 +593,9 @@ $("body").on("click", "#termsConditions", function(event){
 	                             input_.attr("type", "hidden");
 	                             input_.val(dataPayLatam[i].value);
 	                        $(".pay").append(input_);
-	                    }; 
+	                    };
+	                fillFormInsert(); 
                 }
         }); 
 
-console.info("guardado!!");
+console.info("FINAL!!");
