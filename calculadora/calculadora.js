@@ -166,15 +166,16 @@ $(document).ready(function(){
 			$("input[type='date']").trigger("change");
 	});
 
+	function errorCalculator(text){
+		$("#totalFlotanteOm").removeClass("d-none").find("h3").text(text);
+		$("#totalFlotanteOm").find(".bg-success").addClass("alerterror");
+	}
+
 	$("body").on("change blur click keyup","input[type='date'], input, div.filter-option, a.selected, select, .day", function(){
 		//console.info("Faltan jorandas laborales");
 		var InicioJornada      = parseInt($("#start-time-journal").val().replace(":",".")),
 			FinJornada         = parseInt($("#end-time-journal").val().replace(":",".")),
 			HorasDeTrabajoXdia = ( InicioJornada != FinJornada ) ?  Math.abs( InicioJornada - FinJornada ): 12;
-
-			console.error("InicioJornada", InicioJornada);
-			console.error("FinJornada", FinJornada);
-			console.error("TiempoTotalJornada", HorasDeTrabajoXdia);
 
 		var TipoDeServicio = $("#service-type-tmk").val();
 		//Constantes 
@@ -272,7 +273,7 @@ $(document).ready(function(){
 			if ( startDate.length != 0 && endDate.length != 0 ){
 				if ( startDate !== endDate ){
 					if ( endDate < startDate ){
-						console.error("La fecha de finalización no puede ser mayor a la fecha de inicio");
+						errorCalculator("La fecha de finalización no puede ser mayor a la fecha de inicio");
 					}else{
 						var dayForWeek   = 7;
 						var includeDays = [];
@@ -438,7 +439,7 @@ $(document).ready(function(){
 											fillSummaryCar_( summaryCarData)
 	 									$(".total_inversion").text(total);
 	 									$(".summary-car").removeClass("d-none");
-	 									$("#totalFlotanteOm").removeClass("d-none").find("h3").text(total);
+	 									$("#totalFlotanteOm").removeClass("d-none").find("h3").text(total).attr("style","");
 	 								}else{
 	 									$("#totalFlotanteOm").addClass("d-none").find("h3").text(0);
 	 									$(".summary-car").addClass("d-none");
@@ -446,7 +447,7 @@ $(document).ready(function(){
 	 								}
 					}
 				}else{
-					console.warn("las fechas son iguales");
+					errorCalculator("Las fechas no pueden Ser Iguales")
 				}
 			}
 
@@ -625,4 +626,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("aja!!");
+console.info("aja ultimo!!");
