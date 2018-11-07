@@ -439,6 +439,7 @@ $(document).ready(function(){
 											fillSummaryCar_( summaryCarData)
 	 									$(".total_inversion").text(total);
 	 									$(".summary-car").removeClass("d-none");
+	 									$("#totalFlotanteOm").find(".bg-success").removeClass("alerterror");
 	 									$("#totalFlotanteOm").removeClass("d-none").find("h3").text(total).attr("style","");
 	 								}else{
 	 									$("#totalFlotanteOm").addClass("d-none").find("h3").text(0);
@@ -447,7 +448,7 @@ $(document).ready(function(){
 	 								}
 					}
 				}else{
-					errorCalculator("Las fechas no pueden Ser Iguales")
+					errorCalculator("Las fechas no pueden ser iguales")
 				}
 			}
 
