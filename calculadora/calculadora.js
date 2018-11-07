@@ -602,4 +602,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("aAAa!!");
+console.info("aAAaSS!!");
