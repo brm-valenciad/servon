@@ -473,7 +473,7 @@ function fillFormInsert(){
 		financiero_ += "Ttal: "+ summaryCarData.costos.total + " / ";
 
 	console.error(summaryCarData);
-	console.error(sfinanciero_);
+	console.error(financiero_);
 
 	$("#OMOLDS_REFERENCECODE").val( summaryCarData.referenceCode );
 	$("#OMOLDS_SERVICETYPE").val( summaryCarData.tipoDeServicio );
