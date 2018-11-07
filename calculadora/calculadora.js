@@ -178,9 +178,6 @@ $(document).ready(function(){
 			FinJornada         = parseInt($("#end-time-journal").val().replace(":",".")),
 			HorasDeTrabajoXdia = ( InicioJornada != FinJornada ) ?  Math.abs( InicioJornada - FinJornada ): 12;
 
-			console.error(InicioJornada);
-			console.info(FinJornada);
-
 			if ( InicioJornada > FinJornada){
 				errorCalculator("La hora de inicio no puede ser mayor a la hora de salida");
 				return false;
