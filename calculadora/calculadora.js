@@ -233,8 +233,6 @@ $(document).ready(function(){
 		var minutesToDay = 1440;//Minutos que hacen un día
 		var somethingWrong = false;//NO SIRVE
 
-		console.info(durationCall);
-
 		if ( isNaN(peopleToCall) == true) {
 			console.info("Por favor ingresa un número válido");
 		}
@@ -301,9 +299,9 @@ $(document).ready(function(){
 							var JstartDate = moment(startDate);
 							var JendDate   = moment(endDate);
 
-							var businessDays = moment().recur(JstartDate, JendDate).every(daysToInclude).daysOfWeek().add(1, 'days') ;
+							var businessDays = moment().recur(JstartDate, JendDate).every(daysToInclude).daysOfWeek();
 
-							var totalDaysGestion  = businessDays.all().length,
+							var totalDaysGestion  = businessDays.all().length + 1,
 								diffHours  = Math.abs(JstartDate.diff(JendDate, 'hours')),
 								diffWeeks  = Math.abs(JstartDate.diff(JendDate, 'weeks'));
 
@@ -417,7 +415,7 @@ $(document).ready(function(){
 		 								}
  							}
 
- 							console.clear();
+ 							/*console.clear();
  								console.warn("%c#########","color:orange; font-size:22px;");
 	 								//console.info("Asesores Requeridos", asesorsRequireds.toFixed(1) );
 	 								//console.info("costoNominaAgentes",  fNumber.go(Math.round(costoNominaAgentes ),"$"));
@@ -439,7 +437,7 @@ $(document).ready(function(){
  									//console.warn("Iva",   fNumber.go( Math.round(_iva) ,"$"));
  									//console.warn("total_",  fNumber.go( total_ ,"$"));
  									console.error(summaryCarData);
-	 							console.warn("%c#########","color:orange; font-size:22px;");
+	 							console.warn("%c#########","color:orange; font-size:22px;");*/
 							
 	 							total = fNumber.go( total_ ,"$");
 
