@@ -555,6 +555,8 @@ $("body").on("click", "#termsConditions", function(event){
             return false;
     }
 
+
+
 /*Funcion para pagos*/
    	$("body").on("click","#pay", function(event){
             event.preventDefault();
@@ -569,9 +571,9 @@ $("body").on("click", "#termsConditions", function(event){
                 }
                 else{
                     var d = new Date(), n = d.getTime();
-                    var reference  = "TMK-"+n;
-                    var merchantId = "677879";
-                    var hash = md5("wns266ZHs6P8KNk08Mu531qWB6~"+merchantId+"~"+reference+"~"+total_+"~COP");
+                    var reference  = "TMK-"+n,
+                    	merchantId = "677879", 
+                    	hash = md5("wns266ZHs6P8KNk08Mu531qWB6~"+merchantId+"~"+reference+"~"+total_+"~COP");
 
                     summaryCarData.referenceCode = reference;
 	                  var dataPayLatam = [
@@ -585,9 +587,9 @@ $("body").on("click", "#termsConditions", function(event){
 		                    { name: "currency", value:"COP" },
 		                    { name: "signature", value:hash },
 		                    { name: "test", value:"0" },
-		                    { name: "responseUrl", value:"https://www.servon.com.co/web/index/returnpayment" },
-		                    { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment" },
-		                    { name: 'extra1', value:120 }
+		                    { name: "responseUrl", value:"https://www.servon.com.co/web/index/returnpayment/" },
+		                    { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment/" },
+		                   // { name: 'extra3', value: 120 }
 	                    ];
 	                    for (var i = 0; i <= dataPayLatam.length - 1; i++) {
 	                        var input_ = $("<input/>");
@@ -600,4 +602,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("aa!!");
+console.info("aAAa!!");
