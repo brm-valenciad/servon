@@ -529,10 +529,14 @@ function fillFormInsert(){
 	            contentType:false,
 	            processData:false,
 	        }).done(function(response){ 
-	            console.log("id de la tabla:", response.id);
 	            if(response.tipoMsm == 'success'){
-	            	console.info("Procesar pago de PAYULATAM");
-	            	$(".pay").submit();
+	            	var input_ = $("<input/>");
+	                        input_.attr("name", "extra3");
+	                        input_.attr("type", "hidden");
+	                        input_.val(response.id);
+	                        $(".pay").append(input_);
+	                        console.error("No puedo hacer exposicion");
+	            	//$(".pay").submit();
 	            }else{
 	            	alert("Ha ocurrido un fallo al guardar los datos");
 	            }
@@ -604,6 +608,7 @@ $("body").on("click", "#termsConditions", function(event){
                     	hash = md5("wns266ZHs6P8KNk08Mu531qWB6~"+merchantId+"~"+reference+"~"+total_+"~COP");
 
                     summaryCarData.referenceCode = reference;
+
 	                  var dataPayLatam = [
 		                    { name: "merchantId", value: merchantId },
 		                    { name: "accountId", value:"760061" },
@@ -630,4 +635,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("aja add woAASKHDGAKSYDrk!!");
+console.info("aja adasduhasiluhd!!");
