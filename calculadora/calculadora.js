@@ -527,7 +527,7 @@ $("body").on("click", "#termsConditions", function(event){
                     var merchantId = "677879";
                     var hash = md5("wns266ZHs6P8KNk08Mu531qWB6~"+merchantId+"~"+reference+"~"+total_+"~COP");
 
-                    summaryCarData.push({ referenceCode: reference });
+                    summaryCarData.referenceCode = reference;
 
                   /* var dataPayLatam = [
 	                    { name: "merchantId", value: merchantId },
@@ -554,4 +554,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("probando1!!");
+console.info("cabse!!");
