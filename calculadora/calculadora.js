@@ -603,4 +603,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("revisar!!");
+console.info("111revisar!!");
