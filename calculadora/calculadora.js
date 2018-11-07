@@ -511,7 +511,8 @@ $("body").on("click", "#termsConditions", function(event){
 /*Funcion para pagos*/
    	$("body").on("click","#pay", function(event){
             event.preventDefault();
-                if ( total == 0 || $( "#termsConditions").prop("checked") == false ){
+            	fillFormInsert()
+                /*if ( total == 0 || $( "#termsConditions").prop("checked") == false ){
                     alert("Debes seleccionar todos los datos previos");
                     return false;
                 }
@@ -549,7 +550,7 @@ $("body").on("click", "#termsConditions", function(event){
                         $(".pay").append(input_);
                     }; 
                     $(".pay").submit();
-                }
+                }*/
         }); 
 
-console.info("PAGOS LISTOS!!");
+console.info("probando!!");
