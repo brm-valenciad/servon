@@ -48,8 +48,6 @@ $('#saveInBD').submit(function( event ) {
 	            	payUdata.push({ name: "extra3", value: response.id });
 
 	            	for (var i = 0; i <= payUdata.length - 1; i++) {
-	                   	//console.warn(payUdata[i].name);
-	                   	//console.info(payUdata[i].value);
 		                    var input_ = $("<input/>");
 	                        	input_.addClass("removible");
 	                            input_.attr("name", payUdata[i].name);
@@ -64,8 +62,6 @@ $('#saveInBD').submit(function( event ) {
 	});
 });
 
-
-
 //$("#saveInBD").submit();
 //$("#pay").trigger("click");
 
@@ -73,7 +69,7 @@ $('#saveInBD').submit(function( event ) {
     	console.info("Haciendo pagos");
         event.preventDefault();
         
-        /*if ( totalFinal == 0 || $( "#termsConditions").prop("checked") == false ){
+       if ( totalFinal == 0 || $( "#termsConditions").prop("checked") == false ){
             alert("Debes seleccionar todos los datos previos");
                 return false;
         }
@@ -83,7 +79,9 @@ $('#saveInBD').submit(function( event ) {
                     return false;
        }
        
-       else{*/
+       else{
+       	console.info("minatomo", totalFinal);
+       	
             var d = new Date(), n = d.getTime(),
             	reference = "servon-"+n,
             	hash = md5(apiKey+"~"+merchantId+"~"+reference+"~"+total_+"~COP");
@@ -93,8 +91,7 @@ $('#saveInBD').submit(function( event ) {
 	            payUdata.push({ name: "amount", value: total_ });
 
                    	InsertOmoldsIfraestructura("infraestructura");
-                    //
-                //}
+                }
         }); 
 
-console.warn("Haciendo los pagos 17");
+console.warn("Haciendo los pagos 18");
