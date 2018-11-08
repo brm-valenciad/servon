@@ -13,7 +13,7 @@ var payUdata = [
 		   		{ name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment/" }
 			];
 //Valido solo para insertar dentro de las tablas de servon
-function InsertOmoldsIfraestructura(tablOM){
+function InsertTablOM(tablOM){
 	if ( tablOM == "infraestructura" ){
 		$("#consecutivoOMOLDS").val( payUdata[9].value ).css("border","1px solid red");
 		$("#descripcionDeCompraOMOLDS").val( payUdata[2].value );
@@ -79,17 +79,14 @@ $('#saveInBD').submit(function( event ) {
     $("body").on("click","#pay", function(event){
     	console.info("Haciendo pagos");
         event.preventDefault();
-        
        if ( totalFinal == 0 || $( "#termsConditions").prop("checked") == false ){
             alert("Debes seleccionar todos los datos previos");
                 return false;
         }
-       
-       else if ( $("#email").val() == '' || validEmail($("#email").val()) == false ) {
+       else if ( $("#email").val() == '' || validEmail( $("#email").val() ) == false ) {
                     alert("Asegurate de ingresar un email correcto");
                     return false;
        }
-       
        else{
        		var d = new Date(), n = d.getTime(),
             	reference = "servon-"+n,
@@ -99,8 +96,8 @@ $('#saveInBD').submit(function( event ) {
 	            payUdata.push({ name: "signature", value:hash });
 	            payUdata.push({ name: "amount", value: totalFinal });
 
-                   	InsertOmoldsIfraestructura("infraestructura");
+                   	InsertTablOM("infraestructura");
                 }
         }); 
 
-console.warn("Haciendo los pagos 22");
+console.warn("Haciendo los pagos 21");
