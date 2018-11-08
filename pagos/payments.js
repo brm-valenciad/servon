@@ -1,20 +1,19 @@
 var apiKey   = "4Vj8eK4rloUd272L48hsrarnUA",
 	merchantId = "677879";
 
+var total_ = 100000;
+
 var payUdata = [
-		            { name: "merchantId", value: merchantId },
-		            { name: "accountId", value:"760061" },
-		            { name: "description", value:"Pago TMK - Servon.com.co" },
-		            //{ name: "referenceCode", value:reference },
-		            //{ name: "amount", value: total_ },
-		            { name: "tax", value:"0" },
-		            { name: "taxReturnBase", value:"0" },
-		            { name: "currency", value:"COP" },
-		            //{ name: "signature", value:hash },
-		            { name: "test", value:"0" },
-		            { name: "responseUrl", value:"https://www.servon.com.co/web/index/response/" },
-		            { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment/" },
-	            ];
+		    { name: "merchantId", value: merchantId },
+		    { name: "accountId", value:"760061" },
+		    { name: "description", value:"Pago TMK - Servon.com.co" },
+		    { name: "tax", value:"0" },
+		    { name: "taxReturnBase", value:"0" },
+		    { name: "currency", value:"COP" },
+		   	{ name: "test", value:"0" },
+		   	{ name: "responseUrl", value:"https://www.servon.com.co/web/index/response/" },
+		   	{ name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment/" },
+	   ];
 //Valido solo para insertar dentro de las tablas de servon
 function InsertOmoldsIfraestructura(tablOM){
 	if ( tablOM == "infraestructura" ){
@@ -26,8 +25,9 @@ function InsertOmoldsIfraestructura(tablOM){
 }
 
 //$("#saveInBD").submit();
- $("#click").trigger("click");
+ $("#pay").trigger("click");
     $("body").on("click","#pay", function(event){
+    	console.info("Haciendo pagos");
         event.preventDefault();
         
         /*if ( totalFinal == 0 || $( "#termsConditions").prop("checked") == false ){
@@ -43,18 +43,21 @@ function InsertOmoldsIfraestructura(tablOM){
        else{*/
             var d = new Date(), n = d.getTime(),
             	reference = "servon-"+n,
-            	hash = md5(apiKey+"~508029~"+reference+"~"+totalFinal+"~COP");
+            	hash = md5(apiKey+"~508029~"+reference+"~"+total_+"~COP");
 
             payUdata.push({ name: "referenceCode", value:reference });
+            payUdata.push({ name: "signature", value:hash });
+            payUdata.push({ name: "amount", value: total_ });
             
-                   /* for (var i = 0; i <= dataPayLatam.length - 1; i++) {
+                   for (var i = 0; i <= payUdata.length - 1; i++) {
                         var input_ = $("<input/>");
-                             input_.attr("name", dataPayLatam[i].name);
-                             input_.attr("type", "hidden");
-                             input_.val(dataPayLatam[i].value);
+                        	input_.addClass("removible");
+                            input_.attr("name", payUdata[i].name);
+                            input_.attr("type", "hidden");
+                            input_.val(payUdata[i].value);
                         $(".pay").append(input_);
                     }; 
-                    $(".pay").submit();*/
+                    $(".pay").submit();
                 //}
         }); 
 
