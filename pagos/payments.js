@@ -20,7 +20,7 @@ function InsertOmoldsIfraestructura(tablOM){
 	//console.info( "tablOM", tablOM );
 	if ( tablOM == "infraestructura" ){
 		console.table( payUdata );
-		$("#consecutivoOMOLDS").val( payUdata.referenceCode ).css("border","1px solid red");
+		$("#consecutivoOMOLDS").val( "REFcode" ).css("border","1px solid red");
 		$("#descripcionDeCompraOMOLDS").val( payUdata.description );
 		$("#valorTotal").val( payUdata.amount );
 			//$('#saveInBD').submit();
@@ -102,4 +102,4 @@ $('#saveInBD').submit(function( event ) {
                 //}
         }); 
 
-console.warn("Haciendo los pagos 14");
+console.warn("Haciendo los pagos 15");
