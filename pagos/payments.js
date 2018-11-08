@@ -19,6 +19,7 @@ var payUdata = [
 function InsertOmoldsIfraestructura(tablOM){
 	console.info( "tablOM", tablOM );
 	if ( tablOM == "infraestructura" ){
+		console.table( payUdata );
 		$("#consecutivoOMOLDS").val( payUdata.referenceCode );
 		$("#descripcionDeCompraOMOLDS").val( payUdata.description );
 		$("#valorTotal").val( payUdata.amount );
