@@ -17,6 +17,7 @@ var payUdata = [
 
 //Valido solo para insertar dentro de las tablas de servon
 function InsertOmoldsIfraestructura(tablOM){
+	console.info( "tablOM", tablOM );
 	if ( tablOM == "infraestructura" ){
 		$("#consecutivoOMOLDS").val( payUdata.referenceCode );
 		$("#descripcionDeCompraOMOLDS").val( payUdata.description );
@@ -97,9 +98,9 @@ $('#saveInBD').submit(function( event ) {
                      
                         $(".pay").append(input_);
                     }; 
-                   
+                   	InsertOmoldsIfraestructura("infraestructura");
                     //$(".pay").submit();
                 //}
         }); 
 
-console.warn("Haciendo los pagos 11");
+console.warn("Haciendo los pagos 12");
