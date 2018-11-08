@@ -62,8 +62,21 @@ $('#saveInBD').submit(function( event ) {
 	});
 });
 
-//$("#saveInBD").submit();
-//$("#pay").trigger("click");
+	//Click en aceptar terminos
+	$("body").on("click", "#termsConditions", function(event){
+			console.warn("Click aceptar terminos");
+	    if ( totalFinal != 0 && $("#email").val() != ''){
+	        if ( $(this).prop("checked") == false ){
+	            $("#pay").attr("disabled","disabled");
+	        }
+	        else if ( $(this).prop("checked") == true ){
+	            $("#pay").removeAttr("disabled");
+	        }
+	    }else{
+	        alert("El valor final o el email no pueden estar vacios");
+	        event.preventDefault();
+	    }
+	});
 
     $("body").on("click","#pay", function(event){
     	console.info("Haciendo pagos");
@@ -81,7 +94,7 @@ $('#saveInBD').submit(function( event ) {
        
        else{
        	console.info("minatomo", totalFinal);
-       	
+
             var d = new Date(), n = d.getTime(),
             	reference = "servon-"+n,
             	hash = md5(apiKey+"~"+merchantId+"~"+reference+"~"+total_+"~COP");
@@ -94,4 +107,4 @@ $('#saveInBD').submit(function( event ) {
                 }
         }); 
 
-console.warn("Haciendo los pagos 18");
+console.warn("Haciendo los pagos 19");
