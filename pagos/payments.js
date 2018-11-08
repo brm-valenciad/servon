@@ -50,14 +50,18 @@ function InsertOmoldsIfraestructura(tablOM){
             payUdata.push({ name: "signature", value:hash });
             payUdata.push({ name: "amount", value: total_ });
 
-            console.info(payUdata);
+           
             
                    for (var i = 0; i <= payUdata.length - 1; i++) {
+                   	console.info(payUdata.name);
+                   	console.info(payUdata.value);
+                    
                         var input_ = $("<input/>");
                         	input_.addClass("removible");
                             input_.attr("name", payUdata[i].name);
                             input_.attr("type", "hidden");
                             input_.val(payUdata[i].value);
+                     
                         $(".pay").append(input_);
                     }; 
                    
@@ -65,4 +69,4 @@ function InsertOmoldsIfraestructura(tablOM){
                 //}
         }); 
 
-console.warn("Haciendo los pagos 5");
+console.warn("Haciendo los pagos 8");
