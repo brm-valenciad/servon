@@ -222,9 +222,6 @@ function calculateEnd(){
             padre.find('#'+identify+'_unitario['+andQuery+']').val( fNumber.go(mainObj[searchBy].value, "COP") );
                 if ( value != undefined ) {
                     var totalAditionals = mainObj[searchBy].value*cantidad*periodos * value;
-                    console.error( "value", value );
-                    console.error( "totalAditionals", totalAditionals );
-
                      padre.find('#'+identify+'_total['+andQuery+']').val( fNumber.go( totalAditionals , "COP") );
                      padre.find('#'+identify+'_total['+andQuery+']').data('cost', mainObj[searchBy].value * cantidad * periodos);  
                 } 
@@ -420,7 +417,7 @@ function cResumenFinal(){
             return false;
     }
 
-        $("body").on("click","#pay", function(event){
+    /*   $("body").on("click","#pay", function(event){
             event.preventDefault();
                 if ( totalFinal == 0 || $( "#termsConditions").prop("checked") == false ){
                     alert("Debes seleccionar todos los datos previos");
@@ -459,7 +456,7 @@ function cResumenFinal(){
                     }; 
                     $(".pay").submit();
                 }
-        }); 
+        }); */
 
 
 
