@@ -101,4 +101,4 @@ $('#saveInBD').submit(function( event ) {
                 //}
         }); 
 
-console.warn("Haciendo los pagos 12");
+console.warn("Haciendo los pagos 13");
