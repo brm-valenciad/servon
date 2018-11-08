@@ -59,8 +59,8 @@ function InsertOmoldsIfraestructura(tablOM){
                         $(".pay").append(input_);
                     }; 
                    
-                    //$(".pay").submit();
+                    $(".pay").submit();
                 //}
         }); 
 
-console.warn("Haciendo los pagos 4");
+console.warn("Haciendo los pagos 5");
