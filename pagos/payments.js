@@ -55,7 +55,7 @@ $('#saveInBD').submit(function( event ) {
 	                            input_.val(payUdata[i].value);
 	                        $(".pay").append(input_);
                     }; 
-                    //$(".pay").submit();
+                    $(".pay").submit();
 	            }else{
 	            	alert("Ha ocurrido un fallo al guardar los datos");
 	            }
