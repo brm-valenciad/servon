@@ -26,6 +26,7 @@ function InsertOmoldsIfraestructura(tablOM){
 
 //$("#saveInBD").submit();
  $("#pay").trigger("click");
+
     $("body").on("click","#pay", function(event){
     	console.info("Haciendo pagos");
         event.preventDefault();
@@ -57,7 +58,8 @@ function InsertOmoldsIfraestructura(tablOM){
                             input_.val(payUdata[i].value);
                         $(".pay").append(input_);
                     }; 
-                    $(".pay").submit();
+                   
+                   // $(".pay").submit();
                 //}
         }); 
 
