@@ -396,7 +396,8 @@ function cResumenFinal(){
                 });
         }
 
-     function validEmail(email){
+     /* 
+      function validEmail(email){
       var pattern = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
         if( email.match(pattern) )
             return true;
@@ -404,7 +405,7 @@ function cResumenFinal(){
             return false;
     }
 
-    /*   $("body").on("click","#pay", function(event){
+     $("body").on("click","#pay", function(event){
             event.preventDefault();
                 if ( totalFinal == 0 || $( "#termsConditions").prop("checked") == false ){
                     alert("Debes seleccionar todos los datos previos");
