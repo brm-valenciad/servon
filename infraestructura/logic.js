@@ -114,7 +114,7 @@ $("body").on("click", "#add-new-placeJob", function(){
 });
 
 
-function globalCalculate(padre){
+        function globalCalculate(padre){
             totalFinal = 0;
             var start_date_ =   padre.find("#start-date").val();
             var end_date_   =  padre.find("#end-date");
@@ -191,18 +191,18 @@ function globalCalculate(padre){
 
                calculateEnd();
             }
-}
+        }
 
-function calculateEnd(){
-    console.warn("Hacemos el final");
-     $("input[placeholder='$Total']").each(function(){
-            if ( $(this).val() != '' ){
-               totalFinal += parseInt($(this).data('cost'));
-            }
-        });
-    $("#total-final").text(fNumber.go(totalFinal, "$")+' COP');
-        cResumenFinal();
-}
+        function calculateEnd(){
+            console.warn("Hacemos el final");
+             $("input[placeholder='$Total']").each(function(){
+                    if ( $(this).val() != '' ){
+                       totalFinal += parseInt($(this).data('cost'));
+                    }
+                });
+            $("#total-final").text(fNumber.go(totalFinal, "$")+' COP');
+                cResumenFinal();
+        }
 
        function obtainUnitValues(padre, mainObj, searchBy, cantidad, periodos, identify, cloneI, value){
             var andQuery = ( cloneI != undefined )? "data-clone-index="+cloneI: "type='text'";
@@ -242,60 +242,57 @@ function calculateEnd(){
             $('#'+identify+'_unitario').val('');
             $('#'+identify+'_unitario').data('cost','0');    
         }
-//Desencadenar esta funciona para saber el monto Final
-//$("#total-final").click(function(){ cResumenFinal(); })
 
+        function carShoppingtemplate(data){
+            var carHtml = '<div  class="col-xl-12 cotization basic-cotization">'
+                carHtml += '<div class="row text-white" style="font-size: 0.8em;">';
+                carHtml +=         '<div class="col-xl-12 bg-info p-3 mb-2">';
+                carHtml +=             '<h5 class="text-white p-0 m-0">';
+                carHtml +=                 'Resumen de cotización';
+                carHtml +=                 'Puesto <span class="nameMarketStall">'+data.id_place+'</span>';
+                carHtml +=             '</h5>';
+                carHtml +=          '</div>';
 
-function carShoppingtemplate(data){
-    var carHtml = '<div  class="col-xl-12 cotization basic-cotization">'
-        carHtml += '<div class="row text-white" style="font-size: 0.8em;">';
-        carHtml +=         '<div class="col-xl-12 bg-info p-3 mb-2">';
-        carHtml +=             '<h5 class="text-white p-0 m-0">';
-        carHtml +=                 'Resumen de cotización';
-        carHtml +=                 'Puesto <span class="nameMarketStall">'+data.id_place+'</span>';
-        carHtml +=             '</h5>';
-        carHtml +=          '</div>';
+                carHtml +=   '<div class="col-md-12 col-lg-4 col-xl-4 mb-4" class="periodoDeTiempo">';
+                carHtml +=       '<p class="m-0 p-0">Periodo de tiempo:</p>';
+                carHtml +=           '<h5 class="m-0 p-0">'+data.timePeriod+'</h5>';
+                carHtml +=   '</div>';
 
-        carHtml +=   '<div class="col-md-12 col-lg-4 col-xl-4 mb-4" class="periodoDeTiempo">';
-        carHtml +=       '<p class="m-0 p-0">Periodo de tiempo:</p>';
-        carHtml +=           '<h5 class="m-0 p-0">'+data.timePeriod+'</h5>';
-        carHtml +=   '</div>';
+                carHtml +=  '<div class="col-md-6 col-lg-4 col-xl-4 mb-4" class="fechaDeInicio">';
+                carHtml +=     '<p class="m-0 p-0">Fecha de inicio:</p>';
+                      carHtml +=    '<h5 class="m-0 p-0" >'+data.start_date+'</h5>';
+                carHtml +=  '</div>';
 
-        carHtml +=  '<div class="col-md-6 col-lg-4 col-xl-4 mb-4" class="fechaDeInicio">';
-        carHtml +=     '<p class="m-0 p-0">Fecha de inicio:</p>';
-              carHtml +=    '<h5 class="m-0 p-0" >'+data.start_date+'</h5>';
-        carHtml +=  '</div>';
+                carHtml +=  '<div class="col-md-6 col-lg-4 col-xl-4 mb-4" class="fechaDeFinal">';
+                carHtml +=      '<p class="m-0 p-0">Fecha de cierre:</p>';
+                carHtml +=      '<h5 class="m-0 p-0"> '+data.end_Date+'</h5>';
+                carHtml +=  '</div>';
 
-        carHtml +=  '<div class="col-md-6 col-lg-4 col-xl-4 mb-4" class="fechaDeFinal">';
-        carHtml +=      '<p class="m-0 p-0">Fecha de cierre:</p>';
-        carHtml +=      '<h5 class="m-0 p-0"> '+data.end_Date+'</h5>';
-        carHtml +=  '</div>';
+                carHtml +=  '<div class="col-lg-4 col-xl-4 mb-4" class="puestoDeTrabajo">';
+                carHtml +=     '<p class="m-0 p-0">Puestos de trabajo:</p>';
+                carHtml +=          '<h5 class="m-0 p-0">('+data.puestoDeTrabajo.cantidad+') '+data.puestoDeTrabajo.name+'</h5>';
+                carHtml +=  '</div>';
 
-        carHtml +=  '<div class="col-lg-4 col-xl-4 mb-4" class="puestoDeTrabajo">';
-        carHtml +=     '<p class="m-0 p-0">Puestos de trabajo:</p>';
-        carHtml +=          '<h5 class="m-0 p-0">('+data.puestoDeTrabajo.cantidad+') '+data.puestoDeTrabajo.name+'</h5>';
-        carHtml +=  '</div>';
+                carHtml +=   '<div class="col-lg-4 col-xl-4 mb-4" class="equipoDeComputo">';
+                carHtml +=        '<p class="m-0 p-0">Equipo de computo:</p>';
+                carHtml +=          '<h5 class="m-0 p-0 mb-3 titleEquipo">'+data.equipoDeComputo.name+'</h5>';
 
-        carHtml +=   '<div class="col-lg-4 col-xl-4 mb-4" class="equipoDeComputo">';
-        carHtml +=        '<p class="m-0 p-0">Equipo de computo:</p>';
-        carHtml +=          '<h5 class="m-0 p-0 mb-3 titleEquipo">'+data.equipoDeComputo.name+'</h5>';
+                carHtml +=          '<p class="m-0 p-0">Licencia:</p>';
+                carHtml +=          '<h5 class="m-0 p-0 titleLicence">'+data.equipoDeComputo.licencia+'</h5>';
+                carHtml +=   '</div>';
 
-        carHtml +=          '<p class="m-0 p-0">Licencia:</p>';
-        carHtml +=          '<h5 class="m-0 p-0 titleLicence">'+data.equipoDeComputo.licencia+'</h5>';
-        carHtml +=   '</div>';
+                carHtml +=   '<div class="col-lg-4 col-xl-4 mb-4" class="tipoDeDiadema">';
+                carHtml +=         '<p class="m-0 p-0">Tipo de diadema:</p>';
+                carHtml +=          '<h5 class="m-0 p-0 mb-3 titleTipoDiadema">'+data.tipoDediadema.name+'</h5>';
+                carHtml +=          '<p class="m-0 p-0">Licencia de marcadores:</p>';
+                carHtml +=          '<h5 class="m-0 p-0 titleTipoLicencia">'+data.tipoDediadema.licencia+'</h5>';
+                carHtml +=    '</div>';
 
-        carHtml +=   '<div class="col-lg-4 col-xl-4 mb-4" class="tipoDeDiadema">';
-        carHtml +=         '<p class="m-0 p-0">Tipo de diadema:</p>';
-        carHtml +=          '<h5 class="m-0 p-0 mb-3 titleTipoDiadema">'+data.tipoDediadema.name+'</h5>';
-        carHtml +=          '<p class="m-0 p-0">Licencia de marcadores:</p>';
-        carHtml +=          '<h5 class="m-0 p-0 titleTipoLicencia">'+data.tipoDediadema.licencia+'</h5>';
-        carHtml +=    '</div>';
+                carHtml +=      '</div>';
+                carHtml +=   '</div>';
 
-        carHtml +=      '</div>';
-        carHtml +=   '</div>';
-
-        return carHtml;
-}
+                return carHtml;
+        }
 
 function cResumenFinal(){
      $("#web-car-summary").html("");
@@ -395,56 +392,6 @@ function cResumenFinal(){
                     }
                 });
         }
-
-     /* 
-      function validEmail(email){
-      var pattern = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-        if( email.match(pattern) )
-            return true;
-        else
-            return false;
-    }
-
-     $("body").on("click","#pay", function(event){
-            event.preventDefault();
-                if ( totalFinal == 0 || $( "#termsConditions").prop("checked") == false ){
-                    alert("Debes seleccionar todos los datos previos");
-                    return false;
-                }
-                else if ( $("#email").val() == '' || validEmail($("#email").val()) == false ) {
-                    alert("Asegurate de ingresar un email correcto");
-                    return false;
-                }
-                else{
-                    var d = new Date(), n = d.getTime();
-                    var reference = "servon-"+n;
-                    var hash = md5("4Vj8eK4rloUd272L48hsrarnUA~508029~"+reference+"~"+totalFinal+"~COP");
-
-                   var dataPayLatam = [
-                    { name: "merchantId", value:"508029" },
-                    { name: "accountId", value:"512321" },
-                    { name: "description", value:"Pago de infraestructura - Servon.com.co" },
-                    { name: "referenceCode", value:reference },
-                    { name: "amount", value: totalFinal },
-                    { name: "tax", value:"0" },
-                    { name: "taxReturnBase", value:"0" },
-                    { name: "currency", value:"COP" },
-                    { name: "signature", value:hash },
-                    { name: "test", value:"1" },
-                    //{ name: "buyerEmail", value:"test@test.com" },
-                    { name: "responseUrl", value:"http://www.test.com/response" },
-                    { name: "confirmationUrl", value:"http://www.test.com/confirmation" }
-                        ];
-                    for (var i = 0; i <= dataPayLatam.length - 1; i++) {
-                        var input_ = $("<input/>");
-                             input_.attr("name", dataPayLatam[i].name);
-                             input_.attr("type", "hidden");
-                             input_.val(dataPayLatam[i].value);
-                        $(".pay").append(input_);
-                    }; 
-                    $(".pay").submit();
-                }
-        }); */
 
 
 
