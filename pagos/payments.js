@@ -18,17 +18,49 @@ var payUdata = [
 //Valido solo para insertar dentro de las tablas de servon
 function InsertOmoldsIfraestructura(tablOM){
 	if ( tablOM == "infraestructura" ){
-		$("#consecutivoOMOLDS").val();
-		$("#descripcionDeCompraOMOLDS").val();
-		$("#valorTotal").val();
+		$("#consecutivoOMOLDS").val( payUdata.referenceCode );
+		$("#descripcionDeCompraOMOLDS").val( payUdata.description );
+		$("#valorTotal").val( payUdata.amount );
+			$('#saveInBD').submit();
 	}
 	if ( tablOM == "TMK"){
 
 	}
 }
 
+//GUARDAR DATOS EN LA TABLA DE INFRAESTRUCTURA
+$('#saveInBD').submit(function( event ) {
+    event.preventDefault();
+        var form = this;
+        var post_url = $(this).attr("action"); 
+        var request_method = $(this).attr("method"); 
+	        $.ajax({
+	            url : post_url,
+	            method: request_method,
+	            data: new FormData(this),
+	            contentType:false,
+	            processData:false,
+	        }).done(function(response){ 
+	            if(response.tipoMsm == 'success'){
+	            	console.error( response.id );
+	            	console.info("koala", $(this).attr("data-attr") );
+	            	/*var input_ = $("<input/>");
+	                        input_.attr("name", "extra3");
+	                        input_.attr("type", "hidden");
+	                        input_.val(response.id);
+	                        $(".pay").append(input_);
+	                        console.error("No puedo hacer exposicion");
+	            	$(".pay").submit();*/
+	            }else{
+	            	alert("Ha ocurrido un fallo al guardar los datos");
+	            }
+	});
+});
+
+
+
 //$("#saveInBD").submit();
- $("#pay").trigger("click");
+//$("#pay").trigger("click");
 
     $("body").on("click","#pay", function(event){
     	console.info("Haciendo pagos");
@@ -66,7 +98,7 @@ function InsertOmoldsIfraestructura(tablOM){
                         $(".pay").append(input_);
                     }; 
                    
-                    $(".pay").submit();
+                    //$(".pay").submit();
                 //}
         }); 
 
