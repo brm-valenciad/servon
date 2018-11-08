@@ -65,6 +65,8 @@ $('#saveInBD').submit(function( event ) {
 	//Click en aceptar terminos
 	$("body").on("click", "#termsConditions", function(event){
 			console.warn("Click aceptar terminos");
+			console.error("tarn", totalFinal);
+			
 	    if ( totalFinal != 0 && $("#email").val() != ''){
 	        if ( $(this).prop("checked") == false ){
 	            $("#pay").attr("disabled","disabled");
@@ -80,7 +82,6 @@ $('#saveInBD').submit(function( event ) {
 
     $("body").on("click","#pay", function(event){
     	console.info("Haciendo pagos");
-    	console.error("tarn", totalFinal);
         event.preventDefault();
         
        if ( totalFinal == 0 || $( "#termsConditions").prop("checked") == false ){
