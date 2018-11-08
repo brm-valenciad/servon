@@ -17,13 +17,13 @@ var payUdata = [
 
 //Valido solo para insertar dentro de las tablas de servon
 function InsertOmoldsIfraestructura(tablOM){
-	console.info( "tablOM", tablOM );
+	//console.info( "tablOM", tablOM );
 	if ( tablOM == "infraestructura" ){
 		console.table( payUdata );
-		$("#consecutivoOMOLDS").val( payUdata.referenceCode );
+		$("#consecutivoOMOLDS").val( payUdata.referenceCode ).css("border","1px solid red");
 		$("#descripcionDeCompraOMOLDS").val( payUdata.description );
 		$("#valorTotal").val( payUdata.amount );
-			$('#saveInBD').submit();
+			//$('#saveInBD').submit();
 	}
 	if ( tablOM == "TMK"){
 
