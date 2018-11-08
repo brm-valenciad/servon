@@ -13,11 +13,14 @@ var payUdata = [
 		   	{ name: "test", value:"0" },
 		   	{ name: "responseUrl", value:"https://www.servon.com.co/web/index/response/" },
 		   	{ name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment/" }
-	   ];
+	];
+
 //Valido solo para insertar dentro de las tablas de servon
 function InsertOmoldsIfraestructura(tablOM){
 	if ( tablOM == "infraestructura" ){
-
+		$("#consecutivoOMOLDS").val();
+		$("#descripcionDeCompraOMOLDS").val();
+		$("#valorTotal").val();
 	}
 	if ( tablOM == "TMK"){
 
@@ -46,14 +49,12 @@ function InsertOmoldsIfraestructura(tablOM){
             	reference = "servon-"+n,
             	hash = md5(apiKey+"~"+merchantId+"~"+reference+"~"+total_+"~COP");
 
-            payUdata.push({ name: "referenceCode", value:reference });
-            payUdata.push({ name: "signature", value:hash });
-            payUdata.push({ name: "amount", value: total_ });
+	            payUdata.push({ name: "referenceCode", value:reference });
+	            payUdata.push({ name: "signature", value:hash });
+	            payUdata.push({ name: "amount", value: total_ });
 
-           
-            
                    for (var i = 0; i <= payUdata.length - 1; i++) {
-                   	console.info(payUdata[i].name);
+                   	console.warn(payUdata[i].name);
                    	console.info(payUdata[i].value);
                     
                         var input_ = $("<input/>");
@@ -69,4 +70,4 @@ function InsertOmoldsIfraestructura(tablOM){
                 //}
         }); 
 
-console.warn("Haciendo los pagos 10");
+console.warn("Haciendo los pagos 11");
