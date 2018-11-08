@@ -1,35 +1,35 @@
 var apiKey   = "4Vj8eK4rloUd272L48hsrarnUA",
 	merchantId = "677879";
-
-var total_ = 100000;
-
 var payUdata = [
-		    { name: "merchantId", value: merchantId },
-		    { name: "accountId", value:"760061" },
-		    { name: "description", value:"Pago TMK - Servon.com.co" },
-		    { name: "tax", value:"0" },
-		    { name: "taxReturnBase", value:"0" },
-		    { name: "currency", value:"COP" },
-		   	{ name: "test", value:"0" },
-		   	{ name: "responseUrl", value:"https://www.servon.com.co/web/index/response/" },
-		   	{ name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment/" }
-	];
-
+		    	{ name: "merchantId", value: merchantId },
+		    	{ name: "accountId", value:"760061" },
+		    	{ name: "description", value:"Pago TMK - Servon.com.co" },
+		    	{ name: "tax", value:"0" },
+		    	{ name: "taxReturnBase", value:"0" },
+		    	{ name: "currency", value:"COP" },
+		   		{ name: "test", value:"0" },
+		   		{ name: "buyerEmail", value:"duvan@prueba.com" }
+		   		{ name: "responseUrl", value:"https://www.servon.com.co/web/index/response/" },
+		   		{ name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment/" }
+			];
 //Valido solo para insertar dentro de las tablas de servon
 function InsertOmoldsIfraestructura(tablOM){
-	//console.info( "tablOM", tablOM );
 	if ( tablOM == "infraestructura" ){
-		//console.table( payUdata );
 		$("#consecutivoOMOLDS").val( payUdata[9].value ).css("border","1px solid red");
 		$("#descripcionDeCompraOMOLDS").val( payUdata[2].value );
 		$("#valorTotal").val( payUdata[11].value );
 			$('#saveInBD').submit();
 	}
-	if ( tablOM == "TMK"){
-
-	}
+	if ( tablOM == "TMK"){ }
 }
-
+//Email de Usuario valido
+function validEmail(email){
+    var pattern = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+        if( email.match(pattern) )
+            return true;
+        else
+            return false;
+}
 //GUARDAR DATOS EN LA TABLA DE INFRAESTRUCTURA
 $('#saveInBD').submit(function( event ) {
 	var from_ = $(this).attr("data-attr") 
@@ -55,19 +55,15 @@ $('#saveInBD').submit(function( event ) {
 	                            input_.val(payUdata[i].value);
 	                        $(".pay").append(input_);
                     }; 
-                    $(".pay").submit();
+                    //$(".pay").submit();
 	            }else{
 	            	alert("Ha ocurrido un fallo al guardar los datos");
 	            }
 	});
 });
-
-	//Click en aceptar terminos
+//Click en aceptar terminos
 	$("body").on("click", "#termsConditions", function(event){
-			console.warn("Click aceptar terminos");
-			console.error("tarn", totalFinal);
-			
-	    if ( totalFinal != 0 && $("#email").val() != ''){
+		if ( totalFinal != 0 && $("#email").val() != ''){
 	        if ( $(this).prop("checked") == false ){
 	            $("#pay").attr("disabled","disabled");
 	        }
@@ -79,7 +75,7 @@ $('#saveInBD').submit(function( event ) {
 	        event.preventDefault();
 	    }
 	});
-
+	//click en el boton de pagar
     $("body").on("click","#pay", function(event){
     	console.info("Haciendo pagos");
         event.preventDefault();
@@ -95,18 +91,16 @@ $('#saveInBD').submit(function( event ) {
        }
        
        else{
-       	console.info("minatomo", totalFinal);
-
-            var d = new Date(), n = d.getTime(),
+       		var d = new Date(), n = d.getTime(),
             	reference = "servon-"+n,
-            	hash = md5(apiKey+"~"+merchantId+"~"+reference+"~"+total_+"~COP");
+            	hash = md5(apiKey+"~"+merchantId+"~"+reference+"~"+totalFinal+"~COP");
 
 	            payUdata.push({ name: "referenceCode", value:reference });
 	            payUdata.push({ name: "signature", value:hash });
-	            payUdata.push({ name: "amount", value: total_ });
+	            payUdata.push({ name: "amount", value: totalFinal });
 
                    	InsertOmoldsIfraestructura("infraestructura");
                 }
         }); 
 
-console.warn("Haciendo los pagos 20");
+console.warn("Haciendo los pagos 21");
