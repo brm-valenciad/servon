@@ -1,4 +1,4 @@
-var apiKey   = "4Vj8eK4rloUd272L48hsrarnUA",
+var apiKey   = "wns266ZHs6P8KNk08Mu531qWB6",
 	merchantId = "677879";
 var payUdata = [
 		    	{ name: "merchantId", value: merchantId },
