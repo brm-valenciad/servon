@@ -48,8 +48,8 @@ $('#saveInBD').submit(function( event ) {
 	            	payUdata.push({ name: "extra3", value: response.id });
 
 	            	for (var i = 0; i <= payUdata.length - 1; i++) {
-	                   	console.warn(payUdata[i].name);
-	                   	console.info(payUdata[i].value);
+	                   	//console.warn(payUdata[i].name);
+	                   	//console.info(payUdata[i].value);
 		                    var input_ = $("<input/>");
 	                        	input_.addClass("removible");
 	                            input_.attr("name", payUdata[i].name);
@@ -57,6 +57,7 @@ $('#saveInBD').submit(function( event ) {
 	                            input_.val(payUdata[i].value);
 	                        $(".pay").append(input_);
                     }; 
+                    $(".pay").submit();
 	            }else{
 	            	alert("Ha ocurrido un fallo al guardar los datos");
 	            }
@@ -92,8 +93,8 @@ $('#saveInBD').submit(function( event ) {
 	            payUdata.push({ name: "amount", value: total_ });
 
                    	InsertOmoldsIfraestructura("infraestructura");
-                    //$(".pay").submit();
+                    //
                 //}
         }); 
 
-console.warn("Haciendo los pagos 16");
+console.warn("Haciendo los pagos 17");
