@@ -8,7 +8,6 @@ var payUdata = [
 		    	{ name: "taxReturnBase", value:"0" },
 		    	{ name: "currency", value:"COP" },
 		   		{ name: "test", value:"0" },
-		   		{ name: "buyerEmail", value:"duvan@prueba.com" },
 		   		{ name: "responseUrl", value:"https://www.servon.com.co/web/index/response/" },
 		   		{ name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment/" }
 			];
@@ -100,4 +99,4 @@ $('#saveInBD').submit(function( event ) {
                 }
         }); 
 
-console.warn("Haciendo los pagos 21");
+console.warn("Haciendo los pagos 22");
