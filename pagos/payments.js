@@ -23,7 +23,7 @@ function InsertOmoldsIfraestructura(tablOM){
 		$("#consecutivoOMOLDS").val( payUdata[9].value ).css("border","1px solid red");
 		$("#descripcionDeCompraOMOLDS").val( payUdata[2].value );
 		$("#valorTotal").val( payUdata[11].value );
-			//$('#saveInBD').submit();
+			$('#saveInBD').submit();
 	}
 	if ( tablOM == "TMK"){
 
@@ -45,12 +45,7 @@ $('#saveInBD').submit(function( event ) {
 	            processData:false,
 	        }).done(function(response){ 
 	            if(response.tipoMsm == 'success'){
-	            	console.error( response.id );
-	            	console.info("from",  from_);
-
 	            	payUdata.push({ name: "extra3", value: response.id });
-
-	            		console.info("payUdata", payUdata);
 
 	            	for (var i = 0; i <= payUdata.length - 1; i++) {
 	                   	console.warn(payUdata[i].name);
@@ -60,7 +55,6 @@ $('#saveInBD').submit(function( event ) {
 	                            input_.attr("name", payUdata[i].name);
 	                            input_.attr("type", "hidden");
 	                            input_.val(payUdata[i].value);
-
 	                        $(".pay").append(input_);
                     }; 
 	            }else{
