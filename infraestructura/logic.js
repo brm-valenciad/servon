@@ -75,20 +75,7 @@ var totalFinal = 0;
         var padre = $("#formOm-"+$(this).attr("data-padre"));
            globalCalculate(padre);
 });
-//Click en aceptar terminos
-$("body").on("click", "#termsConditions", function(event){
-    if ( totalFinal != 0 && $("#email").val() != ''){
-        if ( $(this).prop("checked") == false ){
-            $("#pay").attr("disabled","disabled");
-        }
-        else if ( $(this).prop("checked") == true ){
-            $("#pay").removeAttr("disabled");
-        }
-    }else{
-        alert("El valor final o el email no pueden estar vacios");
-        event.preventDefault();
-    }
-});
+
 
 //Agregar puesto de trabajo
 $("body").on("click", "#add-new-placeJob", function(){
