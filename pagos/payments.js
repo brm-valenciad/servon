@@ -1,13 +1,36 @@
-function InsertOmoldsIfraestructura(){
-	console.info("Insertar dentro de la tabla en omolds");
+var apiKey   = "4Vj8eK4rloUd272L48hsrarnUA",
+	merchantId = "677879";
+
+var payUdata = [
+		            { name: "merchantId", value: merchantId },
+		            { name: "accountId", value:"760061" },
+		            { name: "description", value:"Pago TMK - Servon.com.co" },
+		            //{ name: "referenceCode", value:reference },
+		            //{ name: "amount", value: total_ },
+		            { name: "tax", value:"0" },
+		            { name: "taxReturnBase", value:"0" },
+		            { name: "currency", value:"COP" },
+		            //{ name: "signature", value:hash },
+		            { name: "test", value:"0" },
+		            { name: "responseUrl", value:"https://www.servon.com.co/web/index/response/" },
+		            { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment/" },
+	            ];
+//Valido solo para insertar dentro de las tablas de servon
+function InsertOmoldsIfraestructura(tablOM){
+	if ( tablOM == "infraestructura" ){
+
+	}
+	if ( tablOM == "TMK"){
+
+	}
 }
 
-$("#saveInBD").submit();
-
+//$("#saveInBD").submit();
+ $("#click").trigger("click");
     $("body").on("click","#pay", function(event){
         event.preventDefault();
         
-        if ( totalFinal == 0 || $( "#termsConditions").prop("checked") == false ){
+        /*if ( totalFinal == 0 || $( "#termsConditions").prop("checked") == false ){
             alert("Debes seleccionar todos los datos previos");
                 return false;
         }
@@ -15,27 +38,15 @@ $("#saveInBD").submit();
        else if ( $("#email").val() == '' || validEmail($("#email").val()) == false ) {
                     alert("Asegurate de ingresar un email correcto");
                     return false;
-                }
-                else{
-                    var d = new Date(), n = d.getTime();
-                    var reference = "servon-"+n;
-                    var hash = md5("4Vj8eK4rloUd272L48hsrarnUA~508029~"+reference+"~"+totalFinal+"~COP");
+       }
+       
+       else{*/
+            var d = new Date(), n = d.getTime(),
+            	reference = "servon-"+n,
+            	hash = md5(apiKey+"~508029~"+reference+"~"+totalFinal+"~COP");
 
-                   var dataPayLatam = [
-                    { name: "merchantId", value:"508029" },
-                    { name: "accountId", value:"512321" },
-                    { name: "description", value:"Pago de infraestructura - Servon.com.co" },
-                    { name: "referenceCode", value:reference },
-                    { name: "amount", value: totalFinal },
-                    { name: "tax", value:"0" },
-                    { name: "taxReturnBase", value:"0" },
-                    { name: "currency", value:"COP" },
-                    { name: "signature", value:hash },
-                    { name: "test", value:"1" },
-                    //{ name: "buyerEmail", value:"test@test.com" },
-                    { name: "responseUrl", value:"http://www.test.com/response" },
-                    { name: "confirmationUrl", value:"http://www.test.com/confirmation" }
-                        ];
+            payUdata.push({ name: "referenceCode", value:reference });
+            
                     for (var i = 0; i <= dataPayLatam.length - 1; i++) {
                         var input_ = $("<input/>");
                              input_.attr("name", dataPayLatam[i].name);
@@ -44,7 +55,7 @@ $("#saveInBD").submit();
                         $(".pay").append(input_);
                     }; 
                     $(".pay").submit();
-                }
+                //}
         }); 
-        
-  console.info("Create pays");
+
+console.warn("Haciendo los pagos");
