@@ -8,6 +8,7 @@ var payUdata = [
 		    	{ name: "taxReturnBase", value:"0" },
 		    	{ name: "currency", value:"COP" },
 		   		{ name: "test", value:"0" },
+		   		{ name: "extra1", value:"infraestructura" },
 		   		{ name: "responseUrl", value:"https://www.servon.com.co/web/index/response/" },
 		   		{ name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment/" }
 			];
@@ -74,7 +75,7 @@ $('#saveInBD').submit(function( event ) {
 	        event.preventDefault();
 	    }
 	});
-	//click en el boton de pagar
+//click en el boton de pagar
     $("body").on("click","#pay", function(event){
     	console.info("Haciendo pagos");
         event.preventDefault();
