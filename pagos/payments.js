@@ -44,7 +44,7 @@ function InsertOmoldsIfraestructura(tablOM){
        else{*/
             var d = new Date(), n = d.getTime(),
             	reference = "servon-"+n,
-            	hash = md5(apiKey+"~508029~"+reference+"~"+total_+"~COP");
+            	hash = md5(apiKey+"~"+merchantId+"~"+reference+"~"+total_+"~COP");
 
             payUdata.push({ name: "referenceCode", value:reference });
             payUdata.push({ name: "signature", value:hash });
@@ -63,4 +63,4 @@ function InsertOmoldsIfraestructura(tablOM){
                 //}
         }); 
 
-console.warn("Haciendo los pagos 3");
+console.warn("Haciendo los pagos 4");
