@@ -61,7 +61,7 @@ function InsertOmoldsIfraestructura(tablOM){
                         $(".pay").append(input_);
                     }; 
                    
-                    $(".pay").submit();
+                    //$(".pay").submit();
                 //}
         }); 
 
