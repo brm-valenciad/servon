@@ -47,15 +47,15 @@ function InsertOmoldsIfraestructura(tablOM){
 
             payUdata.push({ name: "referenceCode", value:reference });
             
-                    for (var i = 0; i <= dataPayLatam.length - 1; i++) {
+                   /* for (var i = 0; i <= dataPayLatam.length - 1; i++) {
                         var input_ = $("<input/>");
                              input_.attr("name", dataPayLatam[i].name);
                              input_.attr("type", "hidden");
                              input_.val(dataPayLatam[i].value);
                         $(".pay").append(input_);
                     }; 
-                    $(".pay").submit();
+                    $(".pay").submit();*/
                 //}
         }); 
 
-console.warn("Haciendo los pagos");
+console.warn("Haciendo los pagos 2");
