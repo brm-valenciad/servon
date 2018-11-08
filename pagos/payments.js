@@ -31,6 +31,7 @@ function InsertOmoldsIfraestructura(tablOM){
 
 //GUARDAR DATOS EN LA TABLA DE INFRAESTRUCTURA
 $('#saveInBD').submit(function( event ) {
+	var from_ = $(this).attr("data-attr") 
     event.preventDefault();
         var form = this;
         var post_url = $(this).attr("action"); 
@@ -44,14 +45,23 @@ $('#saveInBD').submit(function( event ) {
 	        }).done(function(response){ 
 	            if(response.tipoMsm == 'success'){
 	            	console.error( response.id );
-	            	console.info("koala", $(this).attr("data-attr") );
-	            	/*var input_ = $("<input/>");
-	                        input_.attr("name", "extra3");
-	                        input_.attr("type", "hidden");
-	                        input_.val(response.id);
+	            	console.info("from",  from_);
+
+	            	payUdata.push({ name: "extra3", value: response.id });
+
+	            		console.info("payUdata", payUdata);
+
+	            	for (var i = 0; i <= payUdata.length - 1; i++) {
+	                   	console.warn(payUdata[i].name);
+	                   	console.info(payUdata[i].value);
+		                    var input_ = $("<input/>");
+	                        	input_.addClass("removible");
+	                            input_.attr("name", payUdata[i].name);
+	                            input_.attr("type", "hidden");
+	                            input_.val(payUdata[i].value);
+
 	                        $(".pay").append(input_);
-	                        console.error("No puedo hacer exposicion");
-	            	$(".pay").submit();*/
+                    }; 
 	            }else{
 	            	alert("Ha ocurrido un fallo al guardar los datos");
 	            }
@@ -86,18 +96,6 @@ $('#saveInBD').submit(function( event ) {
 	            payUdata.push({ name: "signature", value:hash });
 	            payUdata.push({ name: "amount", value: total_ });
 
-                   for (var i = 0; i <= payUdata.length - 1; i++) {
-                   	console.warn(payUdata[i].name);
-                   	console.info(payUdata[i].value);
-                    
-                        var input_ = $("<input/>");
-                        	input_.addClass("removible");
-                            input_.attr("name", payUdata[i].name);
-                            input_.attr("type", "hidden");
-                            input_.val(payUdata[i].value);
-                     
-                        $(".pay").append(input_);
-                    }; 
                    	InsertOmoldsIfraestructura("infraestructura");
                     //$(".pay").submit();
                 //}
