@@ -49,6 +49,8 @@ function InsertOmoldsIfraestructura(tablOM){
             payUdata.push({ name: "referenceCode", value:reference });
             payUdata.push({ name: "signature", value:hash });
             payUdata.push({ name: "amount", value: total_ });
+
+            console.info(payUdata);
             
                    for (var i = 0; i <= payUdata.length - 1; i++) {
                         var input_ = $("<input/>");
@@ -59,7 +61,7 @@ function InsertOmoldsIfraestructura(tablOM){
                         $(".pay").append(input_);
                     }; 
                    
-                    //$(".pay").submit();
+                    $(".pay").submit();
                 //}
         }); 
 
