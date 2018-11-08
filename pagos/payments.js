@@ -19,10 +19,10 @@ var payUdata = [
 function InsertOmoldsIfraestructura(tablOM){
 	//console.info( "tablOM", tablOM );
 	if ( tablOM == "infraestructura" ){
-		console.table( payUdata );
-		$("#consecutivoOMOLDS").val( "REFcode" ).css("border","1px solid red");
-		$("#descripcionDeCompraOMOLDS").val( payUdata.description );
-		$("#valorTotal").val( payUdata.amount );
+		//console.table( payUdata );
+		$("#consecutivoOMOLDS").val( payUdata[9].value ).css("border","1px solid red");
+		$("#descripcionDeCompraOMOLDS").val( payUdata[2].value );
+		$("#valorTotal").val( payUdata[11].value );
 			//$('#saveInBD').submit();
 	}
 	if ( tablOM == "TMK"){
@@ -102,4 +102,4 @@ $('#saveInBD').submit(function( event ) {
                 //}
         }); 
 
-console.warn("Haciendo los pagos 15");
+console.warn("Haciendo los pagos 14");
