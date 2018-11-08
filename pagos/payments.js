@@ -80,6 +80,7 @@ $('#saveInBD').submit(function( event ) {
 
     $("body").on("click","#pay", function(event){
     	console.info("Haciendo pagos");
+    	console.error("tarn", totalFinal);
         event.preventDefault();
         
        if ( totalFinal == 0 || $( "#termsConditions").prop("checked") == false ){
@@ -107,4 +108,4 @@ $('#saveInBD').submit(function( event ) {
                 }
         }); 
 
-console.warn("Haciendo los pagos 19");
+console.warn("Haciendo los pagos 20");
