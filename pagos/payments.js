@@ -19,7 +19,7 @@ function InsertTablOM(tablOM){
 		$("#consecutivoOMOLDS").val( payUdata[9].value ).css("border","1px solid red");
 		$("#descripcionDeCompraOMOLDS").val( payUdata[2].value );
 		$("#valorTotal").val( payUdata[11].value );
-			$('#saveInBD').submit();
+			//$('#saveInBD').submit();
 	}
 	if ( tablOM == "TMK"){ }
 }
@@ -100,7 +100,7 @@ $('#saveInBD').submit(function( event ) {
                    	InsertTablOM("infraestructura");
      	}
 
-    $(this).attr("disabled","disabled").text("Por favor espera unos segundos, estamos procesando tu pago!");
+    $(this).attr("disabled","disabled").text("Espera unos segundos, estamos procesando tu pago!");
   
  }); 
 
