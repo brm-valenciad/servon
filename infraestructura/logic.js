@@ -176,8 +176,7 @@ var summary_ = [];
                                 obtainUnitValues( padre, optionDataAdic, periodoText, periodos, cantidad, "optionDataAdic", cloneIndex, amountUnitary );  
                              }else{  clearForm("optionDataAdic"); }
                     });
-                    console.warn(jobPlace);
-                var resumenCotizacion = "Puesto de trabajo: "+ "jobPlace" +periodoText+' + '+cantidad+' unidades + '+periodos+' periodos + ';
+                var resumenCotizacion = "Puesto de trabajo: "+ jobPlace.nombre.value +periodoText+' + '+cantidad+' unidades + '+periodos+' periodos + ';
                     summary_.resumen  = resumenCotizacion;
                calculateEnd();
             }
@@ -385,4 +384,4 @@ function cResumenFinal(){
                     }
                 });
         }
-console.warn("ejem7");
+console.warn("ejem8");
