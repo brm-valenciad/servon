@@ -1,5 +1,5 @@
 var totalFinal = 0;
-
+var summary_ = [];
  /*Formatear las fechas actuale*/
         Date.prototype.toDateInputValue = (function() {
             var local = new Date(this);
@@ -19,7 +19,6 @@ var totalFinal = 0;
         loadInfo("21/LICENCIA%20DE%20MARCADORAS/grupo/false/","lincencesMarkers");
         //Cargar Adicionales
         loadInfo("21/ADICIONALES/grupo/false/","additionalsElements");
-
         //Carga
         function loadInfo(table, place){
             var url_ = "https://servon.com.co/index/dataGet/be5c205a1cec81934cee5a7e6e28f34e/1/1000/";
@@ -298,15 +297,16 @@ function cResumenFinal(){
      $("#web-car-summary").html("");
     //CONTAMOS lOS PUESTOS DE TRABAJO
         $("#all-place-jobs .calculator").each(function(index){
-                    var fechaInicio      = $(this).find("#start-date").val();
-                    var TimePeriod       = $(this).find("#amout-periods").val();
-                    var cantidadPeriodos = $(this).find("#time-periods").val();
-                    var FechaFinal       = $(this).find("#end-date").val()
+            var fechaInicio      = $(this).find("#start-date").val(),
+                TimePeriod       = $(this).find("#amout-periods").val(),
+                cantidadPeriodos = $(this).find("#time-periods").val(),
+                FechaFinal       = $(this).find("#end-date").val()
 
-                    var PuestoDeTrabajo         = $(this).find("#select-jobPlace").val();
-                    var PuestoDeTrabajoCantidad = $(this).find("#amount-jobs").val();
-                    var PuestoDeTrabajoUnitario = $(this).find("#jobPlace_unitario").val();
-                    var PuestoDeTrabajoTotal    = $(this).find("#jobPlace_total").val();
+            var PuestoDeTrabajo         = $(this).find("#select-jobPlace").val();
+                PuestoDeTrabajoCantidad = $(this).find("#amount-jobs").val(),
+                PuestoDeTrabajoUnitario = $(this).find("#jobPlace_unitario").val(),
+                PuestoDeTrabajoTotal    = $(this).find("#jobPlace_total").val();
+
 
         if ( TimePeriod != undefined && cantidadPeriodos != '' && PuestoDeTrabajo != '' && PuestoDeTrabajoCantidad != ''){
 
@@ -361,6 +361,8 @@ function cResumenFinal(){
                                }
                             };
 
+                            console.warn(data);
+
                         var template = carShoppingtemplate(data);
                         var adiccionalTemplate = $("<div/>");
                             adiccionalTemplate.addClass("col-xl-12 container-aditionals");
@@ -382,7 +384,6 @@ function cResumenFinal(){
 
                                                     adiccionalTemplate.append( tmpAditional );
                                                 }
-                                            
                                         });
                                     template = $(template).append(adiccionalTemplate);       
                                     /*::::Fin Elementos Adicionales::::*/
