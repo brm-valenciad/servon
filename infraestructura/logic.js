@@ -52,14 +52,11 @@ var summary_ = [];
 
        //Agregar elementos Adicionales
         $("body").on("click","#add-new-aditional", function(){
-           
             var padre_ = $("#formOm-"+$(this).attr("data-padre"));
-             var index_ = padre_.find(".aditional_").length+1;
-
+            var index_ = padre_.find(".aditional_").length+1;
             var additional = padre_.find(".aditional_:first-child").clone();
                 additional.find("#title").remove();
                 additional.find("input").each(function(){ $(this).attr("data-clone-index", index_); });
-                
                 padre_.find("#adicionalesOm").append(additional);
         });
          //Remover elemento Adicional
@@ -70,12 +67,10 @@ var summary_ = [];
                     calculateEnd();
             }
         })
-
         $("body").on("change click blur keyup", "select#time-periods, input#amout-periods, #amount-jobs, select, #amountAdiccional", function(){
             var padre = $("#formOm-"+$(this).attr("data-padre"));
                globalCalculate(padre);
         });
-
         //Agregar puesto de trabajo
         $("body").on("click", "#add-new-placeJob", function(){
             var elemIds = $("#all-place-jobs .calculator").length;
@@ -114,7 +109,7 @@ var summary_ = [];
 
         function globalCalculate(padre){
             totalFinal = 0;
-            var start_date_ =   padre.find("#start-date").val();
+            var start_date_ =  padre.find("#start-date").val();
             var end_date_   =  padre.find("#end-date");
             var periodo     = ( padre.find('#time-periods').val() == undefined || padre.find('#time-periods').val() == "") ? "dia" : padre.find('#time-periods').val();
             var periodoText = ( periodo == "horas" ) ? "12_horas" : "tarifa_"+periodo;
@@ -179,20 +174,17 @@ var summary_ = [];
                                 obtainUnitValues( padre, optionDataAdic, periodoText, periodos, cantidad, "optionDataAdic", cloneIndex, amountUnitary );  
                              }else{  clearForm("optionDataAdic"); }
                     });
-
-                resumenCotizacion = periodoText+' + '+cantidad+' unidades + '+periodos+' periodos + ';
-                    summary_.resumen  = resumenCotizacion;
                calculateEnd();
             }
         }
         function calculateEnd(){
             console.error("%ccalculateEnd","font-size:18px;color:red;");
              $("input[placeholder='$Total']").each(function(){
+                console.info("sumando Totakes", $(this).val());
                     if ( $(this).val() != '' ){
                        totalFinal += parseInt($(this).data('cost'));
                     }
                 });
-             console.info(summary_);
             $("#total-final").text(fNumber.go(totalFinal, "$")+' COP');
             $("#totalFlotanteOm").removeClass("d-none")
             .find("div.bg-success").removeClass("alerterror").find("h3").text( fNumber.go(totalFinal, "$")+' COP' );
@@ -391,4 +383,4 @@ function cResumenFinal(){
                     }
                 });
         }
-console.warn("ejem10");
+console.warn("ejem11");
