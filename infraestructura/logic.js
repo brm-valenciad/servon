@@ -393,6 +393,4 @@ function cResumenFinal(){
                     }
                 });
         }
-
-
-
+console.warn("ejem1");
