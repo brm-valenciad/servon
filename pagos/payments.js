@@ -100,8 +100,8 @@ $('#saveInBD').submit(function( event ) {
                    	InsertTablOM("infraestructura");
      	}
 
-    $(this).attr("disabled","disabled").text("Espera unos segundos, estamos procesando tu pago!");
+     $("#pay").attr("disabled","disabled").text("!ESTAMOS PROCESANDO LA COMPRA¡");
   
  }); 
 
-console.warn("Haciendo los pagos 25");
+console.warn("Haciendo los pagos 26");
