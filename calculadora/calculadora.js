@@ -204,8 +204,8 @@ $(document).ready(function(){
 			FinJornada         = parseInt( $("#end-time-journal").val().replace(":",".") ),
 			HorasDeTrabajoXdia = ( InicioJornada != FinJornada ) ?  Math.abs( InicioJornada - FinJornada ): 12;
 
-			console.info($("#start-time-journal").val());
-			console.warn($("#end-time-journal").val());
+			console.info( $("#start-time-journal").val() );
+			console.warn( $("#end-time-journal").val() );
 
 			if ( InicioJornada > FinJornada){
 				errorCalculator("La hora de inicio no puede ser mayor a la hora de salida");
@@ -328,14 +328,14 @@ $(document).ready(function(){
 
 							var businessDays = moment().recur(JstartDate, JendDate).every(daysToInclude).daysOfWeek();
 
-							var totalDaysGestion  = businessDays.all().length,
+							var totalDaysGestion  = businessDays.all().length + 1,
 								diffHours  = Math.abs(JstartDate.diff(JendDate, 'hours')),
 								diffWeeks  = Math.abs(JstartDate.diff(JendDate, 'weeks'));
 
 							var totalHours = HorasDeTrabajoXdia * totalDaysGestion
 
-							$("#days-inside-range").text(totalDaysGestion);
-							$("#days-to-work").text(totalDaysGestion);
+							//$("#days-inside-range").text( totalDaysGestion);
+							$("#days-to-work").text( totalDaysGestion );
 							$("#weeks-inside-range").text(diffWeeks);
 							$("#total-hours-work").text(totalHours);
 							$("#hours-to-Work").text( HorasDeTrabajoXdia );
@@ -664,4 +664,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("aja 22!!");
+console.info("aja 2!!");
