@@ -38,7 +38,6 @@ var summary_ = [];
         }
         //Remover Espacios de trabajo
         $("body").on("click","#delete-place-job", function(){
-            console.info("removiendo elementos");
             var parent = $(this).parent().parent().parent().parent().parent(".calculator");
             if ( parent.index() != 0) {
                 var state = confirm("¿Esta seguro de eliminar este elemento?");
@@ -100,7 +99,6 @@ var summary_ = [];
                             $(this).attr("data-padre", elemIds);
                         var typeIs = $(this).attr("type");
                         if ( typeIs == "date" ){
-                               //console.warn("formatear fecha");
                             $(this).val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
                         }
                         if ( typeIs == "text" || typeIs == "number" ){
@@ -123,8 +121,6 @@ var summary_ = [];
             
             var day = moment(start_date_);
             
-            console.warn("liquidado");
-
             if ( periodo == "mes" ){ day.add( periodos , "months"); }
             if ( periodo == "dia" ){ day.add( periodos , "days"); }
             if ( periodo == "horas" ){ day.add( periodos , "hours"); }
@@ -134,7 +130,6 @@ var summary_ = [];
             if ( isNaN(cantidad) == true || isNaN(periodos)  == true ){
                 alert("Existe un error con un valor no numerico");
             }else{
-                //console.error("Falta change de valor unitario!");
                 var jobPlace          = padre.find('#select-jobPlace').children('option:selected').data('option');
                 var computerEquipment = padre.find('#select-computerEquipment').children('option:selected').data('option');
                 var computerLicences  = padre.find('#select-computerLicences').children('option:selected').data('option');
@@ -173,9 +168,6 @@ var summary_ = [];
                             cantidad = $(this).parent().parent().parent(".form-row").find("#amountAdiccional").val(),
                             amountUnitary = ( cantidad == undefined || cantidad.length == 0) ? 1 : cantidad;
 
-                            console.warn("amountUnitary", amountUnitary);
-                            console.warn("cantidad", cantidad);
-
                             optionDataAdic = $(this).children('option:selected').data('option'),
                             cloneIndex = index+1;
 
@@ -189,7 +181,7 @@ var summary_ = [];
             }
         }
         function calculateEnd(){
-            //console.warn("Hacemos el final");
+            console.error("%ccalculateEnd","font-size:18px;color:red;");
              $("input[placeholder='$Total']").each(function(){
                     if ( $(this).val() != '' ){
                        totalFinal += parseInt($(this).data('cost'));
@@ -391,4 +383,4 @@ function cResumenFinal(){
                     }
                 });
         }
-console.warn("ejem4");
+console.warn("ejem5");
