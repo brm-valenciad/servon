@@ -16,7 +16,7 @@ var payUdata = [
 function InsertTablOM(tablOM){
 	if ( tablOM == "infraestructura" ){
 		console.info(payUdata);
-		$("#consecutivoOMOLDS").val( payUdata[9].value ).css("border","1px solid red");
+		$("#consecutivoOMOLDS").val( payUdata[10].value ).css("border","1px solid red");
 		$("#descripcionDeCompraOMOLDS").val( payUdata[2].value );
 		$("#valorTotal").val( payUdata[11].value );
 			//$('#saveInBD').submit();
