@@ -1,6 +1,7 @@
 var totalFinal = 0;
 var summary_ = [];
-    summary_.resumen = "";
+    summary_.resumen = "",
+    summary_.puestos = [];
  /*Formatear las fechas actuale*/
         Date.prototype.toDateInputValue = (function() {
             var local = new Date(this);
@@ -285,6 +286,7 @@ var summary_ = [];
         }
 
 function cResumenFinal(){
+    summary_.puestos = [];
      $("#web-car-summary").html("");
     //CONTAMOS lOS PUESTOS DE TRABAJO
         $("#all-place-jobs .calculator").each(function(index){
@@ -351,7 +353,7 @@ function cResumenFinal(){
                                     licencia: LicenciaDeMarcadoras 
                                }
                             };
-                        summary_.push({"puesto": data})
+                        summary_.puestos.push({"value": data})
                           
                         var template = carShoppingtemplate(data);
                         var adiccionalTemplate = $("<div/>");
