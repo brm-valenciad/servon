@@ -661,4 +661,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("aja s!!");
+console.info("aja 2!!");
