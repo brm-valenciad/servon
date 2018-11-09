@@ -565,7 +565,6 @@ function fillFormInsert(){
 	                        input_.attr("type", "hidden");
 	                        input_.val(response.id);
 	                        $(".pay").append(input_);
-	                        console.error("No puedo hacer exposicion");
 	            	$(".pay").submit();
 	            }else{
 	            	alert("Ha ocurrido un fallo al guardar los datos");
@@ -662,7 +661,7 @@ $("body").on("click", "#termsConditions", function(event){
 	                    };
 	                fillFormInsert(); 
                 }
-             $("#pay").attr("disabled","disabled").text("Por favor espera unos segundos, estamos procesando tu pago!");
+             $("#pay").attr("disabled","disabled").text("! ESTAMOS PROCESANDO LA COMPRA ¡");
         }); 
 
 console.info("aja 2!!");
