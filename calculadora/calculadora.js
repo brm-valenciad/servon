@@ -25,7 +25,23 @@ $(document).ready(function(){
 			"12:00", "12:15", "12:30", "12:45", 
 			"13:00", "13:15", "13:30",  "13:45",
 			"14:00", "14:15",  "14:30", "14:45", 
-			"15:00", "15:15", "15:30", "15:45"];
+			"15:00", "15:15", "15:30", "15:45",
+			"16:00", "16:15", "16:30",  "16:45", 
+			"17:00", "17:15", "17:30", "17:45",
+			"18:00", "18:15", "18:30", "18:45",
+			"19:00", "19:15", "19:30", "19:45",
+			"20:00", "20:15", "20:30", "20:45",
+			"21:00", "21:15", "21:30", "21:45",
+			"22:00", "22:15", "22:30",  "22:45",
+			"23:00", "23:15",  "23:30", "23:45", 
+			"24:00", "24:15", "24:30", "24:45", 
+			"25:00", "25:15", "25:30",  "25:45",
+			"26:00", "26:15",  "26:30", "26:45", 
+			"27:00", "27:15", "27:30", "27:45",
+			"28:00", "28:15", "28:30",  "28:45",
+			"29:00", "29:15",  "29:30", "29:45", 
+			"30:00", "30:15", "30:30", "30:45",
+			];
 
 	function populateTimeToCall(){
 		for (var i = 0; i <= times.length; i++) {
@@ -63,20 +79,26 @@ $(document).ready(function(){
 		       			}
 		       			else if ( res[0].start_hour != undefined ) {
 		       				for (var i = 0; i <= res.length - 1; i++) {
-		       					
-			
 		       					if ( res[i].start_hour ){
-		       						var startDate_ = res[i].start_hour.value +" "+ res[i].start_meridiem.value;
+		    						var startDate_ = res[i].start_hour.value +" "+ res[i].start_meridiem.value;
+		    						var val_ = convertTime12to24(startDate_);
 		       						var option_ = $("<option/>");
-		       							option_.val( convertTime12to24(startDate_) );
+			       						if ( val_ == "8:00"){
+			       							option_.attr("selected","selected")	
+			       						}
+		       							option_.val( val_ );
 			       						option_.text(startDate_);
 			       						$("#start-time-journal").append(option_);
 		       					}
 
 		       					if ( res[i].end_hour ){
 		       						var startDate_ = res[i].end_hour.value +" "+ res[i].end_meridiem.value;
+		       						var val_ = convertTime12to24(startDate_);
 		       						var option_ = $("<option/>");
-		       							option_.val( convertTime12to24(startDate_) );
+		       							if ( val_ == "18:00"){
+			       							option_.attr("selected","selected")	
+			       						}
+		       							option_.val( val_ );
 			       						option_.text(startDate_);
 			       						$("#end-time-journal").append(option_);
 		       					}
@@ -95,7 +117,7 @@ $(document).ready(function(){
 			});
 			//boostrap custom select
 			setTimeout(function(){
-				$('select.outline').selectpicker();
+				$('select.outline').not(".basic").selectpicker();
 			},2000);
 	}
 
