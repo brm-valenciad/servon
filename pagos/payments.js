@@ -3,7 +3,7 @@ var apiKey   = "wns266ZHs6P8KNk08Mu531qWB6",
 var payUdata = [
 		    	{ name: "merchantId", value: merchantId },
 		    	{ name: "accountId", value:"760061" },
-		    	{ name: "description", value:"Pago TMK - Servon.com.co" },
+		    	{ name: "description", value:"Infraestructura- Servon.com.co" },
 		    	{ name: "tax", value:"0" },
 		    	{ name: "taxReturnBase", value:"0" },
 		    	{ name: "currency", value:"COP" },
@@ -15,6 +15,7 @@ var payUdata = [
 //Valido solo para insertar dentro de las tablas de servon
 function InsertTablOM(tablOM){
 	if ( tablOM == "infraestructura" ){
+		console.info(payUdata);
 		$("#consecutivoOMOLDS").val( payUdata[9].value ).css("border","1px solid red");
 		$("#descripcionDeCompraOMOLDS").val( payUdata[2].value );
 		$("#valorTotal").val( payUdata[11].value );
@@ -97,7 +98,10 @@ $('#saveInBD').submit(function( event ) {
 	            payUdata.push({ name: "amount", value: totalFinal });
 
                    	InsertTablOM("infraestructura");
-                }
-        }); 
+     	}
 
-console.warn("Haciendo los pagos 24");
+    $(this).attr("disabled","disabled").text("Por favor espera unos segundos, estamos procesando tu pago!");
+  
+ }); 
+
+console.warn("Haciendo los pagos 25");
