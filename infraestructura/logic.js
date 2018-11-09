@@ -138,8 +138,10 @@ var summary_ = [];
                 var typeHeadbands     = padre.find('#select-headbands').children('option:selected').data('option');
                 var lincencesMarkers  = padre.find('#select-lincencesMarkers').children('option:selected').data('option');
                 
+                var resumenCotizacion;
                     //Puesto de trabajo
                     if ( jobPlace != undefined ){
+                        resumenCotizacion = "Puesto de trabajo: "+ jobPlace.nombre.value;
                        obtainUnitValues( padre, jobPlace, periodoText, periodos, cantidad, "jobPlace" );
                     }else{ clearForm("jobPlace"); }
 
@@ -177,8 +179,8 @@ var summary_ = [];
                                 obtainUnitValues( padre, optionDataAdic, periodoText, periodos, cantidad, "optionDataAdic", cloneIndex, amountUnitary );  
                              }else{  clearForm("optionDataAdic"); }
                     });
-                    console.warn(jobPlace);
-                var resumenCotizacion = "Puesto de trabajo: "+ "jobPlace.nombre.value" +periodoText+' + '+cantidad+' unidades + '+periodos+' periodos + ';
+
+                resumenCotizacion = periodoText+' + '+cantidad+' unidades + '+periodos+' periodos + ';
                     summary_.resumen  = resumenCotizacion;
                calculateEnd();
             }
@@ -387,4 +389,4 @@ function cResumenFinal(){
                     }
                 });
         }
-console.warn("ejem8");
+console.warn("ejem9");
