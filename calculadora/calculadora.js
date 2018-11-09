@@ -662,7 +662,7 @@ $("body").on("click", "#termsConditions", function(event){
 	                    };
 	                fillFormInsert(); 
                 }
-             $("#pay").attr("disabled","disabled").text("Estamos procesando tu pago!");
+             $("#pay").attr("disabled","disabled").text("Por favor espera unos segundos, estamos procesando tu pago!");
         }); 
 
-console.info("aja 223!!");
+console.info("aja 2!!");
