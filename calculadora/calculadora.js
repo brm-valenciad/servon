@@ -218,10 +218,11 @@ $(document).ready(function(){
 		var cargaPrestacional = 0.4353;
 		var overhead = 45 / 100;
 		var profit = 40 / 100;
-		var EfectividadBase = 16 / 100;
-		var Penalizacion    = 5 / 100;
-		var objetivoEventos = 50 / 100;
-
+		var EfectividadBase   = 16 / 100;
+		var Penalizacion      = 5 / 100;
+		var objetivoEventos   = 50 / 100;
+		var horasLaborXAgente = 8;
+ 
 		//bolsa de comisión
 		var comitionInput = $("#input-bag-comition");
 			bag_comition_value  = comitionInput.val();
@@ -291,7 +292,7 @@ $(document).ready(function(){
 			totalDaysGestion = 0;
 
 		//valor en bruto
-		var productiveHoursPerAgent   = HorasDeTrabajoXdia * ocupation;
+		var productiveHoursPerAgent   = horasLaborXAgente * ocupation;
 		var minutosProductivosDiarios = productiveHoursPerAgent * 60;
 			
 			productiveHoursPerAgentSplit     = productiveHoursPerAgent.toString().split("."),
@@ -368,7 +369,7 @@ $(document).ready(function(){
  							console.error("bolsaCommisiones", bolsaCommisiones);
  							console.error("costoTotalNomina", costoTotalNomina);*/
 
- 						var HorasLaborxDia  = asesorsRequireds * HorasDeTrabajoXdia,
+ 						var HorasLaborxDia  = asesorsRequireds * horasLaborXAgente,
  							TotalHorasLabor = HorasLaborxDia * totalDaysGestion,
  							precioXHora     = ingreso / TotalHorasLabor;
 
