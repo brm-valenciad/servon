@@ -194,7 +194,8 @@ var summary_ = [];
                 });
              console.info(summary_);
             $("#total-final").text(fNumber.go(totalFinal, "$")+' COP');
-            $("#totalFlotanteOm").removeClass("d-none").find("h3").text( fNumber.go(totalFinal, "$")+' COP' );
+            $("#totalFlotanteOm").removeClass("d-none")
+            .find("div.bg-success").removeClass("alerterror").find("h3").text( fNumber.go(totalFinal, "$")+' COP' );
                 cResumenFinal();
         }
 
@@ -384,9 +385,10 @@ function cResumenFinal(){
                                     /*::::Fin Elementos Adicionales::::*/
                         $("#web-car-summary").append(template);
                     }else{
-                        console.error("No podemos calcular nada Aún");
-                         $("#totalFlotanteOm").addClass("d-none").find("h3").text("0");
+                        //console.error("No podemos calcular nada Aún");
+                        $("#totalFlotanteOm").removeClass("d-none")
+                        .find("div.bg-success").addClass("alerterror").find("h3").text("No podemos calcular nada Aún");
                     }
                 });
         }
-console.warn("ejem9");
+console.warn("ejem10");
