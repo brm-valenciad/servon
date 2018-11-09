@@ -6,13 +6,17 @@ var total = 0, total_, summaryCarData;
 	    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
 	    return local.toJSON().slice(0,10);
 	});
-	
+
+	Date.prototype.toDateInputValueEnd = (function() {
+	    var local = new Date(this);
+	    	local.setDate(local.getDate() + 1);
+	    return local.toJSON().slice(0,10);
+	});
+
     $('#start-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
-    $('#end-date').val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
+    $('#end-date').val( new Date().toDateInputValueEnd() ).attr("min", new Date().toDateInputValueEnd());
 
 $(document).ready(function(){
-	//$(".pay").find()
-	//Realizamos llamadas a la base de datos 
 	var times = [ 
 			"2:00", "2:15", "2:30",  "2:45", 
 			"3:00", "3:15", "3:30", "3:45",
