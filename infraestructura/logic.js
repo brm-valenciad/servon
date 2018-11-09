@@ -177,7 +177,8 @@ var summary_ = [];
                                 obtainUnitValues( padre, optionDataAdic, periodoText, periodos, cantidad, "optionDataAdic", cloneIndex, amountUnitary );  
                              }else{  clearForm("optionDataAdic"); }
                     });
-                var resumenCotizacion = "Puesto de trabajo: "+ jobPlace.nombre.value +periodoText+' + '+cantidad+' unidades + '+periodos+' periodos + ';
+                    console.warn(jobPlace);
+                var resumenCotizacion = "Puesto de trabajo: "+ "jobPlace.nombre.value" +periodoText+' + '+cantidad+' unidades + '+periodos+' periodos + ';
                     summary_.resumen  = resumenCotizacion;
                calculateEnd();
             }
