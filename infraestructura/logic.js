@@ -360,7 +360,7 @@ function cResumenFinal(){
                                     licencia: LicenciaDeMarcadoras 
                                }
                             };
-
+                        summary_.push({"puesto": data})
                             console.warn(data);
 
                         var template = carShoppingtemplate(data);
@@ -387,10 +387,12 @@ function cResumenFinal(){
                                         });
                                     template = $(template).append(adiccionalTemplate);       
                                     /*::::Fin Elementos Adicionales::::*/
-                                $("#web-car-summary").append(template);
+                            $("#totalFlotanteOm").removeClass("d-none").find("h3").text("$000.000");
+                        
+                        $("#web-car-summary").append(template);
                     }else{
                         console.error("No podemos calcular nada Aún");
                     }
                 });
         }
-console.warn("ejem1");
+console.warn("ejem3");
