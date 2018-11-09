@@ -1,5 +1,6 @@
 var totalFinal = 0;
 var summary_ = [];
+    summary_.resumen = "";
  /*Formatear las fechas actuale*/
         Date.prototype.toDateInputValue = (function() {
             var local = new Date(this);
@@ -175,8 +176,9 @@ var summary_ = [];
                                 obtainUnitValues( padre, optionDataAdic, periodoText, periodos, cantidad, "optionDataAdic", cloneIndex, amountUnitary );  
                              }else{  clearForm("optionDataAdic"); }
                     });
-                var resumenCotizacion = periodoText+' + '+cantidad+' unidades + '+periodos+' periodos + ';
-                    summary_.push({"resumen":resumenCotizacion})
+
+                var resumenCotizacion = "Puesto de trabajo: "+jobPlace+periodoText+' + '+cantidad+' unidades + '+periodos+' periodos + ';
+                    summary_.resumen  = resumenCotizacion;
                calculateEnd();
             }
         }
@@ -189,7 +191,7 @@ var summary_ = [];
                 });
              console.info(summary_);
             $("#total-final").text(fNumber.go(totalFinal, "$")+' COP');
-            $("#totalFlotanteOm").addClass("d-none").find("h3").text( fNumber.go(totalFinal, "$")+' COP' );
+            $("#totalFlotanteOm").removeClass("d-none").find("h3").text( fNumber.go(totalFinal, "$")+' COP' );
                 cResumenFinal();
         }
 
@@ -383,4 +385,4 @@ function cResumenFinal(){
                     }
                 });
         }
-console.warn("ejem5");
+console.warn("ejem6");
