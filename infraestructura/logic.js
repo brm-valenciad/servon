@@ -70,47 +70,46 @@ var summary_ = [];
             }
         })
 
- $("body").on("change click blur keyup", "select#time-periods, input#amout-periods, #amount-jobs, select, #amountAdiccional", function(){
-        var padre = $("#formOm-"+$(this).attr("data-padre"));
-           globalCalculate(padre);
-});
+        $("body").on("change click blur keyup", "select#time-periods, input#amout-periods, #amount-jobs, select, #amountAdiccional", function(){
+            var padre = $("#formOm-"+$(this).attr("data-padre"));
+               globalCalculate(padre);
+        });
 
+        //Agregar puesto de trabajo
+        $("body").on("click", "#add-new-placeJob", function(){
+            var elemIds = $("#all-place-jobs .calculator").length;
+                elemIds = elemIds+1;  
 
-//Agregar puesto de trabajo
-$("body").on("click", "#add-new-placeJob", function(){
-    var elemIds = $("#all-place-jobs .calculator").length;
-        elemIds = elemIds+1;  
-
-    var clone_el = $("#formOm-1").clone();
-        clone_el.attr("id", "formOm-"+elemIds);
-        /*::Deja la plantilla limpia:::*/
-            //Quitar adicionales
-            clone_el.find("div.aditional_").not(":first").each(function(){
-                $(this).remove();
-            })
-            //Añade id del padre al boton de añadir adicional
-            clone_el.find("#add-new-aditional").attr("data-padre", elemIds);
-            //Añade id del padre al boton de remover adicional
-            clone_el.find("#removeMe").attr("data-padre", elemIds);
-            //Añade id del padre a todos los selects
-            clone_el.find("select").each(function(){
-                   $(this).attr("data-padre", elemIds);
-            });
-            //Vacia inputs y los referencua al padre
-            clone_el.find("input").each(function(){
-                    $(this).attr("data-padre", elemIds);
-                var typeIs = $(this).attr("type");
-                if ( typeIs == "date" ){
-                       //console.warn("formatear fecha");
-                    $(this).val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
-                }
-                if ( typeIs == "text" || typeIs == "number" ){
-                    $(this).val("");
-                }
-            });
-        /*::Fin:::*/
-       $("#all-place-jobs").append(clone_el);
-});
+            var clone_el = $("#formOm-1").clone();
+                clone_el.attr("id", "formOm-"+elemIds);
+                /*::Deja la plantilla limpia:::*/
+                    //Quitar adicionales
+                    clone_el.find("div.aditional_").not(":first").each(function(){
+                        $(this).remove();
+                    })
+                    //Añade id del padre al boton de añadir adicional
+                    clone_el.find("#add-new-aditional").attr("data-padre", elemIds);
+                    //Añade id del padre al boton de remover adicional
+                    clone_el.find("#removeMe").attr("data-padre", elemIds);
+                    //Añade id del padre a todos los selects
+                    clone_el.find("select").each(function(){
+                           $(this).attr("data-padre", elemIds);
+                    });
+                    //Vacia inputs y los referencua al padre
+                    clone_el.find("input").each(function(){
+                            $(this).attr("data-padre", elemIds);
+                        var typeIs = $(this).attr("type");
+                        if ( typeIs == "date" ){
+                               //console.warn("formatear fecha");
+                            $(this).val(new Date().toDateInputValue()).attr("min", new Date().toDateInputValue());
+                        }
+                        if ( typeIs == "text" || typeIs == "number" ){
+                            $(this).val("");
+                        }
+                    });
+                /*::Fin:::*/
+               $("#all-place-jobs").append(clone_el);
+        });
 
 
         function globalCalculate(padre){
@@ -184,22 +183,21 @@ $("body").on("click", "#add-new-placeJob", function(){
                                 obtainUnitValues( padre, optionDataAdic, periodoText, periodos, cantidad, "optionDataAdic", cloneIndex, amountUnitary );  
                              }else{  clearForm("optionDataAdic"); }
                     });
-
-                
                 var resumenCotizacion = periodoText+' + '+cantidad+' unidades + '+periodos+' periodos + ';
-
+                    summary_.push({"resumen":resumenCotizacion})
                calculateEnd();
             }
         }
-
         function calculateEnd(){
-            console.warn("Hacemos el final");
+            //console.warn("Hacemos el final");
              $("input[placeholder='$Total']").each(function(){
                     if ( $(this).val() != '' ){
                        totalFinal += parseInt($(this).data('cost'));
                     }
                 });
+             console.info(summary_);
             $("#total-final").text(fNumber.go(totalFinal, "$")+' COP');
+            $("#totalFlotanteOm").addClass("d-none").find("h3").text( fNumber.go(totalFinal, "$")+' COP' );
                 cResumenFinal();
         }
 
@@ -361,8 +359,7 @@ function cResumenFinal(){
                                }
                             };
                         summary_.push({"puesto": data})
-                            console.warn(data);
-
+                          
                         var template = carShoppingtemplate(data);
                         var adiccionalTemplate = $("<div/>");
                             adiccionalTemplate.addClass("col-xl-12 container-aditionals");
@@ -387,12 +384,11 @@ function cResumenFinal(){
                                         });
                                     template = $(template).append(adiccionalTemplate);       
                                     /*::::Fin Elementos Adicionales::::*/
-                            $("#totalFlotanteOm").removeClass("d-none").find("h3").text("$000.000");
-                        
                         $("#web-car-summary").append(template);
                     }else{
                         console.error("No podemos calcular nada Aún");
+                         $("#totalFlotanteOm").addClass("d-none").find("h3").text("0");
                     }
                 });
         }
-console.warn("ejem3");
+console.warn("ejem4");
