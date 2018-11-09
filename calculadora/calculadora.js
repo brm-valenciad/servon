@@ -200,9 +200,12 @@ $(document).ready(function(){
 
 	$("body").on("change blur click keyup","input[type='date'], input, div.filter-option, a.selected, select, .day", function(){
 		//console.info("Faltan jorandas laborales");
-		var InicioJornada      = parseInt($("#start-time-journal").val().replace(":",".")),
-			FinJornada         = parseInt($("#end-time-journal").val().replace(":",".")),
+		var InicioJornada      = parseInt( $("#start-time-journal").val().replace(":",".") ),
+			FinJornada         = parseInt( $("#end-time-journal").val().replace(":",".") ),
 			HorasDeTrabajoXdia = ( InicioJornada != FinJornada ) ?  Math.abs( InicioJornada - FinJornada ): 12;
+
+			console.info($("#start-time-journal").val());
+			console.warn($("#end-time-journal").val());
 
 			if ( InicioJornada > FinJornada){
 				errorCalculator("La hora de inicio no puede ser mayor a la hora de salida");
@@ -661,4 +664,4 @@ $("body").on("click", "#termsConditions", function(event){
                 }
         }); 
 
-console.info("aja 2!!");
+console.info("aja 22!!");
