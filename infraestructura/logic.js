@@ -181,10 +181,11 @@ var summary_ = [];
             console.error("%ccalculateEnd","font-size:18px;color:red;");
              $("input[placeholder='$Total']").each(function(){
                 //console.info("sumando Totakes", $(this).val());
+                console.info($(this).val().indexOf("COP"));
                     if ( $(this).val() != '' && $(this).val().indexOf("COP") != -1 ){
-                        let total_ = $(this).data('cost').replace("COP","");
-                        console.warn("Sumando ", total_);
-                       totalFinal += parseInt( total_ );
+                        //let total_ = $(this).data('cost').replace("COP","");
+                        console.warn("Sumando ", "total_");
+                       totalFinal += parseInt( 12 );
                     }
                 });
             $("#total-final").text(fNumber.go(totalFinal, "$")+' COP');
@@ -385,4 +386,4 @@ function cResumenFinal(){
                     }
                 });
         }
-console.warn("ejem12");
+console.warn("ejem14");
