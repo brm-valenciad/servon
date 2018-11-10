@@ -29,10 +29,22 @@ var summary_ = [];
                     url_,
                     function( response ) {
                             $.each(response.data, function( key, val ) {
+                               
                                 var option_ = $("<option/>");
                                     option_.attr("value", val.nombre.value);
                                     option_.attr("data-option", JSON.stringify(val));
                                     option_.text(val.nombre.value);
+
+                                    if (place == "jobPlace" ){
+                                        var d = new Date(), n = d.getTime();
+                                             option_.attr("data-ref-id", n);
+                                       var tmplBase = $("#DescripcionpuestosOm").clone();
+                                           tmplBase.attr("id",n);
+                                           tmplBase.find("h5.text-white").text(val.nombre.value);
+                                           tmplBase.find("img.img-fluid").attr("src", val.puestodetrabajoalt.value);
+                                           tmplBase.find("div.description").html( val.description.value );
+                                            $("#tiposDePuesto").append(tmplBase);    
+                                    }
                                 $("#select-"+place).append(option_);
                              });
                     });
@@ -132,7 +144,10 @@ var summary_ = [];
                 var computerLicences  = padre.find('#select-computerLicences').children('option:selected').data('option');
                 var typeHeadbands     = padre.find('#select-headbands').children('option:selected').data('option');
                 var lincencesMarkers  = padre.find('#select-lincencesMarkers').children('option:selected').data('option');
-                
+                var descriptionActive = padre.find('#select-jobPlace').children('option:selected').attr('data-ref-id');
+                    
+                    $("#tiposDePuesto .default-TMPL").css("display","none")
+                    $("#"+descriptionActive).css("display","inline-flex");
                 var dataCal = { padre: padre,  periodTxt: periodoText, periodNmb: periodos,
                                  component : null, from : null };
 
@@ -229,12 +244,12 @@ var summary_ = [];
                 _valorTotal = _cantidadVal * _componentValue;
                 _valorTotalInpu.val( fNumber.go( _valorTotal ,"COP") ).data('cost', _valorTotal);
 
-                console.clear();
+               /* console.clear();
                 console.error("componentValue", _componentValue );
                 console.error("ANDQUERY", ANDQUERY );
                 console.error("_parent", _parent );
                 console.error("_identify", _identify );
-                console.error("_cantidad", _cantidad.val() );
+                console.error("_cantidad", _cantidad.val() );*/
         }
 
 
@@ -416,4 +431,4 @@ function cResumenFinal(){
                     }
                 });
         }
-console.warn("ejem124");
+console.warn("Arreglos desde casa");
