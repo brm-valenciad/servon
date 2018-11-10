@@ -58,6 +58,7 @@ var summary_ = [];
                 additional.find("#title").remove();
                 additional.find("input").each(function(){ $(this).attr("data-clone-index", index_); });
                 padre_.find("#adicionalesOm").append(additional);
+                calculateEnd();
         });
          //Remover elemento Adicional
         $("body").on("click","#removeMe", function(){
@@ -178,14 +179,19 @@ var summary_ = [];
             }
         }
         function calculateEnd(){
-            console.error("%ccalculateEnd","font-size:18px;color:red;");
+            console.info("ahiora lo hacemos");
              $("input[placeholder='$Total']").each(function(){
-                    if ( $(this).val() != '' && $(this).val().indexOf("COP") != -1){
-                            var total_ = $(this).data('cost').replace("COP","");
-                                console.warn("Sumando ", total_);
-                            totalFinal += parseInt( total_ );
+                var totalMe = $(this).val();
+                    if ( totalMe != '' || totalMe > 0 ){
+                            var total_ = totalMe.replace("COP","");
+                            var Re = new RegExp("\\.","g");
+                            total_ = parseInt(total_.replace(Re,""));
+                            console.warn(total_);
+                            totalFinal += total_;
                     }
                 });
+
+             console.warn(totalFinal);
             $("#total-final").text(fNumber.go(totalFinal, "$")+' COP');
             $("#totalFlotanteOm").removeClass("d-none")
             .find("div.bg-success").removeClass("alerterror").find("h3").text( fNumber.go(totalFinal, "$")+' COP' );
