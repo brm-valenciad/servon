@@ -1,4 +1,4 @@
-var totalFinal = 0;
+var totalFinal = 0, IVA_ = 0.19, subTotal = 0;
 var summary_ = [];
     summary_.resumen = "",
     summary_.puestos = [];
@@ -33,7 +33,6 @@ var summary_ = [];
                                     option_.attr("value", val.nombre.value);
                                     option_.attr("data-option", JSON.stringify(val));
                                     option_.text(val.nombre.value);
-
                                 $("#select-"+place).append(option_);
                              });
                     });
@@ -68,7 +67,7 @@ var summary_ = [];
                     calculateEnd();
             }
         })
-        $("body").on("change click blur keyup", "select#time-periods, input#amout-periods, #amount-jobs, select, #amountAdiccional", function(){
+        $("body").on("change click blur keyup", "select#time-periods, input[type='text'].action, #amount-jobs, select, #amountAdiccional", function(){
             var padre = $("#formOm-"+$(this).attr("data-padre"));
                globalCalculate(padre);
         });
@@ -134,35 +133,46 @@ var summary_ = [];
                 var typeHeadbands     = padre.find('#select-headbands').children('option:selected').data('option');
                 var lincencesMarkers  = padre.find('#select-lincencesMarkers').children('option:selected').data('option');
                 
+                var dataCal = { padre: padre,  periodTxt: periodoText, periodNmb: periodos,
+                                 component : null, from : null };
+
                 var resumenCotizacion;
                     //Puesto de trabajo
                     if ( jobPlace != undefined ){
-                        resumenCotizacion = "Puesto de trabajo: "+ jobPlace.nombre.value;
-                       obtainUnitValues( padre, jobPlace, periodoText, periodos, cantidad, "jobPlace" );
+                        dataCal.component = jobPlace;
+                        dataCal.from = "jobPlace";
+                       obtainUnitValues( dataCal );
                     }else{ clearForm("jobPlace"); }
-
+                    
                     //Equipo_de_computo
                     if ( computerEquipment != undefined ){
-                       obtainUnitValues( padre, computerEquipment, periodoText, periodos, cantidad, "computerEquipment" );
+                        dataCal.component = computerEquipment;
+                        dataCal.from = "computerEquipment";
+                       obtainUnitValues( dataCal );
                     }else{ clearForm("computerEquipment"); }
 
                     //Lincencias
                     if ( computerLicences != undefined ){
-                       obtainUnitValues( padre, computerLicences, periodoText, periodos, cantidad, "computerLicences" );
+                        dataCal.component = computerLicences;
+                        dataCal.from = "computerLicences";
+                       obtainUnitValues( dataCal );
                     }else{  clearForm("computerLicences"); }
 
                     //typeHeadbands
                     if ( typeHeadbands != undefined ){
-                       obtainUnitValues( padre, typeHeadbands, periodoText, periodos, cantidad, "headbands" );
+                        dataCal.component = typeHeadbands;
+                        dataCal.from = "typeHeadbands";
+                        obtainUnitValues( dataCal );
                     }else{  clearForm("headbands"); }
 
                     //marcadoras
                     if ( lincencesMarkers != undefined ){
-                       obtainUnitValues( padre, lincencesMarkers, periodoText, periodos, cantidad, "lincencesMarkers" );
+                         dataCal.component = lincencesMarkers;
+                         dataCal.from = "lincencesMarkers";
+                        obtainUnitValues( dataCal );
                     }else{  clearForm("lincencesMarkers"); }
                     
                    //Elementos Adicionales
-                  
                     padre.find(".aditionals-elements").each(function(index){
                         var grupo   = $(this).data('grupo'),
                             cantidad = $(this).parent().parent().parent(".form-row").find("#amountAdiccional").val(),
@@ -172,42 +182,59 @@ var summary_ = [];
                             cloneIndex = index+1;
 
                             if ( optionDataAdic != undefined ){
-                                obtainUnitValues( padre, optionDataAdic, periodoText, periodos, cantidad, "optionDataAdic", cloneIndex, amountUnitary );  
+                                dataCal.component = optionDataAdic;
+                                dataCal.from = "optionDataAdic";
+                                dataCal.indClone = cloneIndex;
+                                obtainUnitValues( dataCal );
+                                //obtainUnitValues( padre, optionDataAdic, periodoText, periodos, cantidad, "optionDataAdic", cloneIndex, amountUnitary );  
                              }else{  clearForm("optionDataAdic"); }
                     });
                calculateEnd();
             }
         }
         function calculateEnd(){
-            console.info("ahiora lo hacemos");
+            subTotal = 0;
              $("input[placeholder='$Total']").each(function(){
                 var totalMe = $(this).val();
                     if ( totalMe != '' || totalMe > 0 ){
                             var total_ = totalMe.replace("COP","");
                             var Re = new RegExp("\\.","g");
+                            //console.error(":::Total:::", Math.abs(total_.replace(Re,"")));
                             total_ = parseInt(total_.replace(Re,""));
-                            console.warn(total_);
-                            totalFinal += total_;
+                             subTotal += total_;
                     }
                 });
-
-             console.warn(totalFinal);
+            Iva_Total  = subTotal * IVA_;
+            totalFinal = Math.floor(subTotal + Iva_Total);
+            //console.warn("subTotal", subTotal);
+            //console.warn("Iva_Total", Iva_Total);
+            //console.error("totalFinal", totalFinal);
             $("#total-final").text(fNumber.go(totalFinal, "$")+' COP');
             $("#totalFlotanteOm").removeClass("d-none")
             .find("div.bg-success").removeClass("alerterror").find("h3").text( fNumber.go(totalFinal, "$")+' COP' );
                 cResumenFinal();
         }
+        //padre, mainObj, searchBy, cantidad, periodos, identify, cloneI, value
+       function obtainUnitValues(values){
+            var ANDQUERY  = ( values.indClone != undefined ) ? "data-clone-index="+values.indClone : "type='text'",
+                _identify = values.from,
+                _parent   = values.padre,
+                _cantidad = _parent.find('#'+_identify+'_amount['+ANDQUERY+']'),
+                _componentValue = values.component[ values.periodTxt ].value,
+                _valorUnitario  = _parent.find('#'+_identify+'_unitario['+ANDQUERY+']'),
+                _valorTotalInpu = _parent.find('#'+_identify+'_total['+ANDQUERY+']'),
+                _cantidadVal    = ( isNaN( _cantidad.val() ) == true ) ? _cantidad.val(1) : _cantidad.val();
 
-       function obtainUnitValues(padre, mainObj, searchBy, cantidad, periodos, identify, cloneI, value){
-            var andQuery = ( cloneI != undefined )? "data-clone-index="+cloneI: "type='text'";
-            padre.find('#'+identify+'_unitario['+andQuery+']').val( fNumber.go(mainObj[searchBy].value, "COP") );
-                if ( value != undefined ) {
-                    var totalAditionals = mainObj[searchBy].value*cantidad*periodos * value;
-                     padre.find('#'+identify+'_total['+andQuery+']').val( fNumber.go( totalAditionals , "COP") );
-                     padre.find('#'+identify+'_total['+andQuery+']').data('cost', mainObj[searchBy].value * cantidad * periodos);  
-                } 
-            padre.find('#'+identify+'_total['+andQuery+']').val( fNumber.go(mainObj[searchBy].value*cantidad*periodos, "COP") );
-            padre.find('#'+identify+'_total['+andQuery+']').data('cost', mainObj[searchBy].value * cantidad * periodos); 
+                _valorUnitario.val( fNumber.go( _componentValue ,"COP"));
+                _valorTotal = _cantidadVal * _componentValue;
+                _valorTotalInpu.val( fNumber.go( _valorTotal ,"COP") ).data('cost', _valorTotal);
+
+                console.clear();
+                console.error("componentValue", _componentValue );
+                console.error("ANDQUERY", ANDQUERY );
+                console.error("_parent", _parent );
+                console.error("_identify", _identify );
+                console.error("_cantidad", _cantidad.val() );
         }
 
 
@@ -384,10 +411,9 @@ function cResumenFinal(){
                                     /*::::Fin Elementos Adicionales::::*/
                         $("#web-car-summary").append(template);
                     }else{
-                        //console.error("No podemos calcular nada Aún");
                         $("#totalFlotanteOm").removeClass("d-none")
                         .find("div.bg-success").addClass("alerterror").find("h3").text("No podemos calcular nada Aún");
                     }
                 });
         }
-console.warn("ejem12");
+console.warn("ejem124");
