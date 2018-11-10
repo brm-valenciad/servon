@@ -146,8 +146,9 @@ var summary_ = [];
                 var lincencesMarkers  = padre.find('#select-lincencesMarkers').children('option:selected').data('option');
                 var descriptionActive = padre.find('#select-jobPlace').children('option:selected').attr('data-ref-id');
                     
-                    $("#tiposDePuesto .default-TMPL").css("display","none")
-                    $("#"+descriptionActive).css("display","inline-flex");
+                    padre.find("#tiposDePuesto .default-TMPL").css("display","none")
+                    padre.find("#"+descriptionActive).css("display","inline-flex");
+
                 var dataCal = { padre: padre,  periodTxt: periodoText, periodNmb: periodos,
                                  component : null, from : null };
 
@@ -431,4 +432,4 @@ function cResumenFinal(){
                     }
                 });
         }
-console.warn("Arreglos desde casa");
+console.warn("Arreglos desde casa 2");
