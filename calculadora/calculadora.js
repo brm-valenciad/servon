@@ -44,7 +44,7 @@ $(document).ready(function(){
 			"27:00", "27:15", "27:30", "27:45",
 			"28:00", "28:15", "28:30",  "28:45",
 			"29:00", "29:15",  "29:30", "29:45", 
-			"30:00", "30:15", "30:30", "30:45",
+			"30:00"
 			];
 
 	function populateTimeToCall(){
@@ -473,7 +473,7 @@ $(document).ready(function(){
 	 									$(".total_inversion").text(total);
 	 									$(".summary-car").removeClass("d-none");
 	 									$("#totalFlotanteOm").find(".bg-success").removeClass("alerterror");
-	 									$("#totalFlotanteOm").removeClass("d-none").find("h3").text(total).attr("style","");
+	 									$("#totalFlotanteOm").removeClass("d-none").find("h3").text(total+ "COP").attr("style","");
 	 								}else{
 	 									$("#totalFlotanteOm").addClass("d-none").find("h3").text(0);
 	 									$(".summary-car").addClass("d-none");
@@ -661,7 +661,7 @@ $("body").on("click", "#termsConditions", function(event){
 	                    };
 	                fillFormInsert(); 
                 }
-             $("#pay").attr("disabled","disabled").text("! ESTAMOS PROCESANDO LA COMPRA ¡");
+             $("#pay").attr("disabled","disabled").text("!ESTAMOS PROCESANDO LA COMPRA¡");
         }); 
 
 console.info("aja 2!!");
