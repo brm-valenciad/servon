@@ -323,11 +323,11 @@ $(document).ready(function(){
 							var businessDays = moment().recur(JstartDate, JendDate).every(daysToInclude).daysOfWeek();
 
 							var diffWeeks  = Math.abs(JstartDate.diff(JendDate, 'weeks')),
-								totalDaysGestion  = businessDays.all().length - diffWeeks,
+								totalDaysGestion  = businessDays.all().length,
 								diffHours  = Math.abs(JstartDate.diff(JendDate, 'hours')); 
 								
 								
-								console.warn("Dias necesarias ", totalDaysGestion);
+								console.warn("semanas necesarias ", diffWeeks);
 
 							var totalHours = HorasDeTrabajoXdia * totalDaysGestion
 
@@ -661,4 +661,4 @@ $("body").on("click", "#termsConditions", function(event){
              $("#pay").attr("disabled","disabled").text("!ESTAMOS PROCESANDO LA COMPRA¡");
         }); 
 
-console.info("aja 24!");
+console.info("aja 5!");
