@@ -470,10 +470,10 @@ $(document).ready(function(){
 
 	 								if ( isNaN(total_) == false ){
 											fillSummaryCar_( summaryCarData)
-	 									$(".total_inversion").text(total);
+	 									$(".total_inversion").text(total +" COP");
 	 									$(".summary-car").removeClass("d-none");
 	 									$("#totalFlotanteOm").find(".bg-success").removeClass("alerterror");
-	 									$("#totalFlotanteOm").removeClass("d-none").find("h3").text(total+ "COP").attr("style","");
+	 									$("#totalFlotanteOm").removeClass("d-none").find("h3").text(total+ " COP").attr("style","");
 	 								}else{
 	 									$("#totalFlotanteOm").addClass("d-none").find("h3").text(0);
 	 									$(".summary-car").addClass("d-none");
@@ -509,7 +509,7 @@ function fillSummaryCar_(data){
  		CendService.text( data.fechaFinal );
  		CTimeZone.text( data.ZonaHoraria );
  		CdaysActivity.find("h5").text( data.diasGestion );
- 		CjornadaLabor.text( data.jornada );
+ 		CjornadaLabor.text( "8 Horas" );//data.jornada
 		CbagComition.find("span").text( data.bolsaCommisiones+ " COP" );
 		Cgrabationc.find("span").text( data.grabaciones+ " COP" );
 		Cauditoria_.find("span").text( data.audition+ " COP" );
