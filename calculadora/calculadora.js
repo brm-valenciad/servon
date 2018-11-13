@@ -45,7 +45,7 @@ $(document).ready(function(){
 			"28:00", "28:15", "28:30",  "28:45",
 			"29:00", "29:15",  "29:30", "29:45", 
 			"30:00"
-			];
+	];
 
 	function populateTimeToCall(){
 		for (var i = 0; i <= times.length; i++) {
@@ -394,8 +394,8 @@ $(document).ready(function(){
 							var	audition    = ( $("#check-auditoria").prop("checked") != true ) ? 0 :  calcAudition;
 							var grabaciones = ( $("#check-grabations").prop("checked") != true ) ? 0 : grabaciones_nmb;
 
-	 						var _totalParcial = ingreso + grabaciones + audition;
 	 						var _iva   = _totalParcial * 0.19;
+	 							_totalParcial = ingreso + grabaciones + audition;
 	 							total_ = Math.round(_totalParcial + _iva);
 	 						
 	 							$("#audition").find("b.value").text(fNumber.go(Math.round(calcAudition), "$"));	
@@ -459,11 +459,13 @@ $(document).ready(function(){
  									//console.warn("SubTotal",  fNumber.go(_totalParcial ,"$"));	
  									//console.warn("SubTotal",  fNumber.go(Math.round(_totalParcial),"$"));
  									//console.warn("Iva",   fNumber.go( Math.round(_iva) ,"$"));
- 									//console.warn("total_",  fNumber.go( total_ ,"$"));
- 									console.error(summaryCarData);
+ 									//console.warn("total_",  fNumber.go( total_ ,"$")); 									
 	 							console.warn("%c#########","color:orange; font-size:22px;");*/
-							
-	 							total = fNumber.go( total_ ,"$");
+
+							console.clear();
+								console.error(summaryCarData);
+
+	 							total = fNumber.go( _totalParcial ,"$");
 
 	 								if ( isNaN(total_) == false ){
 											fillSummaryCar_( summaryCarData)
@@ -474,7 +476,7 @@ $(document).ready(function(){
 	 								}else{
 	 									$("#totalFlotanteOm").addClass("d-none").find("h3").text(0);
 	 									$(".summary-car").addClass("d-none");
-	 									errorCalculator("Ha ocurrido un error con los datos");
+	 										errorCalculator("Ha ocurrido un error con los datos");
 	 								}
 					}
 				}else{
@@ -613,8 +615,6 @@ $("body").on("click", "#termsConditions", function(event){
             return false;
     }
 
-
-
 /*Funcion para pagos*/
    	$("body").on("click","#pay", function(event){
             event.preventDefault();
@@ -647,7 +647,7 @@ $("body").on("click", "#termsConditions", function(event){
 		                    { name: "signature", value:hash },
 		                    { name: "test", value:"0" },
 		                    { name: "responseUrl", value:"https://www.servon.com.co/web/index/response/" },
-		                    { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment/" },
+		                    { name: "confirmationUrl", value:"https://www.servon.com.co/web/index/returnpayment/" }
 	                    ];
 	                    for (var i = 0; i <= dataPayLatam.length - 1; i++) {
 	                        var input_ = $("<input/>");
@@ -661,4 +661,4 @@ $("body").on("click", "#termsConditions", function(event){
              $("#pay").attr("disabled","disabled").text("!ESTAMOS PROCESANDO LA COMPRA¡");
         }); 
 
-console.info("aja 5!");
+console.info("aja 6!");
