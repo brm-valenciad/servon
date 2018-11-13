@@ -327,12 +327,12 @@ $(document).ready(function(){
 								diffHours  = Math.abs(JstartDate.diff(JendDate, 'hours')); 
 								
 								
-								console.warn("semanas necesarias ", diffWeeks);
+								//console.warn("semanas necesarias ", diffWeeks);
 
-							var totalHours = HorasDeTrabajoXdia * totalDaysGestion
+							var totalHours = HorasDeTrabajoXdia * (totalDaysGestion + 1)
 
 							//$("#days-inside-range").text( totalDaysGestion);
-							$("#days-to-work").text( totalDaysGestion );
+							$("#days-to-work").text( totalDaysGestion + 1);
 							$("#weeks-inside-range").text(diffWeeks);
 							$("#total-hours-work").text(totalHours);
 							$("#hours-to-Work").text( HorasDeTrabajoXdia );
@@ -661,4 +661,4 @@ $("body").on("click", "#termsConditions", function(event){
              $("#pay").attr("disabled","disabled").text("!ESTAMOS PROCESANDO LA COMPRA¡");
         }); 
 
-console.info("aja 5!");
+console.info("Arreglos 161");
