@@ -204,9 +204,6 @@ $(document).ready(function(){
 			FinJornada         = parseInt( $("#end-time-journal").val().replace(":",".") ),
 			HorasDeTrabajoXdia = ( InicioJornada != FinJornada ) ?  Math.abs( InicioJornada - FinJornada ): 12;
 
-			console.info( $("#start-time-journal").val() );
-			console.warn( $("#end-time-journal").val() );
-
 			if ( InicioJornada > FinJornada){
 				errorCalculator("La hora de inicio no puede ser mayor a la hora de salida");
 				return false;
@@ -214,7 +211,7 @@ $(document).ready(function(){
 
 		var TipoDeServicio = $("#service-type-tmk").val();
 		//Constantes 
-		var ocupation = 70 / 100;//horas reales de trabajo
+		var ocupation = 70 / 100; //horas reales de trabajo
 		var absenteeism = 10 / 100; //Ausentismo
 		var rotation = 10 / 100;
 		var contactability = 45 / 100;
@@ -225,7 +222,6 @@ $(document).ready(function(){
 		var Penalizacion      = 5 / 100;
 		var objetivoEventos   = 50 / 100;
 		var horasLaborXAgente = 8;
- 
 		//bolsa de comisión
 		var comitionInput = $("#input-bag-comition");
 			bag_comition_value  = comitionInput.val();
@@ -234,14 +230,12 @@ $(document).ready(function(){
 		if( isNaN(bag_comition) == false ){
 			comitionInput.val( new Intl.NumberFormat("de-DE").format(bag_comition) );			
 		}else{ comitionInput.val(0); }
-		
 		//Auditoria
 		var Auditoria_     = $("#check-auditoria");
 		var auditoriaPrice = ( Auditoria_.prop("checked") == true ) ? 27900 : 0;
 		//Grabaciones 
 		var grabations_     = $("#check-grabations");
 		var grabationsPrice = ( grabations_.prop("checked") == true ) ? 3257 : 0;
-
 		//Variables recogidas en el formulario
 		var ZonaHoraria       = $("#time-zone-tmk").val();
 		var peopleToCallInput = $("#persons-to-call");
@@ -331,6 +325,8 @@ $(document).ready(function(){
 							var totalDaysGestion  = businessDays.all().length + 1,
 								diffHours  = Math.abs(JstartDate.diff(JendDate, 'hours')),
 								diffWeeks  = Math.abs(JstartDate.diff(JendDate, 'weeks'));
+								
+								console.warn("semanas necesarias ", diffWeeks);
 
 							var totalHours = HorasDeTrabajoXdia * totalDaysGestion
 
@@ -664,4 +660,4 @@ $("body").on("click", "#termsConditions", function(event){
              $("#pay").attr("disabled","disabled").text("!ESTAMOS PROCESANDO LA COMPRA¡");
         }); 
 
-console.info("aja 23!");
+console.info("aja 4!");
