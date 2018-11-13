@@ -504,15 +504,15 @@ function fillSummaryCar_(data){
 
  		CtypeService_.find("h5").text( data.tipoDeServicio );
  		CpeoleCall_.find("h5").text( data.personasAllamar );
- 		CdurationCall.find("h5").text( data.duracionLlamada );
+ 		CdurationCall.find("h5").text( data.duracionLlamada +" Minutos");
  		CstartService.text( data.fechaInicio );
  		CendService.text( data.fechaFinal );
  		CTimeZone.text( data.ZonaHoraria );
  		CdaysActivity.find("h5").text( data.diasGestion );
  		CjornadaLabor.text( data.jornada );
-		CbagComition.find("span").text( data.bolsaCommisiones );
-		Cgrabationc.find("span").text( data.grabaciones );
-		Cauditoria_.find("span").text( data.audition );
+		CbagComition.find("span").text( data.bolsaCommisiones+ " COP" );
+		Cgrabationc.find("span").text( data.grabaciones+ " COP" );
+		Cauditoria_.find("span").text( data.audition+ " COP" );
 }
 //Llenar formulario para insertar dentro de OMOLDS
 function fillFormInsert(){
@@ -664,4 +664,4 @@ $("body").on("click", "#termsConditions", function(event){
              $("#pay").attr("disabled","disabled").text("!ESTAMOS PROCESANDO LA COMPRA¡");
         }); 
 
-console.info("aja 2!!");
+console.info("aja 23!");
