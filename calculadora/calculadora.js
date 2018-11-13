@@ -329,10 +329,10 @@ $(document).ready(function(){
 								
 								//console.warn("semanas necesarias ", diffWeeks);
 
-							var totalHours = HorasDeTrabajoXdia * (totalDaysGestion + 1)
+							var totalHours = HorasDeTrabajoXdia * totalDaysGestion
 
 							//$("#days-inside-range").text( totalDaysGestion);
-							$("#days-to-work").text( totalDaysGestion + 1);
+							$("#days-to-work").text( totalDaysGestion );
 							$("#weeks-inside-range").text(diffWeeks);
 							$("#total-hours-work").text(totalHours);
 							$("#hours-to-Work").text( HorasDeTrabajoXdia );
@@ -535,7 +535,7 @@ function fillFormInsert(){
 	$("#OMOLDS_PEOPLETOCALL").val( summaryCarData.personasAllamar );
 	$("#OMOLDS_DURATIONOCALL").val( summaryCarData.duracionLlamada );
 	$("#OMOLDS_SERVICEDATE").val( "Fecha Inicial: "+ summaryCarData.fechaInicio +" <br> Fecha Final: "+ summaryCarData.fechaFinal );
-	$("#OMOLDS_ACTIVITYDAYS").val( summaryCarData.diasGestion+1 );
+	$("#OMOLDS_ACTIVITYDAYS").val(summaryCarData.diasGestion);
 	$("#OMOLDS_BAGCOMITION").val(summaryCarData.bolsaCommisiones);
 	$("#OMOLDS_GRABATIONS").val( summaryCarData.grabaciones );
 	$("#OMOLDS_AUDITIONS").val( summaryCarData.audition );
@@ -661,4 +661,4 @@ $("body").on("click", "#termsConditions", function(event){
              $("#pay").attr("disabled","disabled").text("!ESTAMOS PROCESANDO LA COMPRA¡");
         }); 
 
-console.info("Arreglos 162");
+console.info("aja 5!");
