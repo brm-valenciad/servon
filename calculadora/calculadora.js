@@ -409,7 +409,7 @@ $(document).ready(function(){
 	 								fechaFinal: endDate,
 	 								ZonaHoraria: ZonaHoraria, 
 	 								diasGestion: totalDaysGestion,
-	 								jornada: "Horas",
+	 								jornada: HorasDeTrabajoXdia+ "Horas",
 	 								bolsaCommisiones: fNumber.go(   Math.round(bolsaCommisiones) ,"$" ),
 	 								grabaciones: fNumber.go(Math.round(grabaciones),"$"),
 	 								audition: fNumber.go( Math.round(audition) , "$"),
@@ -506,7 +506,7 @@ function fillSummaryCar_(data){
  		CendService.text( data.fechaFinal );
  		CTimeZone.text( data.ZonaHoraria );
  		CdaysActivity.find("h5").text( data.diasGestion );
- 		CjornadaLabor.text( "8 Horas" );//data.jornada
+ 		CjornadaLabor.text( data.jornada );//data.jornada
 		CbagComition.find("span").text( data.bolsaCommisiones+ " COP" );
 		Cgrabationc.find("span").text( data.grabaciones+ " COP" );
 		Cauditoria_.find("span").text( data.audition+ " COP" );
