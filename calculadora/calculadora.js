@@ -1,4 +1,4 @@
-var total = 0, total_, summaryCarData;
+var total = 0, total_, summaryCarData , _iva;
 
 /*Formatear las fechas actuales*/
 	Date.prototype.toDateInputValue = (function() {
@@ -394,8 +394,8 @@ $(document).ready(function(){
 							var	audition    = ( $("#check-auditoria").prop("checked") != true ) ? 0 :  calcAudition;
 							var grabaciones = ( $("#check-grabations").prop("checked") != true ) ? 0 : grabaciones_nmb;
 
-	 						var _iva   = _totalParcial * 0.19;
-	 							_totalParcial = ingreso + grabaciones + audition;
+	 						var _totalParcial = ingreso + grabaciones + audition,
+	 							_iva   = _totalParcial * 0.19;
 	 							total_ = Math.round(_totalParcial + _iva);
 	 						
 	 							$("#audition").find("b.value").text(fNumber.go(Math.round(calcAudition), "$"));	
@@ -641,7 +641,7 @@ $("body").on("click", "#termsConditions", function(event){
 		                    { name: "description", value:"Pago TMK - Servon.com.co" },
 		                    { name: "referenceCode", value:reference },
 		                    { name: "amount", value: total_ },
-		                    { name: "tax", value:"0" },
+		                    { name: "tax", value: _iva },
 		                    { name: "taxReturnBase", value:"0" },
 		                    { name: "currency", value:"COP" },
 		                    { name: "signature", value:hash },
@@ -661,4 +661,4 @@ $("body").on("click", "#termsConditions", function(event){
              $("#pay").attr("disabled","disabled").text("!ESTAMOS PROCESANDO LA COMPRA¡");
         }); 
 
-console.info("aja 6!");
+console.info("aja 5!");
