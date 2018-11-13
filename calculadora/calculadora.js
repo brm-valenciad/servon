@@ -394,8 +394,8 @@ $(document).ready(function(){
 							var	audition    = ( $("#check-auditoria").prop("checked") != true ) ? 0 :  calcAudition;
 							var grabaciones = ( $("#check-grabations").prop("checked") != true ) ? 0 : grabaciones_nmb;
 
-	 						var _totalParcial = ingreso + grabaciones + audition,
-	 							_iva   = _totalParcial * 0.19;
+	 						var _totalParcial = Math.round(ingreso + grabaciones + audition),
+	 							_iva   = Math.round(_totalParcial * 0.19);
 	 							total_ = Math.round(_totalParcial + _iva);
 	 						
 	 							$("#audition").find("b.value").text(fNumber.go(Math.round(calcAudition), "$"));	
