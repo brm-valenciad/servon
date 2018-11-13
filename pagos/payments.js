@@ -15,7 +15,9 @@ var payUdata = [
 //Valido solo para insertar dentro de las tablas de servon
 function InsertTablOM(tablOM){
 	if ( tablOM == "infraestructura" ){
-		console.info(payUdata);
+			//console.info(payUdata);
+			console.warn(summary_);
+
 		$("#consecutivoOMOLDS").val( payUdata[10].value ).css("border","1px solid red");
 		$("#descripcionDeCompraOMOLDS").val( payUdata[2].value );
 		$("#valorTotal").val( payUdata[11].value );
@@ -104,4 +106,4 @@ $('#saveInBD').submit(function( event ) {
   
  }); 
 
-console.warn("Haciendo los pagos 26");
+console.warn("Haciendo los pagos 27");
