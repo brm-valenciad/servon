@@ -249,7 +249,7 @@ $(document).ready(function(){
 		}
 
 		var peopleToCall   = ( peopleAmount != "" ) ? peopleAmount : 0 ;
-		var indexMarcation = 5;//Repetición de llamada
+		var indexMarcation = 1;//Repetición de llamada
 		var durationCall = ($("#duration-call").val() != "") ? $("#duration-call").val() : 0 ;//number 3.45
 		var minutesToDay = 1440;//Minutos que hacen un día
 		var somethingWrong = false;//NO SIRVE
